@@ -1,0 +1,4 @@
+.elements__like-image:hover {
+  cursor: pointer;
+  opacity: .5;
+}

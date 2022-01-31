@@ -12,7 +12,14 @@
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/profile__title.css";
 @import "../blocks/profile/profile__subtitle.css";
-
 @import "../blocks/profile/profile__avatar.css";
 @import "../blocks/profile/profile__content-container.css";
 @import "../blocks/profile/profile__text-container.css";
+
+
+@import "../blocks/elements/elements.css";
+@import "../blocks/elements/__card-container/elements__card-container.css";
+@import "../blocks/elements/__image/elements__image.css";
+@import "../blocks/elements/__text-container/elements__text-container.css";
+@import "../blocks/elements/__text/elements__text.css";
+@import "../blocks/elements/__like-image/elements__like-image.css";
