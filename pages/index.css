@@ -1,3 +1,5 @@
-* {
-  border: 1px solid red;
-}
+@import "../blocks/page/page.css";
+@import "../blocks/logo/logo.css";
+
+
+@import "../blocks/header/header.css";
