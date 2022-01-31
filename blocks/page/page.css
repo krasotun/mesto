@@ -7,4 +7,5 @@
   background-color: #000000;
   color: white;
   padding: 0 200px;
+  box-sizing: border-box;
 }
