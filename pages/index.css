@@ -1,5 +1,17 @@
 @import "../blocks/page/page.css";
+
 @import "../blocks/logo/logo.css";
+
+@import "../blocks/button/button.css";
+@import "../blocks/button/_type/button_type_add-post.css";
+@import "../blocks/button/_type/button_type_edit-info.css";
 
 
 @import "../blocks/header/header.css";
+
+@import "../blocks/profile/profile.css";
+@import "../blocks/profile/profile__title.css";
+
+@import "../blocks/profile/profile__avatar.css";
+@import "../blocks/profile/profile__content-container.css";
+@import "../blocks/profile/profile__text-container.css";
