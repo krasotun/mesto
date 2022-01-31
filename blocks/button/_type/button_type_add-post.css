@@ -3,4 +3,12 @@
   height: 50px;
   border: 2px solid #FFFFFF;
   border-radius: 2px;
+  background-color: black;
+  background-image: url(../../../img/button_type_add-post_x.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button_type_add-post:hover {
+  opacity: .6;
 }

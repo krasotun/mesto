@@ -2,4 +2,13 @@
   width: 24px;
   height: 24px;
   border: 1px solid #FFFFFF;
+  margin-left: 18px;
+  background-color: black;
+  background-image: url(../../../img/button_type_edit-info_arrow.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button_type_edit-info:hover {
+  opacity: .6;
 }
