@@ -29,4 +29,6 @@
 
 
 @import "../blocks/popup/popup.css";
+@import "../blocks/popup/__close/popup__close.css";
+
 @import "../blocks/popup/__container/popup__container.css";
