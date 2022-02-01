@@ -24,6 +24,7 @@
 @import "../blocks/elements/__text-container/elements__text-container.css";
 @import "../blocks/elements/__text/elements__text.css";
 @import "../blocks/elements/__like-image/elements__like-image.css";
+@import "../blocks/elements/__like-image/elements__like-image_active.css";
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__text/footer__text.css";
