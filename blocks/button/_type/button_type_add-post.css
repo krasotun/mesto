@@ -12,3 +12,11 @@
 .button_type_add-post:hover {
   opacity: .6;
 }
+
+
+@media screen and (max-width: 320px) {
+  .button_type_add-post {
+    margin-top: 36px;
+    width: 282px;
+  }
+}

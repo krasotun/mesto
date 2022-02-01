@@ -9,3 +9,10 @@
   padding: 0 200px;
   box-sizing: border-box;
 }
+
+
+@media screen and (max-width: 320px) {
+  .page {
+    padding: 0 19px;
+  }
+}

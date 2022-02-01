@@ -12,3 +12,9 @@
 .button_type_edit-info:hover {
   opacity: .6;
 }
+
+@media screen and (max-width: 320px) {
+  .button_type_edit-info {
+    margin-left: 10px;
+  }
+}
