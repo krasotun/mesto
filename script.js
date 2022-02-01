@@ -20,8 +20,6 @@ buttonClosePopup.addEventListener('click', hidePopUp);
 // Находим форму в DOM
 let formElement = document.querySelector('form');
 
-console.log(formElement);
-
 // Находим поля формы в DOM
 let nameInput = formElement.querySelector('#name');
 let jobInput = formElement.querySelector('#job');
@@ -40,13 +38,13 @@ function formSubmitHandler(evt) {
 
 
   // Выберите элементы, куда должны быть вставлены значения полей
-  let profileTitleText = (document.querySelector('.profile__title')).textContent;
-  let profileSubTitleText = (document.querySelector('.profile__subtitle')).textContent;
+  let profileTitleText = document.querySelector('.profile__title');
+  let profileSubTitleText = document.querySelector('.profile__subtitle');
 
   // Вставьте новые значения с помощью textContent
-  document.querySelector('.profile__title').textContent = nameInputValue;
-  document.querySelector('.profile__subtitle').textContent = jobInputValue;
-  popup.classList.remove("popup_opened");
+  profileTitleText.textContent = nameInputValue;
+  profileSubTitleText.textContent = jobInputValue;
+  hidePopUp();
 }
 
 // Прикрепляем обработчик к форме:
