@@ -2,107 +2,107 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="pages/index.css" />
-  <title>Mesto</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="pages/index.css" />
+	<title>Mesto</title>
 </head>
 
 <body class="page">
-  <div class="popup">
-    <div class="popup__container">
-      <img src="img/close-icon.svg" alt="Закрытие окна" class="popup__close">
-      <form class="form" method="POST">
-        <h2 class="form__title">Редактировать профиль</h2>
-        <fieldset class="form__input-container">
-          <input required class="form__item" id="name" type="text" name="name" placeholder="Жак-Ив Кусто">
-          <input required class="form__item" id="job" type="text" name="job" placeholder="Исследователь океана">
-        </fieldset>
-        <fieldset class="form__handlers">
-          <Button type="submit" class="button button_type_submit-form">
-            Сохранить
-          </Button>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-  <header class="header">
-    <img class="logo" src="img/logo.svg" alt="Логотип">
-  </header>
-  <main>
-    <section class="profile">
-      <div class="profile__content-container">
-        <img src="img/avatar.jpg" alt="Аватар" class="profile__avatar">
-        <div class="profile__text-container">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="button button_type_edit-info"></button>
-          <h2 class="profile__subtitle">Исследователь океана</h2>
-        </div>
-      </div>
-      <button class="button button_type_add-post"></button>
-    </section>
+	<div class="popup">
+		<div class="popup__container">
+			<img src="img/close-icon.svg" alt="Закрытие окна" class="popup__close">
+			<form class="form" method="POST">
+				<h2 class="form__title">Редактировать профиль</h2>
+				<fieldset class="form__input-container">
+					<input required class="form__item" id="name" type="text" name="name" placeholder="Жак-Ив Кусто">
+					<input required class="form__item" id="job" type="text" name="job" placeholder="Исследователь океана">
+				</fieldset>
+				<fieldset class="form__handlers">
+					<button type="submit" class="button button_type_submit-form">
+						Сохранить
+					</button>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<header class="header">
+		<img class="logo" src="img/logo.svg" alt="Логотип">
+	</header>
+	<main>
+		<section class="profile">
+			<div class="profile__content-container">
+				<img src="img/avatar.jpg" alt="Аватар" class="profile__avatar">
+				<div class="profile__text-container">
+					<h1 class="profile__title">Жак-Ив Кусто</h1>
+					<button class="button button_type_edit-info"></button>
+					<h2 class="profile__subtitle">Исследователь океана</h2>
+				</div>
+			</div>
+			<button class="button button_type_add-post"></button>
+		</section>
 
 
-    <section class="elements">
-      <div class="elements__card-container">
-        <img src="img/elements-images/image-1.jpg" alt="Карачаевск" class="elements__image">
-        <div class="elements__text-container">
-          <p class="elements__text">Карачаевск</p>
-          <img class="elements__like-image" src="img/like.svg" alt="Лайк">
-          <img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
+		<section class="elements">
+			<div class="elements__card-container">
+				<img src="img/elements-images/image-1.jpg" alt="Карачаевск" class="elements__image">
+				<div class="elements__text-container">
+					<p class="elements__text">Карачаевск</p>
+					<img class="elements__like-image" src="img/like.svg" alt="Лайк">
+					<img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
 
-        </div>
-      </div>
-      <div class="elements__card-container">
-        <img src="img/elements-images/image-2.jpg" alt="Гора Эльбрус" class="elements__image">
-        <div class="elements__text-container">
-          <p class="elements__text">Гора Эльбрус</p>
-          <img class="elements__like-image" src="img/like.svg" alt="Лайк">
-          <img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
-        </div>
-      </div>
-      <div class="elements__card-container">
-        <img src="img/elements-images/image-3.jpg" alt="Домбай" class="elements__image">
-        <div class="elements__text-container">
-          <p class="elements__text">Домбай</p>
-          <img class="elements__like-image" src="img/like.svg" alt="Лайк">
-          <img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
-        </div>
-      </div>
-      <div class="elements__card-container">
-        <img src="img/elements-images/image-4.jpg" alt="Гора Эльбрус" class="elements__image">
-        <div class="elements__text-container">
-          <p class="elements__text">Гора Эльбрус</p>
-          <img class="elements__like-image" src="img/like.svg" alt="Лайк">
-          <img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
-        </div>
-      </div>
-      <div class="elements__card-container">
-        <img src="img/elements-images/image-5.jpg" alt="Домбай" class="elements__image">
-        <div class="elements__text-container">
-          <p class="elements__text">Домбай</p>
-          <img class="elements__like-image" src="img/like.svg" alt="Лайк">
-          <img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
-        </div>
-      </div>
-      <div class="elements__card-container">
-        <img src="img/elements-images/image-6.jpg" alt="Карачаево-Черкессия" class="elements__image">
-        <div class="elements__text-container">
-          <p class="elements__text">Карачаево-Черкессия</p>
-          <img class="elements__like-image" src="img/like.svg" alt="Лайк">
-          <img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <p class="footer__text">© 2020 Mesto Russia</p>
-  </footer>
-  <script src="script.js"></script>
+				</div>
+			</div>
+			<div class="elements__card-container">
+				<img src="img/elements-images/image-2.jpg" alt="Гора Эльбрус" class="elements__image">
+				<div class="elements__text-container">
+					<p class="elements__text">Гора Эльбрус</p>
+					<img class="elements__like-image" src="img/like.svg" alt="Лайк">
+					<img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
+				</div>
+			</div>
+			<div class="elements__card-container">
+				<img src="img/elements-images/image-3.jpg" alt="Домбай" class="elements__image">
+				<div class="elements__text-container">
+					<p class="elements__text">Домбай</p>
+					<img class="elements__like-image" src="img/like.svg" alt="Лайк">
+					<img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
+				</div>
+			</div>
+			<div class="elements__card-container">
+				<img src="img/elements-images/image-4.jpg" alt="Гора Эльбрус" class="elements__image">
+				<div class="elements__text-container">
+					<p class="elements__text">Гора Эльбрус</p>
+					<img class="elements__like-image" src="img/like.svg" alt="Лайк">
+					<img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
+				</div>
+			</div>
+			<div class="elements__card-container">
+				<img src="img/elements-images/image-5.jpg" alt="Домбай" class="elements__image">
+				<div class="elements__text-container">
+					<p class="elements__text">Домбай</p>
+					<img class="elements__like-image" src="img/like.svg" alt="Лайк">
+					<img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
+				</div>
+			</div>
+			<div class="elements__card-container">
+				<img src="img/elements-images/image-6.jpg" alt="Карачаево-Черкессия" class="elements__image">
+				<div class="elements__text-container">
+					<p class="elements__text">Карачаево-Черкессия</p>
+					<img class="elements__like-image" src="img/like.svg" alt="Лайк">
+					<img class="elements__like-image elements__like-image_active " src="img/like_active.svg" alt="Лайк">
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer">
+		<p class="footer__text">© 2020 Mesto Russia</p>
+	</footer>
+	<script src="script.js"></script>
 </body>
 
 </html>
