@@ -2,7 +2,7 @@
 
 ### Обзор
 
-## Верстка Landing-page по брифу. Функциональность - сайт о пушествиях по России со ссылками на рассказы о локациях.
+## Приложение на JavaScript по добавлению и удалению фотографий, простановке лайков.
 
 ## Задачи
 
@@ -27,7 +27,7 @@
 
 - [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
-- [Ссылка на деплой](https://krasotun.github.io/russian-travel/)
+- [Ссылка на деплой](https://krasotun.github.io/mesto/)
 
 
 
