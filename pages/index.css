@@ -1,3 +1,4 @@
+@import "../vendor/normalize.css";
 @import "../blocks/page/page.css";
 
 @import "../blocks/logo/logo.css";
@@ -11,11 +12,11 @@
 @import "../blocks/header/header.css";
 
 @import "../blocks/profile/profile.css";
-@import "../blocks/profile/profile__title.css";
-@import "../blocks/profile/profile__subtitle.css";
-@import "../blocks/profile/profile__avatar.css";
-@import "../blocks/profile/profile__content-container.css";
-@import "../blocks/profile/profile__text-container.css";
+@import "../blocks/profile/__title/profile__title.css";
+@import "../blocks/profile/__subtitle/profile__subtitle.css";
+@import "../blocks/profile/__avatar/profile__avatar.css";
+@import "../blocks/profile/__content-container/profile__content-container.css";
+@import "../blocks/profile/__text-container/profile__text-container.css";
 
 
 @import "../blocks/elements/elements.css";
