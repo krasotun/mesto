@@ -6,3 +6,10 @@
   line-height: 1.2;
   color: #000000;
 }
+
+@media screen and (max-width: 528px) {
+  .form__title {
+    font-size: 18px;
+    text-align: center;
+  }
+}
