@@ -1,5 +1,5 @@
 // Работа с поп-апом
-let buttonEditInfo = document.querySelector('.button_type_edit-info');
+let buttonEditInfo = document.querySelector('.profile__edit-button');
 let buttonClosePopup = document.querySelector('.popup__close');
 let popup = document.querySelector('.popup');
 

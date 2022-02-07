@@ -1,20 +1,20 @@
-.button_type_edit-info {
+.profile__edit-button {
   width: 24px;
   height: 24px;
   border: 1px solid #FFFFFF;
   margin-left: 18px;
-  background-color: black;
-  background-image: url(../../../img/button_type_edit-info_arrow.svg);
+  background-color: transparent;
+  background-image: url(../../../images/profile__edit-button_arrow.svg);
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.button_type_edit-info:hover {
+.profile__edit-button:hover {
   opacity: .6;
 }
 
 @media screen and (max-width: 320px) {
-  .button_type_edit-info {
+  .profile__edit-button {
     margin-left: 10px;
   }
 }

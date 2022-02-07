@@ -2,12 +2,11 @@
 @import "../blocks/page/page.css";
 @import "../blocks/page/__content/page__content.css";
 
-@import "../fonts/fonts.css";
+@import "../vendor/fonts/fonts.css";
 
 
 @import "../blocks/button/button.css";
-@import "../blocks/button/_type/button_type_add-post.css";
-@import "../blocks/button/_type/button_type_edit-info.css";
+
 
 
 
@@ -17,6 +16,10 @@
 
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__title/profile__title.css";
+@import "../blocks/profile/__edit-button/profile__edit-button.css";
+@import "../blocks/profile/__post-button/profile__post-button.css";
+
+
 @import "../blocks/profile/__subtitle/profile__subtitle.css";
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__content-container/profile__content-container.css";
