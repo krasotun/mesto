@@ -1,16 +1,19 @@
 @import "../vendor/normalize.css";
 @import "../blocks/page/page.css";
+@import "../blocks/page/__content/page__content.css";
+
 @import "../fonts/fonts.css";
 
-@import "../blocks/logo/logo.css";
 
 @import "../blocks/button/button.css";
 @import "../blocks/button/_type/button_type_add-post.css";
 @import "../blocks/button/_type/button_type_edit-info.css";
-@import "../blocks/button/_type/button_type_submit-form.css";
+
 
 
 @import "../blocks/header/header.css";
+@import "../blocks/header/__logo/header__logo.css";
+
 
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__title/profile__title.css";
@@ -42,4 +45,4 @@
 @import "../blocks/form/__title/form__title.css";
 @import "../blocks/form/__input-container/form__input-container.css";
 @import "../blocks/form/__item/form__item.css";
-@import "../blocks/form/__handlers/form__handlers.css";
+@import "../blocks/form/__submit-button/form__submit-button.css";
