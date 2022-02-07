@@ -1,4 +1,4 @@
-.page {
+.page__content {
   max-width: 1280px;
   margin: 0 auto;
   font-family: 'Inter',
@@ -11,13 +11,13 @@
 }
 
 @media screen and (max-width: 1050px) {
-  .page {
+  .page__content {
     padding: 0 100px;
   }
 }
 
 @media screen and (max-width: 538px) {
-  .page {
+  .page__content {
     padding: 0 19px;
   }
 }
