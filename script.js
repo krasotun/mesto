@@ -16,27 +16,45 @@ const jobInput = formElement.querySelector('#job');
 
 // Находим все контейнеры с карточками
 const cardsContainers = document.querySelectorAll('.elements__card-container');
-console.log(cardsContainers[0]);
+
+// Выбираем секцию, в которой будем создавать карточки
+const elements = document.querySelector('.elements');
+
+// Выбираем шаблон (template) карточки
+const cardTemplate = document.querySelector('#card-template').content;
 
 
-// Функкция для первичного наполнения карточек данными из массива
-
-
-const firstAddContentToCards = function () {
+// Функция для удаления всех карточек
+const removeAllCards = () => {
   cardsContainers.forEach(container => {
-    const currentImage = container.querySelector('.elements__image'); // выбираем текущие картинки
-    currentImage.remove(); // Удаляем текущие картинки
-    const newImage = document.createElement('img'); // создаем тег для картинки
-    newImage.classList.add('elements__image'); // присваиваем класс
-    for (let i = 0; i < initialCards.length; i++) {
-      newImage.src = initialCards[i].link; // прописываем путь
-    }
-    container.prepend(newImage);
-
+    container.remove();
   });
-
 };
-firstAddContentToCards();
+
+// Функция для создания  одной карточки
+const createCard = () => {
+  const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
+  newCardFromTemplate.querySelector('.elements__image').src =
+    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
+  newCardFromTemplate.querySelector('.elements__image').alt = 'Альт картинки';
+  newCardFromTemplate.querySelector('.elements__text').textContent = 'Название';
+
+  elements.append(newCardFromTemplate);
+};
+
+
+// Функция для первичного заполнения карточками из массива
+const firstAddCards = () => {
+  removeAllCards(); // Удалим все карточки
+  initialCards.forEach(function (item, index, array) { // Парсим массив
+    const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true); // Клонируем шаблон
+    newCardFromTemplate.querySelector('.elements__image').src = array[index].link; // Заполняем контентом
+    newCardFromTemplate.querySelector('.elements__image').alt = array[index].name;
+    newCardFromTemplate.querySelector('.elements__text').textContent = array[index].name;
+    elements.append(newCardFromTemplate); // выводим на страницу
+  });
+};
+firstAddCards();
 
 // Объявляем функцию для открытия поп-апа
 function showPopUp() {

@@ -29,15 +29,16 @@
 
 
       <section class="elements">
+
         <article class="elements__card-container">
           <img src="images/elements-images/image-1.jpg" alt="Карачаевск" class="elements__image">
           <div class="elements__text-container">
             <p class="elements__text">Карачаевск</p>
             <img class="elements__like-image" src="images/like.svg" alt="Лайк">
             <img class="elements__like-image elements__like-image_active " src="images/like_active.svg" alt="Лайк">
-
-          </div>
+            </img>
         </article>
+
         <article class="elements__card-container">
           <img src="images/elements-images/image-2.jpg" alt="Гора Эльбрус" class="elements__image">
           <div class="elements__text-container">
@@ -98,6 +99,17 @@
         </form>
       </div>
     </section>
+
+    <template id="card-template">
+      <article class="elements__card-container">
+        <img class="elements__image">
+        <div class="elements__text-container">
+          <p class="elements__text"></p>
+          <div class="elements__like-image">
+          </div>
+        </div>
+      </article>
+    </template>
     <script src="initialCards.js"></script>
     <script src="script.js"></script>
   </div>
