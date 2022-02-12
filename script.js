@@ -14,6 +14,30 @@ const formElement = document.querySelector('.form');
 const nameInput = formElement.querySelector('#name');
 const jobInput = formElement.querySelector('#job');
 
+// Находим все контейнеры с карточками
+const cardsContainers = document.querySelectorAll('.elements__card-container');
+console.log(cardsContainers[0]);
+
+
+// Функкция для первичного наполнения карточек данными из массива
+
+
+const firstAddContentToCards = function () {
+  cardsContainers.forEach(container => {
+    const currentImage = container.querySelector('.elements__image'); // выбираем текущие картинки
+    currentImage.remove(); // Удаляем текущие картинки
+    const newImage = document.createElement('img'); // создаем тег для картинки
+    newImage.classList.add('elements__image'); // присваиваем класс
+    for (let i = 0; i < initialCards.length; i++) {
+      newImage.src = initialCards[i].link; // прописываем путь
+    }
+    container.prepend(newImage);
+
+  });
+
+};
+firstAddContentToCards();
+
 // Объявляем функцию для открытия поп-апа
 function showPopUp() {
   popup.classList.add("popup_opened"); // Показываем поп-ап
