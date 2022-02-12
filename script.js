@@ -1,16 +1,16 @@
-// Переменные для работы с   поп-апом
+// Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const buttonClosePopup = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 
-// Переменные для работы с формой
+// Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
 const profileSubTitleText = document.querySelector('.profile__subtitle');
 
-// Находим форму в DOM
+// Находим форму для отправки информации в DOM
 const formElement = document.querySelector('.form');
 
-// Находим поля формы в DOM
+// Находим поля формы для отправки информации   в DOM
 const nameInput = formElement.querySelector('#name');
 const jobInput = formElement.querySelector('#job');
 
@@ -46,7 +46,7 @@ const createCard = () => {
 // Функция для первичного заполнения карточками из массива
 const firstAddCards = () => {
   removeAllCards(); // Удалим все карточки
-  initialCards.forEach(function (item, index, array) { // Парсим массив
+  initialCards.forEach((item, index, array) => { // Парсим массив
     const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true); // Клонируем шаблон
     newCardFromTemplate.querySelector('.elements__image').src = array[index].link; // Заполняем контентом
     newCardFromTemplate.querySelector('.elements__image').alt = array[index].name;
