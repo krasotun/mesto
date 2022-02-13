@@ -55,3 +55,9 @@
 @import "../blocks/form/__input-container/form__input-container.css";
 @import "../blocks/form/__item/form__item.css";
 @import "../blocks/form/__submit-button/form__submit-button.css";
+
+@import "../blocks/form-add/form-add.css";
+@import "../blocks/form-add/__title/form-add__title.css";
+@import "../blocks/form-add/__input-container/form-add__input-container.css";
+@import "../blocks/form-add/__item/form-add__item.css";
+@import "../blocks/form-add/__submit-button/form-add__submit-button.css";
