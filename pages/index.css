@@ -33,6 +33,7 @@
 @import "../blocks/elements/__text/elements__text.css";
 @import "../blocks/elements/__like/elements__like.css";
 @import "../blocks/elements/__like/elements__like_active.css";
+@import "../blocks/elements/__delete/elements__delete.css";
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__text/footer__text.css";
