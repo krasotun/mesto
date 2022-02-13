@@ -19,6 +19,13 @@ const formElement = document.querySelector('.form');
 const nameInput = formElement.querySelector('#name');
 const jobInput = formElement.querySelector('#job');
 
+// Находим форму для добавления карточки в DOM
+const formAddElement = document.querySelector('.form-add');
+
+// Находим поля формы для добавления карточки   в DOM
+const placeInput = formAddElement.querySelector('#place');
+const linkInput = formAddElement.querySelector('#link');
+
 // Находим все контейнеры с карточками
 const cardsContainers = document.querySelectorAll('.elements__card-container');
 
@@ -39,11 +46,11 @@ const removeAllCards = () => {
 // Функция для создания   карточки из формы
 const createCardFromForm = () => {
   const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
-  newCardFromTemplate.querySelector('.elements__image').src =
-    'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg';
-  newCardFromTemplate.querySelector('.elements__image').alt = 'Альт картинки';
-  newCardFromTemplate.querySelector('.elements__text').textContent = 'Название';
-  elements.append(newCardFromTemplate);
+  newCardFromTemplate.querySelector('.elements__image').src = linkInput.value;
+  newCardFromTemplate.querySelector('.elements__image').alt = placeInput.value;
+  newCardFromTemplate.querySelector('.elements__text').textContent = placeInput.value;
+  console.log(placeInput.value);
+  elements.prepend(newCardFromTemplate);
 };
 
 
@@ -105,9 +112,9 @@ buttonClosePopupAdd.addEventListener('click', hidePopUpAdd);
 
 
 
-// Работа с формой
+// Работа с формами
 
-// Обработчик «отправки» формы
+// Обработчик «отправки» формы редактирования
 function editAccountInfo(evt) {
   evt.preventDefault(); //
   profileTitleText.textContent = nameInput.value;
@@ -115,5 +122,15 @@ function editAccountInfo(evt) {
   hidePopUp();
 }
 
-// Прикрепляем обработчик к форме:
+// Обработчик «отправки» формы добавления карточки
+function appendNewCard(evt) {
+  evt.preventDefault(); //
+  createCardFromForm();
+  hidePopUpAdd();
+}
+
+// Прикрепляем обработчик к форме редактирования:
 formElement.addEventListener('submit', editAccountInfo);
+
+// Прикрепляем обработчик к форме создания карточки:
+formAddElement.addEventListener('submit', appendNewCard);
