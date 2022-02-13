@@ -35,6 +35,14 @@ const elements = document.querySelector('.elements');
 // Выбираем шаблон (template) карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
+// Функция like (используем Event Delegation)
+elements.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('elements__like')) {
+    evt.target.classList.toggle('elements__like_active');
+  }
+});
+
+
 
 // Функция для удаления всех карточек
 const removeAllCards = () => {
