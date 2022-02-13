@@ -35,12 +35,20 @@ const elements = document.querySelector('.elements');
 // Выбираем шаблон (template) карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
+// Функция "Урна" (используем Event Delegation)
+elements.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('elements__delete')) {
+    evt.target.closest('article').classList.add('elements__card-container_hidden');
+  }
+});
+
 // Функция like (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('elements__like')) {
     evt.target.classList.toggle('elements__like_active');
   }
 });
+
 
 
 

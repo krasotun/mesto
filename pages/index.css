@@ -28,6 +28,7 @@
 
 @import "../blocks/elements/elements.css";
 @import "../blocks/elements/__card-container/elements__card-container.css";
+@import "../blocks/elements/__card-container/elements__card-container_hidden.css";
 @import "../blocks/elements/__image/elements__image.css";
 @import "../blocks/elements/__text-container/elements__text-container.css";
 @import "../blocks/elements/__text/elements__text.css";
