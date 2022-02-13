@@ -8,6 +8,10 @@ const buttonAddNewCard = document.querySelector('.profile__post-button');
 const buttonClosePopupAdd = document.querySelector('.popup-add__close');
 const popupAdd = document.querySelector('.popup-add');
 
+// Переменная для работы с попапом из карточки
+const buttonClosePopupCard = document.querySelector('.popup-card__close');
+console.log(buttonClosePopupCard);
+
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
 const profileSubTitleText = document.querySelector('.profile__subtitle');
@@ -32,8 +36,34 @@ const cardsContainers = document.querySelectorAll('.elements__card-container');
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
 
+//Выбираем класс body куда будем добавлять попал из картточки
+const page = document.querySelector('.page');
+
 // Выбираем шаблон (template) карточки
 const cardTemplate = document.querySelector('#card-template').content;
+
+// Выбираем шаблон (template) попапа
+const popupTemplate = document.querySelector('#popup-template').content;
+
+// Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
+elements.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('elements__image')) {
+    const popupFromCard = popupTemplate.querySelector('.popup-card').cloneNode(true);
+    popupFromCard.querySelector('.popup-card__image').src = evt.target.src;
+    popupFromCard.querySelector('.popup-card__image').alt = evt.target.alt;
+    popupFromCard.querySelector('.popup-card__text').textContent = evt.target.alt;
+    page.append(popupFromCard);
+  }
+});
+
+// Функция для  закрытия попапа  при клике на картинку карточки (используем Event Delegation)
+// Тк именно этот  попап генерируется из шаблона его нельзя закрыть "обычным" способом
+page.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup-card__close')) {
+    evt.target.closest('section').classList.add('popup-card_closed');
+  }
+});
+
 
 // Функция "Урна" (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
@@ -50,8 +80,6 @@ elements.addEventListener('click', (evt) => {
 });
 
 
-
-
 // Функция для удаления всех карточек
 const removeAllCards = () => {
   cardsContainers.forEach(container => {
@@ -65,7 +93,6 @@ const createCardFromForm = () => {
   newCardFromTemplate.querySelector('.elements__image').src = linkInput.value;
   newCardFromTemplate.querySelector('.elements__image').alt = placeInput.value;
   newCardFromTemplate.querySelector('.elements__text').textContent = placeInput.value;
-  console.log(placeInput.value);
   elements.prepend(newCardFromTemplate);
 };
 
@@ -111,6 +138,10 @@ function hidePopUp() {
 function hidePopUpAdd() {
   popupAdd.classList.remove("popup-add_opened");
 }
+// Объявляем функцию для закрытия поп-апа из карточки
+function hidePopUpCard() {
+  popupFromCard.classList.add("popup-card_closed");
+}
 
 // Событие открытие поп-апа редактирования информации
 buttonEditInfo.addEventListener('click', showPopUp);
@@ -118,7 +149,9 @@ buttonEditInfo.addEventListener('click', showPopUp);
 // Событие открытие поп-апа добавление новой карточки
 buttonAddNewCard.addEventListener('click', showPopUpAdd);
 
-
+/* // Событие закрытие поп-апа по клику на карточку
+console.log(buttonClosePopupCard);
+buttonClosePopupCard.addEventListener('click', hidePopUpCard); */
 
 // Событие закрытие поп-апа редактирования информации
 buttonClosePopup.addEventListener('click', hidePopUp);

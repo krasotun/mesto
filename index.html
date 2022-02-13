@@ -129,16 +129,15 @@
         </div>
       </article>
     </template>
-
-    <section class="popup-card">
-      <div class="popup-card__container">
-        <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-card__close">
-        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg" alt="Байкал"
-          class="popup-card__image">
-        <p class="popup-card__text">Байкал</p>
-      </div>
-    </section>
-
+    <template id="popup-template">
+      <section class="popup-card">
+        <div class="popup-card__container">
+          <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-card__close">
+          <img class="popup-card__image">
+          <p class="popup-card__text"></p>
+        </div>
+      </section>
+    </template>
     <script src="initialCards.js"></script>
     <script src="script.js"></script>
   </div>

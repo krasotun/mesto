@@ -51,11 +51,12 @@
 @import "../blocks/popup-add/__container/popup-add__container.css";
 
 @import "../blocks/popup-card/popup-card.css";
-@import "../blocks/popup-card/popup-card_opened.css";
+@import "../blocks/popup-card/popup-card_closed.css";
 @import "../blocks/popup-card/__close/popup-card__close.css";
 @import "../blocks/popup-card/__container/popup-card__container.css";
 @import "../blocks/popup-card/__image/popup-card__image.css";
 @import "../blocks/popup-card/__text/popup-card__text.css";
+
 
 
 
