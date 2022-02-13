@@ -40,9 +40,15 @@
 
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/popup_opened.css";
-
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__container/popup__container.css";
+
+@import "../blocks/popup-add/popup-add.css";
+@import "../blocks/popup-add/popup-add_opened.css";
+@import "../blocks/popup-add/__close/popup-add__close.css";
+@import "../blocks/popup-add/__container/popup-add__container.css";
+
+
 
 @import "../blocks/form/form.css";
 @import "../blocks/form/__title/form__title.css";
