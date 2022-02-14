@@ -33,9 +33,6 @@ const linkInput = formAddElement.querySelector('#link');
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
 
-//Выбираем класс body куда будем добавлять попал из картточки
-const page = document.querySelector('.page');
-
 // Выбираем шаблон (template) карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
