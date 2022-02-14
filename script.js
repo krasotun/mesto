@@ -8,8 +8,9 @@ const buttonAddNewCard = document.querySelector('.profile__post-button');
 const buttonClosePopupAdd = document.querySelector('.popup-add__close');
 const popupAdd = document.querySelector('.popup-add');
 
-// Переменная для работы с попапом из карточки
+// Переменные для работы с попапом из карточки
 const buttonClosePopupCard = document.querySelector('.popup-card__close');
+const popupCard = document.querySelector('.popup-card');
 
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
@@ -17,7 +18,6 @@ const profileSubTitleText = document.querySelector('.profile__subtitle');
 
 // Находим форму для отправки информации в DOM
 const formElement = document.querySelector('.form');
-console.log(formElement);
 
 // Находим поля формы для отправки информации   в DOM
 const nameInput = formElement.querySelector('#name');
@@ -42,11 +42,7 @@ const page = document.querySelector('.page');
 // Выбираем шаблон (template) карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
-// Выбираем шаблон (template) попапа
-const popupTemplate = document.querySelector('#popup-template').content;
-
-
-//Функция для переключения открыт/закрыт статуса поп-апа
+//Функция для переключения открыт/закрыт класса поп-апа
 function popupToggle(popupName) {
   popupName.classList.toggle('popup_opened');
 }
@@ -60,27 +56,18 @@ buttonClosePopupEDit.addEventListener('click', () => popupToggle(popupEdit));
 buttonAddNewCard.addEventListener('click', () => popupToggle(popupAdd));
 buttonClosePopupAdd.addEventListener('click', () => popupToggle(popupAdd));
 
-
+// Событие для поп-апа по клику на карточке
+buttonClosePopupCard.addEventListener('click', () => popupToggle(popupCard));
 
 // Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('elements__image')) {
-    const popupFromCard = popupTemplate.querySelector('.popup-card').cloneNode(true);
-    popupFromCard.querySelector('.popup-card__image').src = evt.target.src;
-    popupFromCard.querySelector('.popup-card__image').alt = evt.target.alt;
-    popupFromCard.querySelector('.popup-card__text').textContent = evt.target.alt;
-    page.append(popupFromCard);
+    popupCard.querySelector('.popup-card__image').src = evt.target.src;
+    popupCard.querySelector('.popup-card__image').alt = evt.target.alt;
+    popupCard.querySelector('.popup-card__text').textContent = evt.target.alt;
+    popupToggle(popupCard);
   }
 });
-
-// Функция для  закрытия попапа  при клике на картинку карточки (используем Event Delegation)
-// Тк именно этот  попап генерируется из шаблона его нельзя закрыть "обычным" способом
-page.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup-card__close')) {
-    evt.target.closest('section').classList.add('popup-card_closed');
-  }
-});
-
 
 // Функция "Урна" (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
@@ -104,7 +91,7 @@ const removeAllCards = () => {
   });
 };
 
-// Функция для создания   карточки из формы
+// Функция для создания  карточки из формы
 const createCardFromForm = () => {
   const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
   newCardFromTemplate.querySelector('.elements__image').src = linkInput.value;

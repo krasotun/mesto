@@ -46,18 +46,15 @@
 @import "../blocks/popup/__container/popup__container.css";
 
 @import "../blocks/popup-edit/popup-edit.css";
-@import "../blocks/popup-edit/popup-edit_opened.css";
 @import "../blocks/popup-edit/__close/popup-edit__close.css";
 @import "../blocks/popup-edit/__container/popup-edit__container.css";
 
 
 @import "../blocks/popup-add/popup-add.css";
-@import "../blocks/popup-add/popup-add_opened.css";
 @import "../blocks/popup-add/__close/popup-add__close.css";
 @import "../blocks/popup-add/__container/popup-add__container.css";
 
 @import "../blocks/popup-card/popup-card.css";
-@import "../blocks/popup-card/popup-card_closed.css";
 @import "../blocks/popup-card/__close/popup-card__close.css";
 @import "../blocks/popup-card/__container/popup-card__container.css";
 @import "../blocks/popup-card/__image/popup-card__image.css";
