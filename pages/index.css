@@ -45,6 +45,12 @@
 @import "../blocks/popup/__close/popup__close.css";
 @import "../blocks/popup/__container/popup__container.css";
 
+@import "../blocks/popup-edit/popup-edit.css";
+@import "../blocks/popup-edit/popup-edit_opened.css";
+@import "../blocks/popup-edit/__close/popup-edit__close.css";
+@import "../blocks/popup-edit/__container/popup-edit__container.css";
+
+
 @import "../blocks/popup-add/popup-add.css";
 @import "../blocks/popup-add/popup-add_opened.css";
 @import "../blocks/popup-add/__close/popup-add__close.css";

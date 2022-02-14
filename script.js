@@ -1,7 +1,7 @@
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
-const buttonClosePopup = document.querySelector('.popup__close');
-const popup = document.querySelector('.popup');
+const buttonClosePopupEDit = document.querySelector('.popup-edit__close');
+const popupEdit = document.querySelector('.popup-edit');
 
 // Переменные для работы с поп-апом добавления карточки
 const buttonAddNewCard = document.querySelector('.profile__post-button');
@@ -10,7 +10,6 @@ const popupAdd = document.querySelector('.popup-add');
 
 // Переменная для работы с попапом из карточки
 const buttonClosePopupCard = document.querySelector('.popup-card__close');
-console.log(buttonClosePopupCard);
 
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
@@ -18,6 +17,7 @@ const profileSubTitleText = document.querySelector('.profile__subtitle');
 
 // Находим форму для отправки информации в DOM
 const formElement = document.querySelector('.form');
+console.log(formElement);
 
 // Находим поля формы для отправки информации   в DOM
 const nameInput = formElement.querySelector('#name');
@@ -44,6 +44,18 @@ const cardTemplate = document.querySelector('#card-template').content;
 
 // Выбираем шаблон (template) попапа
 const popupTemplate = document.querySelector('#popup-template').content;
+
+
+//Функция для переключения открыт/закрыт статуса поп-апа
+function popupToggle(popupName) {
+  popupName.classList.toggle('popup_opened');
+}
+
+// События для переключения поп-апа редактирования информации
+buttonEditInfo.addEventListener('click', () => popupToggle(popupEdit));
+buttonEditInfo.addEventListener('click', () => letDefaultVariables());
+buttonClosePopupEDit.addEventListener('click', () => popupToggle(popupEdit));
+
 
 // Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
@@ -143,8 +155,7 @@ function hidePopUpCard() {
   popupFromCard.classList.add("popup-card_closed");
 }
 
-// Событие открытие поп-апа редактирования информации
-buttonEditInfo.addEventListener('click', showPopUp);
+
 
 // Событие открытие поп-апа добавление новой карточки
 buttonAddNewCard.addEventListener('click', showPopUpAdd);
@@ -153,8 +164,8 @@ buttonAddNewCard.addEventListener('click', showPopUpAdd);
 console.log(buttonClosePopupCard);
 buttonClosePopupCard.addEventListener('click', hidePopUpCard); */
 
-// Событие закрытие поп-апа редактирования информации
-buttonClosePopup.addEventListener('click', hidePopUp);
+/* // Событие закрытие поп-апа редактирования информации
+buttonClosePopup.addEventListener('click', hidePopUp); */
 
 // Событие закрытие поп-апа добавление новой карточки
 buttonClosePopupAdd.addEventListener('click', hidePopUpAdd);
@@ -168,7 +179,7 @@ function editAccountInfo(evt) {
   evt.preventDefault(); //
   profileTitleText.textContent = nameInput.value;
   profileSubTitleText.textContent = jobInput.value;
-  hidePopUp();
+  popupToggle(popupEdit);
 }
 
 // Обработчик «отправки» формы добавления карточки
