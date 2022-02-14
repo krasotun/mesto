@@ -11,6 +11,9 @@ const popupAdd = document.querySelector('.popup-add');
 // Переменные для работы с попапом из карточки
 const buttonClosePopupCard = document.querySelector('.popup-card__close');
 const popupCard = document.querySelector('.popup-card');
+const popupCardImage = popupCard.querySelector('.popup-card__image');
+const popupCardText = popupCard.querySelector('.popup-card__text');
+
 
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
@@ -61,9 +64,9 @@ buttonClosePopupCard.addEventListener('click', () => togglePopup(popupCard));
 // Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('elements__image')) {
-    popupCard.querySelector('.popup-card__image').src = evt.target.src;
-    popupCard.querySelector('.popup-card__image').alt = evt.target.alt;
-    popupCard.querySelector('.popup-card__text').textContent = evt.target.alt;
+    popupCardImage.src = evt.target.src;
+    popupCardImage.alt = evt.target.alt;
+    popupCardText.textContent = evt.target.alt;
     togglePopup(popupCard);
   }
 });
