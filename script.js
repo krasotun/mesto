@@ -51,10 +51,15 @@ function popupToggle(popupName) {
   popupName.classList.toggle('popup_opened');
 }
 
-// События для переключения поп-апа редактирования информации
+// События для поп-апа редактирования информации
 buttonEditInfo.addEventListener('click', () => popupToggle(popupEdit));
 buttonEditInfo.addEventListener('click', () => letDefaultVariables());
 buttonClosePopupEDit.addEventListener('click', () => popupToggle(popupEdit));
+
+// События для поп-апа добавления карточки
+buttonAddNewCard.addEventListener('click', () => popupToggle(popupAdd));
+buttonClosePopupAdd.addEventListener('click', () => popupToggle(popupAdd));
+
 
 
 // Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
@@ -108,7 +113,6 @@ const createCardFromForm = () => {
   elements.prepend(newCardFromTemplate);
 };
 
-
 // Функция для первичного заполнения карточками из массива
 const firstAddCards = () => {
   removeAllCards(); // Удалим все карточки
@@ -122,55 +126,11 @@ const firstAddCards = () => {
 };
 firstAddCards();
 
-// Объявляем функцию для открытия поп-апа редактированая информации
-function showPopUp() {
-  popup.classList.add("popup_opened"); // Показываем поп-ап
-  letDefaultVariables(); // Заполняем дефолтные значения
-}
-
-// Объявляем функцию для открытия поп-апа добавления новой карточки
-function showPopUpAdd() {
-  popupAdd.classList.add("popup-add_opened"); // Показываем поп-ап
-}
-
-
-
 // Объявляем функцию для подстановки изначальных значений в поля формы
 function letDefaultVariables() {
   nameInput.value = profileTitleText.textContent;
   jobInput.value = profileSubTitleText.textContent;
 }
-
-// Объявляем функцию для закрытия поп-апа редактирования информации
-function hidePopUp() {
-  popup.classList.remove("popup_opened");
-}
-
-// Объявляем функцию для закрытия поп-апа добавления новой карточки
-function hidePopUpAdd() {
-  popupAdd.classList.remove("popup-add_opened");
-}
-// Объявляем функцию для закрытия поп-апа из карточки
-function hidePopUpCard() {
-  popupFromCard.classList.add("popup-card_closed");
-}
-
-
-
-// Событие открытие поп-апа добавление новой карточки
-buttonAddNewCard.addEventListener('click', showPopUpAdd);
-
-/* // Событие закрытие поп-апа по клику на карточку
-console.log(buttonClosePopupCard);
-buttonClosePopupCard.addEventListener('click', hidePopUpCard); */
-
-/* // Событие закрытие поп-апа редактирования информации
-buttonClosePopup.addEventListener('click', hidePopUp); */
-
-// Событие закрытие поп-апа добавление новой карточки
-buttonClosePopupAdd.addEventListener('click', hidePopUpAdd);
-
-
 
 // Работа с формами
 
@@ -186,7 +146,7 @@ function editAccountInfo(evt) {
 function appendNewCard(evt) {
   evt.preventDefault(); //
   createCardFromForm();
-  hidePopUpAdd();
+  popupToggle(popupAdd);
 }
 
 // Прикрепляем обработчик к форме редактирования:
