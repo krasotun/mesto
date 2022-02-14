@@ -17,11 +17,11 @@ const profileTitleText = document.querySelector('.profile__title');
 const profileSubTitleText = document.querySelector('.profile__subtitle');
 
 // Находим форму для отправки информации в DOM
-const formElement = document.querySelector('.form');
+const formEditElement = document.querySelector('.form-edit');
 
 // Находим поля формы для отправки информации   в DOM
-const nameInput = formElement.querySelector('#name');
-const jobInput = formElement.querySelector('#job');
+const nameInput = formEditElement.querySelector('#name');
+const jobInput = formEditElement.querySelector('#job');
 
 // Находим форму для добавления карточки в DOM
 const formAddElement = document.querySelector('.form-add');
@@ -29,9 +29,6 @@ const formAddElement = document.querySelector('.form-add');
 // Находим поля формы для добавления карточки   в DOM
 const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
-
-// Находим все контейнеры с карточками
-const cardsContainers = document.querySelectorAll('.elements__card-container');
 
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
@@ -43,21 +40,26 @@ const page = document.querySelector('.page');
 const cardTemplate = document.querySelector('#card-template').content;
 
 //Функция для переключения открыт/закрыт класса поп-апа
-function popupToggle(popupName) {
+function togglePopup(popupName) {
   popupName.classList.toggle('popup_opened');
+}
+// Функция для открытия попапа редактирования информации
+
+function openPopupEdit() {
+  togglePopup(popupEdit);
+  setDefaultVariables();
 }
 
 // События для поп-апа редактирования информации
-buttonEditInfo.addEventListener('click', () => popupToggle(popupEdit));
-buttonEditInfo.addEventListener('click', () => letDefaultVariables());
-buttonClosePopupEDit.addEventListener('click', () => popupToggle(popupEdit));
+buttonEditInfo.addEventListener('click', openPopupEdit);
+buttonClosePopupEDit.addEventListener('click', () => togglePopup(popupEdit));
 
 // События для поп-апа добавления карточки
-buttonAddNewCard.addEventListener('click', () => popupToggle(popupAdd));
-buttonClosePopupAdd.addEventListener('click', () => popupToggle(popupAdd));
+buttonAddNewCard.addEventListener('click', () => togglePopup(popupAdd));
+buttonClosePopupAdd.addEventListener('click', () => togglePopup(popupAdd));
 
 // Событие для поп-апа по клику на карточке
-buttonClosePopupCard.addEventListener('click', () => popupToggle(popupCard));
+buttonClosePopupCard.addEventListener('click', () => togglePopup(popupCard));
 
 // Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
@@ -65,14 +67,14 @@ elements.addEventListener('click', (evt) => {
     popupCard.querySelector('.popup-card__image').src = evt.target.src;
     popupCard.querySelector('.popup-card__image').alt = evt.target.alt;
     popupCard.querySelector('.popup-card__text').textContent = evt.target.alt;
-    popupToggle(popupCard);
+    togglePopup(popupCard);
   }
 });
 
 // Функция "Урна" (используем Event Delegation)
 elements.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('elements__delete')) {
-    evt.target.closest('article').classList.add('elements__card-container_hidden');
+    evt.target.closest('article').remove();
   }
 });
 
@@ -82,14 +84,6 @@ elements.addEventListener('click', (evt) => {
     evt.target.classList.toggle('elements__like_active');
   }
 });
-
-
-// Функция для удаления всех карточек
-const removeAllCards = () => {
-  cardsContainers.forEach(container => {
-    container.remove();
-  });
-};
 
 // Функция для создания  карточки из формы
 const createCardFromForm = () => {
@@ -102,7 +96,6 @@ const createCardFromForm = () => {
 
 // Функция для первичного заполнения карточками из массива
 const firstAddCards = () => {
-  removeAllCards(); // Удалим все карточки
   initialCards.forEach((item, index, array) => { // Парсим массив
     const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true); // Клонируем шаблон
     newCardFromTemplate.querySelector('.elements__image').src = array[index].link; // Заполняем контентом
@@ -114,9 +107,15 @@ const firstAddCards = () => {
 firstAddCards();
 
 // Объявляем функцию для подстановки изначальных значений в поля формы
-function letDefaultVariables() {
+function setDefaultVariables() {
   nameInput.value = profileTitleText.textContent;
   jobInput.value = profileSubTitleText.textContent;
+}
+
+// Объявляем функцию для очистки значений после отправки
+function clearFormAddDefaultValues() {
+  placeInput.value = '';
+  linkInput.value = '';
 }
 
 // Работа с формами
@@ -126,18 +125,20 @@ function editAccountInfo(evt) {
   evt.preventDefault(); //
   profileTitleText.textContent = nameInput.value;
   profileSubTitleText.textContent = jobInput.value;
-  popupToggle(popupEdit);
+  togglePopup(popupEdit);
 }
 
 // Обработчик «отправки» формы добавления карточки
 function appendNewCard(evt) {
   evt.preventDefault(); //
   createCardFromForm();
-  popupToggle(popupAdd);
+  clearFormAddDefaultValues();
+  togglePopup(popupAdd);
 }
 
+
 // Прикрепляем обработчик к форме редактирования:
-formElement.addEventListener('submit', editAccountInfo);
+formEditElement.addEventListener('submit', editAccountInfo);
 
 // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard);
