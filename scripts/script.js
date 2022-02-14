@@ -85,17 +85,34 @@ elements.addEventListener('click', (evt) => {
   }
 });
 
-// Функция для создания  карточки из формы
-const createCardFromForm = () => {
-  const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
-  newCardFromTemplate.querySelector('.elements__image').src = linkInput.value;
-  newCardFromTemplate.querySelector('.elements__image').alt = placeInput.value;
-  newCardFromTemplate.querySelector('.elements__text').textContent = placeInput.value;
-  elements.prepend(newCardFromTemplate);
-};
+// Переменные для создания карточек
+
+
+// Функция для создания карточки
+function createCard(item) {
+  const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
+  const cardElementImage = cardElement.querySelector('.elements__image');
+  const cardElementText = cardElement.querySelector('.elements__text');
+  cardElementImage.src = item.link;
+  cardElementImage.alt = item.name;
+  cardElementText.textContent = item.name;
+  return cardElement;
+}
+
+//Функция для вставки карточек созданных из массива
+function firstAddCards() {
+  initialCards.forEach((item) => {
+    const newCardFromTemplate = createCard(item);
+    elements.append(newCardFromTemplate);
+  });
+}
+firstAddCards(initialCards);
+
+
+
 
 // Функция для первичного заполнения карточками из массива
-const firstAddCards = () => {
+/* const firstAddCards = () => {
   initialCards.forEach((item, index, array) => { // Парсим массив
     const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true); // Клонируем шаблон
     newCardFromTemplate.querySelector('.elements__image').src = array[index].link; // Заполняем контентом
@@ -104,7 +121,17 @@ const firstAddCards = () => {
     elements.append(newCardFromTemplate); // выводим на страницу
   });
 };
-firstAddCards();
+firstAddCards(); */
+
+
+/* // Функция для создания  карточки из формы
+const createCardFromForm = () => {
+  const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
+  newCardFromTemplate.querySelector('.elements__image').src = linkInput.value;
+  newCardFromTemplate.querySelector('.elements__image').alt = placeInput.value;
+  newCardFromTemplate.querySelector('.elements__text').textContent = placeInput.value;
+  elements.prepend(newCardFromTemplate);
+}; */
 
 // Объявляем функцию для подстановки изначальных значений в поля формы
 function setDefaultVariables() {
