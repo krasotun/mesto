@@ -36,12 +36,17 @@ const elements = document.querySelector('.elements');
 // Выбираем шаблон (template) карточки
 const cardTemplate = document.querySelector('#card-template').content;
 
+// Находим поля формы для добавления карточки   в DOM
+const placeInput = formAddElement.querySelector('#place');
+const linkInput = formAddElement.querySelector('#link');
+
+
 //Функция для переключения открыт/закрыт класса поп-апа
 function togglePopup(popupName) {
   popupName.classList.toggle('popup_opened');
 }
-// Функция для открытия попапа редактирования информации
 
+// Функция для открытия попапа редактирования информации
 function openPopupEdit() {
   togglePopup(popupEdit);
   setDefaultVariables();
@@ -82,10 +87,6 @@ elements.addEventListener('click', (evt) => {
   }
 });
 
-// Находим поля формы для добавления карточки   в DOM
-const placeInput = formAddElement.querySelector('#place');
-const linkInput = formAddElement.querySelector('#link');
-
 // Функция для создания карточки
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
@@ -118,7 +119,7 @@ function setDefaultVariables() {
   jobInput.value = profileSubTitleText.textContent;
 }
 
-// Объявляем функцию для очистки значений после отправки
+// Объявляем функцию для очистки значений после отправки формы
 function clearFormAddDefaultValues() {
   placeInput.value = '';
   linkInput.value = '';
