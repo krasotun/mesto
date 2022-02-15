@@ -29,9 +29,6 @@ const jobInput = formEditElement.querySelector('#job');
 // Находим форму для добавления карточки в DOM
 const formAddElement = document.querySelector('.form-add');
 
-// Находим поля формы для добавления карточки   в DOM
-const placeInput = formAddElement.querySelector('#place');
-const linkInput = formAddElement.querySelector('#link');
 
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
@@ -85,9 +82,9 @@ elements.addEventListener('click', (evt) => {
   }
 });
 
-// Переменные для создания карточек
-
-
+// Находим поля формы для добавления карточки   в DOM
+const placeInput = formAddElement.querySelector('#place');
+const linkInput = formAddElement.querySelector('#link');
 // Функция для создания карточки
 function createCard(item) {
   const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
@@ -98,7 +95,6 @@ function createCard(item) {
   cardElementText.textContent = item.name;
   return cardElement;
 }
-
 //Функция для вставки карточек созданных из массива
 function firstAddCards() {
   initialCards.forEach((item) => {
@@ -106,10 +102,7 @@ function firstAddCards() {
     elements.append(newCardFromTemplate);
   });
 }
-firstAddCards(initialCards);
-
-
-
+firstAddCards();
 
 // Функция для первичного заполнения карточками из массива
 /* const firstAddCards = () => {
@@ -122,7 +115,6 @@ firstAddCards(initialCards);
   });
 };
 firstAddCards(); */
-
 
 /* // Функция для создания  карточки из формы
 const createCardFromForm = () => {
