@@ -85,45 +85,32 @@ elements.addEventListener('click', (evt) => {
 // Находим поля формы для добавления карточки   в DOM
 const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
+
 // Функция для создания карточки
-function createCard(item) {
+function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
   const cardElementImage = cardElement.querySelector('.elements__image');
   const cardElementText = cardElement.querySelector('.elements__text');
-  cardElementImage.src = item.link;
-  cardElementImage.alt = item.name;
-  cardElementText.textContent = item.name;
+  cardElementImage.src = link;
+  cardElementImage.alt = name;
+  cardElementText.textContent = name;
   return cardElement;
 }
+
 //Функция для вставки карточек созданных из массива
 function firstAddCards() {
   initialCards.forEach((item) => {
-    const newCardFromTemplate = createCard(item);
+    const newCardFromTemplate = createCard(item.name, item.link);
     elements.append(newCardFromTemplate);
   });
 }
 firstAddCards();
 
-// Функция для первичного заполнения карточками из массива
-/* const firstAddCards = () => {
-  initialCards.forEach((item, index, array) => { // Парсим массив
-    const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true); // Клонируем шаблон
-    newCardFromTemplate.querySelector('.elements__image').src = array[index].link; // Заполняем контентом
-    newCardFromTemplate.querySelector('.elements__image').alt = array[index].name;
-    newCardFromTemplate.querySelector('.elements__text').textContent = array[index].name;
-    elements.append(newCardFromTemplate); // выводим на страницу
-  });
-};
-firstAddCards(); */
-
-/* // Функция для создания  карточки из формы
-const createCardFromForm = () => {
-  const newCardFromTemplate = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
-  newCardFromTemplate.querySelector('.elements__image').src = linkInput.value;
-  newCardFromTemplate.querySelector('.elements__image').alt = placeInput.value;
-  newCardFromTemplate.querySelector('.elements__text').textContent = placeInput.value;
+// Функция для вставки карточки из формы
+function addCardFromForm() {
+  const newCardFromTemplate = createCard(placeInput.value, linkInput.value);
   elements.prepend(newCardFromTemplate);
-}; */
+}
 
 // Объявляем функцию для подстановки изначальных значений в поля формы
 function setDefaultVariables() {
@@ -150,11 +137,10 @@ function editAccountInfo(evt) {
 // Обработчик «отправки» формы добавления карточки
 function appendNewCard(evt) {
   evt.preventDefault(); //
-  createCardFromForm();
+  addCardFromForm();
   clearFormAddDefaultValues();
   togglePopup(popupAdd);
 }
-
 
 // Прикрепляем обработчик к форме редактирования:
 formEditElement.addEventListener('submit', editAccountInfo);
