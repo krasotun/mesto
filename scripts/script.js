@@ -63,38 +63,43 @@ buttonClosePopupAdd.addEventListener('click', () => togglePopup(popupAdd));
 // Событие для поп-апа по клику на карточке
 buttonClosePopupCard.addEventListener('click', () => togglePopup(popupCard));
 
-// Функция для открытия попапа  при клике на картинку карточки (используем Event Delegation)
-elements.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('elements__image')) {
-    popupCardImage.src = evt.target.src;
-    popupCardImage.alt = evt.target.alt;
-    popupCardText.textContent = evt.target.alt;
-    togglePopup(popupCard);
-  }
-});
+// Функция "Урна"
+function removeCardfromPage(element) {
+  element.closest('article').remove();
+}
 
-// Функция "Урна" (используем Event Delegation)
-elements.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('elements__delete')) {
-    evt.target.closest('article').remove();
-  }
-});
+// Функция like
+function toggleLikeOnCard(element) {
+  element.classList.toggle('elements__like_active');
+}
 
-// Функция like (используем Event Delegation)
-elements.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('elements__like')) {
-    evt.target.classList.toggle('elements__like_active');
-  }
-});
+// Функция для открытия попапа  при клике на картинку карточки
+function openPopupCard(name, link) {
+  popupCardImage.src = link.src;
+  popupCardImage.alt = name.textContent;
+  popupCardText.textContent = name.textContent;
+}
 
 // Функция для создания карточки
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
-  const cardElementImage = cardElement.querySelector('.elements__image');
   const cardElementText = cardElement.querySelector('.elements__text');
+  const cardElementLike = cardElement.querySelector('.elements__like');
+  const cardElementRemove = cardElement.querySelector('.elements__delete');
+  const cardElementImage = cardElement.querySelector('.elements__image');
   cardElementImage.src = link;
   cardElementImage.alt = name;
   cardElementText.textContent = name;
+  cardElementLike.addEventListener('click', () => {
+    toggleLikeOnCard(cardElementLike);
+  });
+  cardElementRemove.addEventListener('click', () => {
+    removeCardfromPage(cardElementRemove);
+  });
+  cardElementImage.addEventListener('click', () => {
+    openPopupCard(cardElementText, cardElementImage);
+    togglePopup(popupCard);
+  });
   return cardElement;
 }
 
