@@ -59,6 +59,7 @@ function openPopupEdit() {
 buttonEditInfo.addEventListener('click', openPopupEdit);
 buttonClosePopupEDit.addEventListener('click', () => togglePopup(popupEdit));
 
+
 // События для поп-апа добавления карточки
 buttonAddNewCard.addEventListener('click', () => togglePopup(popupAdd));
 buttonClosePopupAdd.addEventListener('click', () => togglePopup(popupAdd));
@@ -164,7 +165,15 @@ page.addEventListener('click', (evt => {
   }
 }));
 
-// Функция закрытия  попапа не кнопкой закрытия
+// Закрытие попапа по esc
+page.addEventListener('keydown', (evt => {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}));
+
+// Функция закрытия попапа
 const closePopup = (target) => {
   target.classList.remove('popup_opened');
 };
