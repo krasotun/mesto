@@ -38,13 +38,13 @@
     <section class="popup-edit popup">
       <div class="popup-edit__container">
         <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-edit__close popup__close">
-        <form class="popup-edit__form form-edit form" method="POST">
+        <form class="popup-edit__form form-edit form" method="POST" novalidate>
           <h2 class="form-edit__title">Редактировать профиль</h2>
           <fieldset class="form-edit__input-container">
-            <input required class="form-edit__item form__item" id="name" type="text" name="name"
-              placeholder="Введите имя">
-            <input required class="form-edit__item form__item" id="job" type="text" name="job"
-              placeholder="Укажите профессию">
+            <input minlength="2" maxlength="40" required class="form-edit__item form__item" id="name" type="text"
+              name="name" placeholder="Введите имя">
+            <input minlength="2" maxlength="200" required class="form-edit__item form__item" id="job" type="text"
+              name="job" placeholder="Укажите профессию">
           </fieldset>
           <button type="submit" class="form-edit__submit-button form__submit-button button">
             Сохранить
@@ -55,7 +55,7 @@
     <section class="popup-add popup">
       <div class="popup-add__container">
         <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-add__close popup__close">
-        <form class="popup-add__form form-add form" method="POST">
+        <form class="popup-add__form form-add form" method="POST" novalidate>
           <h2 class="form-add__title">Новое место</h2>
           <fieldset class="form-add__input-container">
             <input required class="form-add__item form__item" id="place" type="text" name="place"
