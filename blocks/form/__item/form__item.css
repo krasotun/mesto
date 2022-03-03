@@ -20,6 +20,10 @@
   line-height: 1.21;
 }
 
+.form__item:invalid {
+  border-bottom: 1px solid #FF0000;
+}
+
 @media screen and (max-width: 528px) {
   .form__item {
     width: 238px;

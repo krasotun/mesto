@@ -1,1 +1,2 @@
-console.log('Всем валидация форм');
+const formEditItem = formEditElement.querySelectorAll('.form__item');
+console.log(formEditItem);
