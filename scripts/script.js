@@ -1,3 +1,6 @@
+// Выбираем страницу
+const page = document.querySelector('.page');
+
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const buttonClosePopupEDit = document.querySelector('.popup-edit__close');
@@ -153,3 +156,15 @@ formEditElement.addEventListener('submit', editAccountInfo);
 
 // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard);
+
+// Закрытие попапа по клику по оверлею
+page.addEventListener('click', (evt => {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  }
+}));
+
+// Функция закрытия  попапа не кнопкой закрытия
+const closePopup = (target) => {
+  target.classList.remove('popup_opened');
+};
