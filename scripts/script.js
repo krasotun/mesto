@@ -161,7 +161,7 @@ formAddElement.addEventListener('submit', appendNewCard);
 // Закрытие попапа по клику по оверлею
 page.addEventListener('click', (evt => {
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target);
+    togglePopup(evt.target);
   }
 }));
 
@@ -169,11 +169,6 @@ page.addEventListener('click', (evt => {
 page.addEventListener('keydown', (evt => {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
+    togglePopup(openedPopup);
   }
 }));
-
-// Функция закрытия попапа
-const closePopup = (target) => {
-  target.classList.remove('popup_opened');
-};
