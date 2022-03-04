@@ -35,30 +35,49 @@ function enableValidation(obj) {
   });
 }
 
-
 // Наложение обработчиков на поля форм
 const addEventListenersForInputs = (input) => {
   input.addEventListener('input', () => {
-    checkValidity(input);
+    checkInputValidity(input);
+    checkFormValidity(form);
   });
 };
 
-// Проверка валидности введенных данных
-const checkValidity = (input) => {
+// Проверка валидности введенных данных в конкретный инпут
+const checkInputValidity = (input) => {
   if (input.validity.valid) {
     hideInputError(input);
   } else {
     showInputError(input);
   }
 };
+// Проверка на валидность всех инпутов в  форме
+const checkFormValidity = (form) => {
+  const inputs = form.querySelectorAll(obj.inputSelector);
+  inputs.forEach(input => {
+    if (!input.validity.valid) {
+      return false
+    } else {
+      return true
+    }
+  });
+};
+
 enableValidation(obj);
+
+// Придумаать, как передавать нужную кнопку
+const button = document.querySelector('.form-edit__submit-button');
 
 //Делаем кнопку сабмита  активной
 const setSubmitButtonActive = (button) => {
-  button.classList.remove(obj.inactiveButtonClass);
+  if (checkFormValidity(form)) {
+    button.classList.remove(obj.inactiveButtonClass);
+    button.removeAttribute('disabled');
+  }
 };
 
 // Делаем кнопку сабмита неактивной
 const setSubmitButtonNotActive = (button) => {
   button.classList.add(obj.inactiveButtonClass);
+  button.setAttribute('disabled', true);
 };
