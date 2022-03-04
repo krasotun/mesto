@@ -1,3 +1,4 @@
+// Объект с исходными данными
 const obj = {
   formSelector: '.form',
   inputSelector: '.form__item',
@@ -7,6 +8,7 @@ const obj = {
   errorClass: 'form__error_visible'
 };
 
+// Функция включения валидации
 function enableValidation(obj) {
   const forms = Array.from(document.querySelectorAll(obj.formSelector)); // Выбираем все формы
   forms.forEach(form => { // Перебираем  формы
@@ -21,7 +23,25 @@ function enableValidation(obj) {
 
 // Наложение обработчиков на поля форм
 const addEventListenersForInputs = (input) => {
-  input.addEventListener('input', evt => console.log(evt));
+  input.addEventListener('input', () => console.log(input.validationMessage));
 };
 
+// Проверка валидности введенных данных
+const checkValidity = (input) => {
+  if (input.validity.valid) {
+    // скрыть ошибку под полем
+  } else {
+    // показать ошибку под полем
+  }
+};
 enableValidation(obj);
+
+
+
+// Показать ошибку под полем
+const showInputError = (input) => {
+
+};
+
+showInputError(formTest);
+// Скрыть ошибку под полем

@@ -43,10 +43,10 @@
           <fieldset class="form-edit__input-container">
             <input minlength="2" maxlength="40" required class="form-edit__item form__item" id="name" type="text"
               name="name" placeholder="Введите имя">
-            <span class="form__error"></span>
+            <span class="form__error" id="name-error"></span>
             <input minlength="2" maxlength="200" required class="form-edit__item form__item" id="job" type="text"
               name="job" placeholder="Укажите профессию">
-            <span class="form__error"></span>
+            <span class="form__error" id="job-error"></span>
           </fieldset>
           <button type="submit"
             class="form-edit__submit-button form__submit-button form__submit-button_inactive button">
@@ -63,10 +63,10 @@
           <fieldset class="form-add__input-container">
             <input required class="form-add__item form__item" id="place" type="text" name="place"
               placeholder="Название">
-            <span class="form__error"></span>
+            <span class="form__error" id="place-error"></span>
             <input required class="form-add__item form__item" id="link" type="text" name="link"
               placeholder="Ссылка на картинку">
-            <span class="form__error"></span>
+            <span class="form__error" id="link-error"></span>
           </fieldset>
           <button type="submit" class="form-add__submit-button form__submit-button form__submit-button_inactive button">
             Создать
