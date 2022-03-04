@@ -8,6 +8,22 @@ const obj = {
   errorClass: 'form__error_visible'
 };
 
+// Показать ошибку под полем
+const showInputError = (input) => {
+  const formInputName = input.getAttribute('name');
+  const errorName = document.getElementById(`${formInputName}-error`);
+  errorName.classList.add(obj.errorClass);
+  errorName.textContent = input.validationMessage;
+};
+
+// Скрыть ошибку под полем
+const hideInputError = (input) => {
+  const formInputName = input.getAttribute('name');
+  const errorName = document.getElementById(`${formInputName}-error`);
+  errorName.classList.remove(obj.errorClass);
+  errorName.textContent = '';
+};
+
 // Функция включения валидации
 function enableValidation(obj) {
   const forms = Array.from(document.querySelectorAll(obj.formSelector)); // Выбираем все формы
@@ -17,31 +33,32 @@ function enableValidation(obj) {
       addEventListenersForInputs(input);
     });
   });
-
 }
 
 
 // Наложение обработчиков на поля форм
 const addEventListenersForInputs = (input) => {
-  input.addEventListener('input', () => console.log(input.validationMessage));
+  input.addEventListener('input', () => {
+    checkValidity(input);
+  });
 };
 
 // Проверка валидности введенных данных
 const checkValidity = (input) => {
   if (input.validity.valid) {
-    // скрыть ошибку под полем
+    hideInputError(input);
   } else {
-    // показать ошибку под полем
+    showInputError(input);
   }
 };
 enableValidation(obj);
 
-
-
-// Показать ошибку под полем
-const showInputError = (input) => {
-
+//Делаем кнопку сабмита  активной
+const setSubmitButtonActive = (button) => {
+  button.classList.remove(obj.inactiveButtonClass);
 };
 
-showInputError(formTest);
-// Скрыть ошибку под полем
+// Делаем кнопку сабмита неактивной
+const setSubmitButtonNotActive = (button) => {
+  button.classList.add(obj.inactiveButtonClass);
+};

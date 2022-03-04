@@ -48,7 +48,7 @@
               name="job" placeholder="Укажите профессию">
             <span class="form__error" id="job-error"></span>
           </fieldset>
-          <button type="submit"
+          <button disabled type="submit"
             class="form-edit__submit-button form__submit-button form__submit-button_inactive button">
             Сохранить
           </button>
@@ -61,14 +61,15 @@
         <form class="popup-add__form form-add form" method="POST" novalidate>
           <h2 class="form-add__title">Новое место</h2>
           <fieldset class="form-add__input-container">
-            <input required class="form-add__item form__item" id="place" type="text" name="place"
+            <input required class="form-add__item form__item form__item form__test" id="place" type="text" name="place"
               placeholder="Название">
             <span class="form__error" id="place-error"></span>
             <input required class="form-add__item form__item" id="link" type="text" name="link"
               placeholder="Ссылка на картинку">
             <span class="form__error" id="link-error"></span>
           </fieldset>
-          <button type="submit" class="form-add__submit-button form__submit-button form__submit-button_inactive button">
+          <button disabled type="submit"
+            class="form-add__submit-button form__submit-button form__submit-button_inactive button">
             Создать
           </button>
         </form>
