@@ -17,7 +17,6 @@ const popupCard = document.querySelector('.popup-card');
 const popupCardImage = popupCard.querySelector('.popup-card__image');
 const popupCardText = popupCard.querySelector('.popup-card__text');
 
-
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
 const profileSubTitleText = document.querySelector('.profile__subtitle');
@@ -32,7 +31,6 @@ const jobInput = formEditElement.querySelector('#job');
 // Находим форму для добавления карточки в DOM
 const formAddElement = document.querySelector('.form-add');
 
-
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
 
@@ -46,14 +44,39 @@ const linkInput = formAddElement.querySelector('#link');
 // Функция открытия попапа
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
-
+  addPopupEventListener(popupName);
 }
 
 // Функция закрытия попапа
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
+  removePopupEbentListener(popupName);
 }
 
+// Закрытие попапа по клику по оверлею
+page.addEventListener('click', (evt => {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  }
+}));
+
+// Установка слушателя на popup (для закрытия по esc)
+function addPopupEventListener(popupName) {
+  page.addEventListener('keydown', (evt => {
+    if (evt.key === 'Escape') {
+      closePopup(popupName);
+    }
+  }));
+}
+
+// Удаление слушателя с popup (для закрытия по esc)
+function removePopupEbentListener(popupName) {
+  page.removeEventListener('keydown', (evt => {
+    if (evt.key === 'Escape') {
+      closePopup(popupName);
+    }
+  }));
+}
 
 // Функция для открытия попапа редактирования информации
 function openPopupEdit() {
@@ -64,7 +87,6 @@ function openPopupEdit() {
 // События для поп-апа редактирования информации
 buttonEditInfo.addEventListener('click', openPopupEdit);
 buttonClosePopupEDit.addEventListener('click', () => closePopup(popupEdit));
-
 
 // События для поп-апа добавления карточки
 buttonAddNewCard.addEventListener('click', () => openPopup(popupAdd));
@@ -108,7 +130,7 @@ function createCard(name, link) {
   });
   cardElementImage.addEventListener('click', () => {
     openPopupCard(cardElementText, cardElementImage);
-    closePopup(popupCard);
+    openPopup(popupCard);
   });
   return cardElement;
 }
@@ -141,7 +163,6 @@ function clearFormAddDefaultValues() {
 }
 
 // Работа с формами
-
 // Обработчик «отправки» формы редактирования
 function editAccountInfo() {
   profileTitleText.textContent = nameInput.value;
@@ -161,18 +182,3 @@ formEditElement.addEventListener('submit', editAccountInfo);
 
 // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard);
-
-// Закрытие попапа по клику по оверлею
-page.addEventListener('click', (evt => {
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target);
-  }
-}));
-
-// Закрытие попапа по esc
-page.addEventListener('keydown', (evt => {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}));
