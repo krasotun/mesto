@@ -54,28 +54,24 @@ function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
 }
 
-//Функция для переключения открыт/закрыт класса поп-апа
-function togglePopup(popupName) {
-  popupName.classList.toggle('popup_opened');
-}
 
 // Функция для открытия попапа редактирования информации
 function openPopupEdit() {
-  togglePopup(popupEdit);
+  openPopup(popupEdit);
   setDefaultVariables();
 }
 
 // События для поп-апа редактирования информации
 buttonEditInfo.addEventListener('click', openPopupEdit);
-buttonClosePopupEDit.addEventListener('click', () => togglePopup(popupEdit));
+buttonClosePopupEDit.addEventListener('click', () => closePopup(popupEdit));
 
 
 // События для поп-апа добавления карточки
-buttonAddNewCard.addEventListener('click', () => togglePopup(popupAdd));
-buttonClosePopupAdd.addEventListener('click', () => togglePopup(popupAdd));
+buttonAddNewCard.addEventListener('click', () => openPopup(popupAdd));
+buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 
 // Событие для поп-апа по клику на карточке
-buttonClosePopupCard.addEventListener('click', () => togglePopup(popupCard));
+buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard));
 
 // Функция "Урна"
 function removeCardfromPage(element) {
@@ -112,7 +108,7 @@ function createCard(name, link) {
   });
   cardElementImage.addEventListener('click', () => {
     openPopupCard(cardElementText, cardElementImage);
-    togglePopup(popupCard);
+    closePopup(popupCard);
   });
   return cardElement;
 }
@@ -150,14 +146,14 @@ function clearFormAddDefaultValues() {
 function editAccountInfo() {
   profileTitleText.textContent = nameInput.value;
   profileSubTitleText.textContent = jobInput.value;
-  togglePopup(popupEdit);
+  closePopup(popupEdit);
 }
 
 // Обработчик «отправки» формы добавления карточки
 function appendNewCard() {
   addCardFromForm();
   clearFormAddDefaultValues();
-  togglePopup(popupAdd);
+  closePopup(popupAdd);
 }
 
 // Прикрепляем обработчик к форме редактирования:
@@ -169,7 +165,7 @@ formAddElement.addEventListener('submit', appendNewCard);
 // Закрытие попапа по клику по оверлею
 page.addEventListener('click', (evt => {
   if (evt.target.classList.contains('popup_opened')) {
-    togglePopup(evt.target);
+    closePopup(evt.target);
   }
 }));
 
@@ -177,6 +173,6 @@ page.addEventListener('click', (evt => {
 page.addEventListener('keydown', (evt => {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector('.popup_opened');
-    togglePopup(openedPopup);
+    closePopup(openedPopup);
   }
 }));
