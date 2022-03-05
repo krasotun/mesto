@@ -24,7 +24,7 @@ enableValidation(obj);
 function setEventListiners(form) {
   const inputList = Array.from(form.querySelectorAll(obj.inputSelector));
   const submitButton = form.querySelector(obj.submitButtonSelector);
-  toggleButtonState(inputList, submitButton); // задаем изначальное состояние кнопки
+  /* toggleButtonState(inputList, submitButton); // задаем изначальное состояние кнопки */
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(inputElement); // проверяем инпут
@@ -32,6 +32,7 @@ function setEventListiners(form) {
     });
   });
 }
+
 
 // Проверяем валидность иппута
 function checkInputValidity(inputElement) {
