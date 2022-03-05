@@ -43,6 +43,16 @@ const cardTemplate = document.querySelector('#card-template').content;
 const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
 
+// Функция открытия попапа
+function openPopup(popupName) {
+  popupName.classList.add('popup_opened');
+
+}
+
+// Функция закрытия попапа
+function closePopup(popupName) {
+  popupName.classList.remove('popup_opened');
+}
 
 //Функция для переключения открыт/закрыт класса поп-апа
 function togglePopup(popupName) {
