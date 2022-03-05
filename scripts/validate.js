@@ -8,76 +8,71 @@ const obj = {
   errorClass: 'form__error_visible'
 };
 
-// Показать ошибку под полем
-const showInputError = (input) => {
-  const formInputName = input.getAttribute('name');
-  const errorName = document.getElementById(`${formInputName}-error`);
-  errorName.classList.add(obj.errorClass);
-  errorName.textContent = input.validationMessage;
-};
-
-// Скрыть ошибку под полем
-const hideInputError = (input) => {
-  const formInputName = input.getAttribute('name');
-  const errorName = document.getElementById(`${formInputName}-error`);
-  errorName.classList.remove(obj.errorClass);
-  errorName.textContent = '';
-};
-
-// Функция включения валидации
+// Функция для валидации
 function enableValidation(obj) {
-  const forms = Array.from(document.querySelectorAll(obj.formSelector)); // Выбираем все формы
-  forms.forEach(form => { // Перебираем  формы
-    const inputs = form.querySelectorAll(obj.inputSelector); //Выбираем все инпуты
-    inputs.forEach(input => {
-      addEventListenersForInputs(input);
+  const forms = Array.from(document.querySelectorAll(obj.formSelector)); // Выбираем все формы на странице
+  forms.forEach(form => {
+    form.addEventListener('submit', (evt) => { // Отменяем дефолтное поведение
+      evt.preventDefault();
+    });
+    setEventListiners(form);
+  });
+}
+enableValidation(obj);
+
+// Функция для "навешенивания" событий на инпуты
+function setEventListiners(form) {
+  const inputList = Array.from(form.querySelectorAll(obj.inputSelector));
+  const submitButton = form.querySelector(obj.submitButtonSelector);
+  toggleButtonState(inputList, submitButton); // задаем изначальное состояние кнопки
+  inputList.forEach(inputElement => {
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(inputElement); // проверяем инпут
+      toggleButtonState(inputList, submitButton); // переключаем кнопку
     });
   });
 }
 
-// Наложение обработчиков на поля форм
-const addEventListenersForInputs = (input) => {
-  input.addEventListener('input', () => {
-    checkInputValidity(input);
-    checkFormValidity(form);
-  });
-};
-
-// Проверка валидности введенных данных в конкретный инпут
-const checkInputValidity = (input) => {
-  if (input.validity.valid) {
-    hideInputError(input);
+// Проверяем валидность иппута
+function checkInputValidity(inputElement) {
+  if (!inputElement.validity.valid) {
+    showInputError(inputElement);
   } else {
-    showInputError(input);
+    hideInputError(inputElement);
   }
-};
-// Проверка на валидность всех инпутов в  форме
-const checkFormValidity = (form) => {
-  const inputs = form.querySelectorAll(obj.inputSelector);
-  inputs.forEach(input => {
-    if (!input.validity.valid) {
-      return false
-    } else {
-      return true
-    }
+}
+
+// Показываем ошибку для невалидного инпута
+function showInputError(inputElement) {
+  const formInputElementName = inputElement.getAttribute('name');
+  const errorName = document.getElementById(`${formInputElementName}-error`);
+  errorName.classList.add(obj.errorClass);
+  errorName.textContent = inputElement.validationMessage;
+}
+
+// Скрываем ошибку у валидного инпута
+function hideInputError(inputElement) {
+  const formInputElementName = inputElement.getAttribute('name');
+  const errorName = document.getElementById(`${formInputElementName}-error`);
+  errorName.classList.remove(obj.errorClass);
+  errorName.textContent = '';
+}
+
+// Проверяем валидность всех инпутов в форме
+// Применяем к массиву метод some - если встречаем хоть один элемент - отдает true
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid
   });
-};
+}
 
-enableValidation(obj);
-
-// Придумаать, как передавать нужную кнопку
-const button = document.querySelector('.form-edit__submit-button');
-
-//Делаем кнопку сабмита  активной
-const setSubmitButtonActive = (button) => {
-  if (checkFormValidity(form)) {
-    button.classList.remove(obj.inactiveButtonClass);
-    button.removeAttribute('disabled');
+// Переключаем состояние кнопки сабмита
+function toggleButtonState(inputList, submitButton) {
+  if (hasInvalidInput(inputList)) {
+    submitButton.classList.add(obj.inactiveButtonClass);
+    submitButton.setAttribute('disabled', true);
+  } else {
+    submitButton.classList.remove(obj.inactiveButtonClass);
+    submitButton.removeAttribute('disabled');
   }
-};
-
-// Делаем кнопку сабмита неактивной
-const setSubmitButtonNotActive = (button) => {
-  button.classList.add(obj.inactiveButtonClass);
-  button.setAttribute('disabled', true);
-};
+}

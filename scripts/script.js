@@ -137,16 +137,14 @@ function clearFormAddDefaultValues() {
 // Работа с формами
 
 // Обработчик «отправки» формы редактирования
-function editAccountInfo(evt) {
-  evt.preventDefault(); //
+function editAccountInfo() {
   profileTitleText.textContent = nameInput.value;
   profileSubTitleText.textContent = jobInput.value;
   togglePopup(popupEdit);
 }
 
 // Обработчик «отправки» формы добавления карточки
-function appendNewCard(evt) {
-  evt.preventDefault(); //
+function appendNewCard() {
   addCardFromForm();
   clearFormAddDefaultValues();
   togglePopup(popupAdd);

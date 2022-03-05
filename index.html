@@ -60,20 +60,20 @@
         <form class="popup-add__form form-add form" method="POST" novalidate>
           <h2 class="form-add__title">Новое место</h2>
           <fieldset class="form-add__input-container">
-            <input required class="form-add__item form__item form__item form__test" id="place" type="text" name="place"
-              placeholder="Название">
+            <input required minlength="2" maxlength="40" class="form-add__item form__item form__item form__test"
+              id="place" type="text" name="place" placeholder="Название">
             <span class="form__error" id="place-error"></span>
-            <input required class="form-add__item form__item" id="link" type="text" name="link"
+            <input required class="form-add__item form__item" id="link" type="url" name="link"
               placeholder="Ссылка на картинку">
             <span class="form__error" id="link-error"></span>
           </fieldset>
-          <button disabled type="submit"
-            class="form-add__submit-button form__submit-button form__submit-button_inactive button">
+          <button type="submit" class="form-add__submit-button form__submit-button button">
             Создать
           </button>
         </form>
       </div>
     </section>
+
 
     <section class="popup-card popup">
       <div class="popup-card__container">
