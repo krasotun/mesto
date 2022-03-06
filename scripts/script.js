@@ -171,10 +171,20 @@ function editAccountInfo() {
   closePopup(popupEdit);
 }
 
+// Функция для деактивации кнопки
+
+const buttonSubmitNewCard = document.querySelector('.form-add__submit-button');
+
+function deactivateButton(button) {
+  button.classList.add('form__submit-button_inactive');
+  button.setAttribute('disabled', true);
+}
+
 // Обработчик «отправки» формы добавления карточки
 function appendNewCard() {
   addCardFromForm();
   clearFormAddDefaultValues();
+  deactivateButton(buttonSubmitNewCard);
   closePopup(popupAdd);
 }
 
