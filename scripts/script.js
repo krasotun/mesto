@@ -111,6 +111,7 @@ function openPopupCard(name, link) {
   popupCardImage.src = link.src;
   popupCardImage.alt = name.textContent;
   popupCardText.textContent = name.textContent;
+  openPopup(popupCard);
 }
 
 // Функция для создания карточки
@@ -131,7 +132,6 @@ function createCard(name, link) {
   });
   cardElementImage.addEventListener('click', () => {
     openPopupCard(cardElementText, cardElementImage);
-    openPopup(popupCard);
   });
   return cardElement;
 }
