@@ -1,5 +1,5 @@
 // Объект с исходными данными
-const obj = {
+const validationObject = {
   formSelector: '.form',
   inputSelector: '.form__item',
   submitButtonSelector: '.form__submit-button',
@@ -15,20 +15,20 @@ function enableValidation(obj) {
     form.addEventListener('submit', (evt) => { // Отменяем дефолтное поведение
       evt.preventDefault();
     });
-    setEventListiners(form);
+    setEventListiners(form, validationObject);
   });
 }
-enableValidation(obj);
+enableValidation(validationObject);
 
 // Функция для "навешенивания" событий на инпуты
-function setEventListiners(form) {
+function setEventListiners(form, obj) {
   const inputList = Array.from(form.querySelectorAll(obj.inputSelector));
   const submitButton = form.querySelector(obj.submitButtonSelector);
   /* toggleButtonState(inputList, submitButton); // задаем изначальное состояние кнопки */
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(inputElement); // проверяем инпут
-      toggleButtonState(inputList, submitButton); // переключаем кнопку
+      toggleButtonState(inputList, submitButton, validationObject); // переключаем кнопку
     });
   });
 }
@@ -37,14 +37,14 @@ function setEventListiners(form) {
 // Проверяем валидность иппута
 function checkInputValidity(inputElement) {
   if (!inputElement.validity.valid) {
-    showInputError(inputElement);
+    showInputError(inputElement, validationObject);
   } else {
-    hideInputError(inputElement);
+    hideInputError(inputElement, validationObject);
   }
 }
 
 // Показываем ошибку для невалидного инпута
-function showInputError(inputElement) {
+function showInputError(inputElement, obj) {
   const formInputElementName = inputElement.getAttribute('name');
   const errorName = document.getElementById(`${formInputElementName}-error`);
   errorName.classList.add(obj.errorClass);
@@ -52,7 +52,7 @@ function showInputError(inputElement) {
 }
 
 // Скрываем ошибку у валидного инпута
-function hideInputError(inputElement) {
+function hideInputError(inputElement, obj) {
   const formInputElementName = inputElement.getAttribute('name');
   const errorName = document.getElementById(`${formInputElementName}-error`);
   errorName.classList.remove(obj.errorClass);
@@ -68,7 +68,7 @@ function hasInvalidInput(inputList) {
 }
 
 // Переключаем состояние кнопки сабмита
-function toggleButtonState(inputList, submitButton) {
+function toggleButtonState(inputList, submitButton, obj) {
   if (hasInvalidInput(inputList)) {
     submitButton.classList.add(obj.inactiveButtonClass);
     submitButton.setAttribute('disabled', true);
