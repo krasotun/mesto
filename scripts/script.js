@@ -44,13 +44,22 @@ const linkInput = formAddElement.querySelector('#link');
 // Функция открытия попапа
 function openPopup(popupName) {
   popupName.classList.add('popup_opened');
-  addPopupEventListener(popupName);
+  addPopupEventListener();
 }
 
 // Функция закрытия попапа
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
-  removePopupEbentListener(popupName);
+  removePopupEventListener();
+}
+// Функция закрытия попопа по ESC
+const escCode = 'Escape';
+
+function closePopupByEsc(evt) {
+  if (evt.key === escCode) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
 }
 
 // Закрытие попапа по клику по оверлею
@@ -61,21 +70,13 @@ page.addEventListener('click', (evt => {
 }));
 
 // Установка слушателя на popup (для закрытия по esc)
-function addPopupEventListener(popupName) {
-  page.addEventListener('keydown', (evt => {
-    if (evt.key === 'Escape') {
-      closePopup(popupName);
-    }
-  }));
+function addPopupEventListener() {
+  page.addEventListener('keydown', closePopupByEsc);
 }
 
 // Удаление слушателя с popup (для закрытия по esc)
-function removePopupEbentListener(popupName) {
-  page.removeEventListener('keydown', (evt => {
-    if (evt.key === 'Escape') {
-      closePopup(popupName);
-    }
-  }));
+function removePopupEventListener() {
+  page.removeEventListener('keydown', closePopupByEsc);
 }
 
 // Функция для открытия попапа редактирования информации
