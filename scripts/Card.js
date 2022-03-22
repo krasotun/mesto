@@ -1,10 +1,14 @@
+import {
+  openPopup
+} from "./index.js";
+
 export class Card {
   constructor(name, link, cardSelector) {
     this.name = name;
     this.link = link;
     this.cardSelector = cardSelector;
   }
-  _getTemplate() { // получаем шаблон
+  _getTemplate() { // Получаем шаблон
     const cardElement = document
       .querySelector(this.cardSelector)
       .content
@@ -14,7 +18,19 @@ export class Card {
   }
   _removeCardFromPage(card) { // Функция "Урна"
     card.closest('article').remove();
-  };
+  }
+  _toggleLikeOnCard(card) { // Функция Лайк
+    card.classList.toggle('elements__like_active');
+  }
+  _openPopupCard(name, link) { // Открытие попапа
+    const popupCard = document.querySelector('.popup-card');
+    const popupCardImage = popupCard.querySelector('.popup-card__image');
+    const popupCardText = popupCard.querySelector('.popup-card__text');
+    popupCardImage.src = link.src;
+    popupCardImage.alt = name.textContent;
+    popupCardText.textContent = name.textContent;
+    openPopup(popupCard);
+  }
   generateCard() {
     this.element = this._getTemplate();
     const cardElementText = this.element.querySelector('.elements__text');
@@ -25,14 +41,16 @@ export class Card {
     cardElementImage.alt = this.name;
     cardElementText.textContent = this.name;
     cardElementImage.addEventListener('click', () => {
-      openPopupCard(cardElementText, cardElementImage);
+      this._openPopupCard(cardElementText, cardElementImage);
     });
     cardElementLike.addEventListener('click', () => {
-      toggleLikeOnCard(cardElementLike);
+      this._toggleLikeOnCard(cardElementLike);
     });
     cardElementRemove.addEventListener('click', () => {
       this._removeCardFromPage(cardElementRemove);
     });
     return this.element
   }
+
+
 }

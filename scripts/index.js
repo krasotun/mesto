@@ -18,8 +18,7 @@ const popupAdd = document.querySelector('.popup-add');
 // Переменные для работы с попапом из карточки
 const buttonClosePopupCard = document.querySelector('.popup-card__close');
 const popupCard = document.querySelector('.popup-card');
-const popupCardImage = popupCard.querySelector('.popup-card__image');
-const popupCardText = popupCard.querySelector('.popup-card__text');
+
 
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
@@ -46,7 +45,7 @@ const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
 
 // Функция открытия попапа
-function openPopup(popupName) {
+export function openPopup(popupName) {
   popupName.classList.add('popup_opened');
   addPopupEventListener();
 }
@@ -99,25 +98,6 @@ buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 
 // Событие для поп-апа по клику на карточке
 buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard));
-
-// Функция "Урна"
-function removeCardfromPage(element) {
-  element.closest('article').remove();
-}
-
-// Функция like
-function toggleLikeOnCard(element) {
-  element.classList.toggle('elements__like_active');
-}
-
-// Функция для открытия попапа  при клике на картинку карточки
-function openPopupCard(name, link) {
-  popupCardImage.src = link.src;
-  popupCardImage.alt = name.textContent;
-  popupCardText.textContent = name.textContent;
-  openPopup(popupCard);
-}
-
 
 //Функция для вставки карточек созданных из массива
 function firstAddCards() {
