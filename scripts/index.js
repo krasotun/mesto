@@ -1,3 +1,7 @@
+import {
+  Card
+} from './Card.js';
+
 // Выбираем страницу
 const page = document.querySelector('.page');
 
@@ -114,70 +118,11 @@ function openPopupCard(name, link) {
   openPopup(popupCard);
 }
 
-/* // Функция для создания карточки
-function createCard(name, link) {
-  const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
-  const cardElementText = cardElement.querySelector('.elements__text');
-  const cardElementLike = cardElement.querySelector('.elements__like');
-  const cardElementRemove = cardElement.querySelector('.elements__delete');
-  const cardElementImage = cardElement.querySelector('.elements__image');
-  cardElementImage.src = link;
-  cardElementImage.alt = name;
-  cardElementText.textContent = name;
-  cardElementLike.addEventListener('click', () => {
-    toggleLikeOnCard(cardElementLike);
-  });
-  cardElementRemove.addEventListener('click', () => {
-    removeCardfromPage(cardElementRemove);
-  });
-  cardElementImage.addEventListener('click', () => {
-    openPopupCard(cardElementText, cardElementImage);
-  });
-  return cardElement;
-} */
-
-
-class Card {
-  constructor(data, cardSelector) {
-    this.name = data.name;
-    this.link = data.link;
-    this.cardSelector = cardSelector;
-  }
-  _getTemplate() { // получаем шаблон
-    const cardElement = document
-      .querySelector(this.cardSelector)
-      .content
-      .querySelector('.elements__card-container')
-      .cloneNode(true);
-    console.log(cardElement);
-    return cardElement
-  }
-  generateCard() {
-    this.element = this._getTemplate();
-    const cardElementText = this.element.querySelector('.elements__text');
-    const cardElementImage = this.element.querySelector('.elements__image');
-    const cardElementLike = this.element.querySelector('.elements__like');
-    const cardElementRemove = this.element.querySelector('.elements__delete');
-    cardElementImage.src = this.link;
-    cardElementImage.alt = this.name;
-    cardElementText.textContent = this.name;
-    cardElementImage.addEventListener('click', () => {
-      openPopupCard(cardElementText, cardElementImage);
-    });
-    cardElementLike.addEventListener('click', () => {
-      toggleLikeOnCard(cardElementLike);
-    });
-    cardElementRemove.addEventListener('click', () => {
-      removeCardfromPage(cardElementRemove);
-    });
-    return this.element
-  }
-}
 
 //Функция для вставки карточек созданных из массива
 function firstAddCards() {
   initialCards.forEach((item) => {
-    const card = new Card(item, '#card-template');
+    const card = new Card(item.name, item.link, '#card-template');
     const newCardFromTemplate = card.generateCard();
     elements.append(newCardFromTemplate);
   });
@@ -186,7 +131,8 @@ firstAddCards();
 
 // Функция для вставки карточки из формы
 function addCardFromForm() {
-  const newCardFromTemplate = createCard(placeInput.value, linkInput.value);
+  const card = new Card(placeInput.value, linkInput.value, '#card-template');
+  const newCardFromTemplate = card.generateCard();
   elements.prepend(newCardFromTemplate);
 }
 
