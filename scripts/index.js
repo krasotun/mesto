@@ -1,6 +1,9 @@
 import {
   Card
 } from './Card.js';
+import {
+  FormValidator
+} from './FormValidator.js';
 
 // Выбираем страницу
 const page = document.querySelector('.page');
@@ -37,8 +40,8 @@ const formAddElement = document.querySelector('.form-add');
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
 
-// Выбираем шаблон (template) карточки
-const cardTemplate = document.querySelector('#card-template').content;
+/* // Выбираем шаблон (template) карточки
+const cardTemplate = document.querySelector('#card-template').content; */
 
 // Находим поля формы для добавления карточки   в DOM
 const placeInput = formAddElement.querySelector('#place');
