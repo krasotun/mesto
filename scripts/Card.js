@@ -12,6 +12,9 @@ export class Card {
       .cloneNode(true);
     return cardElement
   }
+  _removeCardFromPage(card) { // Функция "Урна"
+    card.closest('article').remove();
+  };
   generateCard() {
     this.element = this._getTemplate();
     const cardElementText = this.element.querySelector('.elements__text');
@@ -28,7 +31,7 @@ export class Card {
       toggleLikeOnCard(cardElementLike);
     });
     cardElementRemove.addEventListener('click', () => {
-      removeCardfromPage(cardElementRemove);
+      this._removeCardFromPage(cardElementRemove);
     });
     return this.element
   }
