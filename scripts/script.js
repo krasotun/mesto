@@ -114,7 +114,7 @@ function openPopupCard(name, link) {
   openPopup(popupCard);
 }
 
-// Функция для создания карточки
+/* // Функция для создания карточки
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.elements__card-container').cloneNode(true);
   const cardElementText = cardElement.querySelector('.elements__text');
@@ -134,12 +134,38 @@ function createCard(name, link) {
     openPopupCard(cardElementText, cardElementImage);
   });
   return cardElement;
+} */
+class Card {
+  constructor(data, cardSelector) {
+    this.name = data.name;
+    this.link = data.link;
+    this.cardSelector = cardSelector;
+  }
+  _getTemplate() { // получаем шаблон
+    const cardElement = document
+      .querySelector(this.cardSelector)
+      .content
+      .querySelector('.elements__card-container')
+      .cloneNode(true);
+    console.log(cardElement);
+    return cardElement
+  }
+  generateCard() {
+    this.element = this._getTemplate();
+    const cardElementText = this.element.querySelector('.elements__text');
+    const cardElementImage = this.element.querySelector('.elements__image');
+    cardElementImage.src = this.link;
+    cardElementImage.alt = this.name;
+    cardElementText.textContent = this.name;
+    return this.element
+  }
 }
 
 //Функция для вставки карточек созданных из массива
 function firstAddCards() {
   initialCards.forEach((item) => {
-    const newCardFromTemplate = createCard(item.name, item.link);
+    const card = new Card(item, '#card-template');
+    const newCardFromTemplate = card.generateCard();
     elements.append(newCardFromTemplate);
   });
 }
