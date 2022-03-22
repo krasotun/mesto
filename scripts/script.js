@@ -135,6 +135,8 @@ function createCard(name, link) {
   });
   return cardElement;
 } */
+
+
 class Card {
   constructor(data, cardSelector) {
     this.name = data.name;
@@ -154,9 +156,20 @@ class Card {
     this.element = this._getTemplate();
     const cardElementText = this.element.querySelector('.elements__text');
     const cardElementImage = this.element.querySelector('.elements__image');
+    const cardElementLike = this.element.querySelector('.elements__like');
+    const cardElementRemove = this.element.querySelector('.elements__delete');
     cardElementImage.src = this.link;
     cardElementImage.alt = this.name;
     cardElementText.textContent = this.name;
+    cardElementImage.addEventListener('click', () => {
+      openPopupCard(cardElementText, cardElementImage);
+    });
+    cardElementLike.addEventListener('click', () => {
+      toggleLikeOnCard(cardElementLike);
+    });
+    cardElementRemove.addEventListener('click', () => {
+      removeCardfromPage(cardElementRemove);
+    });
     return this.element
   }
 }
