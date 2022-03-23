@@ -27,21 +27,16 @@ const popupCard = document.querySelector('.popup-card');
 const profileTitleText = document.querySelector('.profile__title');
 const profileSubTitleText = document.querySelector('.profile__subtitle');
 
-// Находим форму для отправки информации в DOM
-const formEditElement = document.querySelector('.form-edit');
+// Находим формы
+const formEditElement = document.querySelector('.form-edit'); // редактирования инфо
+const formAddElement = document.querySelector('.form-add'); // добавление карточки
 
 // Находим поля формы для отправки информации   в DOM
 const nameInput = formEditElement.querySelector('#name');
 const jobInput = formEditElement.querySelector('#job');
 
-// Находим форму для добавления карточки в DOM
-const formAddElement = document.querySelector('.form-add');
-
 // Выбираем секцию, в которой будем создавать карточки
 const elements = document.querySelector('.elements');
-
-/* // Выбираем шаблон (template) карточки
-const cardTemplate = document.querySelector('#card-template').content; */
 
 // Находим поля формы для добавления карточки   в DOM
 const placeInput = formAddElement.querySelector('#place');
