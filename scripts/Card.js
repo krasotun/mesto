@@ -51,6 +51,4 @@ export class Card {
     });
     return this.element
   }
-
-
 }

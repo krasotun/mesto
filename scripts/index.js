@@ -4,6 +4,10 @@ import {
 import {
   FormValidator
 } from './FormValidator.js';
+import {
+  initialCards,
+  validationObject
+} from './data.js';
 
 // Выбираем страницу
 const page = document.querySelector('.page');
@@ -157,7 +161,8 @@ formEditElement.addEventListener('submit', editAccountInfo);
 // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard);
 
-
-
+// Вызов валидации форм из конструктора
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 validateFormEdit.enableValidation();
+const validateFormAdd = new FormValidator(validationObject, formAddElement);
+validateFormAdd.enableValidation();

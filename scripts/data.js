@@ -1,6 +1,5 @@
 // Массив с карточками
-
-const initialCards = [{
+export const initialCards = [{
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
@@ -25,3 +24,13 @@ const initialCards = [{
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+// Объект с исходными данными для валидации формы
+export const validationObject = {
+  formSelector: '.form',
+  inputSelector: '.form__item',
+  submitButtonSelector: '.form__submit-button',
+  inactiveButtonClass: 'form__submit-button_inactive',
+  inputErrorClass: 'form__item_type_error',
+  errorClass: 'form__error_visible'
+};
