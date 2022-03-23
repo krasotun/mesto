@@ -22,13 +22,13 @@ export class Card {
   _toggleLikeOnCard(card) { // Функция Лайк
     card.classList.toggle('elements__like_active');
   }
-  _openPopupCard(name, link) { // Открытие попапа
+  _openPopupCard(title, source) { // Открытие попапа
     const popupCard = document.querySelector('.popup-card');
     const popupCardImage = popupCard.querySelector('.popup-card__image');
     const popupCardText = popupCard.querySelector('.popup-card__text');
-    popupCardImage.src = link.src;
-    popupCardImage.alt = name.textContent;
-    popupCardText.textContent = name.textContent;
+    popupCardImage.src = source.src;
+    popupCardImage.alt = title.textContent;
+    popupCardText.textContent = title.textContent;
     openPopup(popupCard);
   }
   _addEventListeners(like, remove) {
