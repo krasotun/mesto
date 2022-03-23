@@ -31,6 +31,15 @@ export class Card {
     popupCardText.textContent = name.textContent;
     openPopup(popupCard);
   }
+  _addEventListeners(like, remove) {
+    like.addEventListener('click', () => {
+      this._toggleLikeOnCard(like);
+    });
+    remove.addEventListener('click', () => {
+      this._removeCardFromPage(remove);
+    });
+
+  }
   generateCard() {
     this.element = this._getTemplate();
     const cardElementText = this.element.querySelector('.elements__text');
@@ -43,12 +52,8 @@ export class Card {
     cardElementImage.addEventListener('click', () => {
       this._openPopupCard(cardElementText, cardElementImage);
     });
-    cardElementLike.addEventListener('click', () => {
-      this._toggleLikeOnCard(cardElementLike);
-    });
-    cardElementRemove.addEventListener('click', () => {
-      this._removeCardFromPage(cardElementRemove);
-    });
+
+    this._addEventListeners(cardElementLike, cardElementRemove);
     return this.element
   }
 }
