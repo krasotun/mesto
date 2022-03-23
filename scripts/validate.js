@@ -18,7 +18,7 @@ function enableValidation(obj) {
     setEventListiners(form, validationObject);
   });
 }
-enableValidation(validationObject);
+/* enableValidation(validationObject); */
 
 // Функция для "навешенивания" событий на инпуты
 function setEventListiners(form, obj) {

@@ -156,3 +156,8 @@ formEditElement.addEventListener('submit', editAccountInfo);
 
 // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard);
+
+
+
+const validateFormEdit = new FormValidator(validationObject, formEditElement);
+validateFormEdit.enableValidation();

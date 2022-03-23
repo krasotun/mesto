@@ -10,7 +10,9 @@ export class FormValidator {
   }
   _setEventListeners() {
     const inputList = Array.from(this.formName.querySelectorAll(this.inputSelector));
-    const submitButton = this.formName(this.submitButtonSelector);
+    const submitButton = this.formName.querySelector(this.submitButtonSelector);
+    console.log(inputList);
+    console.log(submitButton);
     inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement); // проверяем инпут
