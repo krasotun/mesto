@@ -24,7 +24,9 @@ const popupAdd = document.querySelector('.popup-add');
 
 // Переменные для работы с попапом из карточки
 const buttonClosePopupCard = document.querySelector('.popup-card__close');
-const popupCard = document.querySelector('.popup-card');
+export const popupCard = document.querySelector('.popup-card');
+export const popupCardImage = popupCard.querySelector('.popup-card__image');
+export const popupCardText = popupCard.querySelector('.popup-card__text');
 
 
 // Переменные для работы с формой отправки информации
@@ -88,6 +90,14 @@ function removePopupEventListener() {
 function openPopupEdit() {
   openPopup(popupEdit);
   setDefaultVariables();
+}
+
+// Открытие попапа по клику на карточку
+export function openPopupCard(title, source) {
+  popupCardImage.src = source.src;
+  popupCardImage.alt = title.textContent;
+  popupCardText.textContent = title.textContent;
+  openPopup(popupCard);
 }
 
 // События для поп-апа редактирования информации
