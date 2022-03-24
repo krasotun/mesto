@@ -9,6 +9,7 @@ import {
   validationObject
 } from './data.js';
 
+
 // Выбираем страницу
 const page = document.querySelector('.page');
 
@@ -24,9 +25,9 @@ const popupAdd = document.querySelector('.popup-add');
 
 // Переменные для работы с попапом из карточки
 const buttonClosePopupCard = document.querySelector('.popup-card__close');
-export const popupCard = document.querySelector('.popup-card');
-export const popupCardImage = popupCard.querySelector('.popup-card__image');
-export const popupCardText = popupCard.querySelector('.popup-card__text');
+const popupCard = document.querySelector('.popup-card');
+const popupCardImage = popupCard.querySelector('.popup-card__image');
+const popupCardText = popupCard.querySelector('.popup-card__text');
 
 
 // Переменные для работы с формой отправки информации
