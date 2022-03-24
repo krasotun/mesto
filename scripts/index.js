@@ -9,7 +9,6 @@ import {
   validationObject
 } from './data.js';
 
-
 // Выбираем страницу
 const page = document.querySelector('.page');
 
@@ -28,7 +27,6 @@ const buttonClosePopupCard = document.querySelector('.popup-card__close');
 const popupCard = document.querySelector('.popup-card');
 const popupCardImage = popupCard.querySelector('.popup-card__image');
 const popupCardText = popupCard.querySelector('.popup-card__text');
-
 
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
@@ -95,9 +93,9 @@ function openPopupEdit() {
 
 // Открытие попапа по клику на карточку
 export function openPopupCard(title, source) {
-  popupCardImage.src = source.src;
-  popupCardImage.alt = title.textContent;
-  popupCardText.textContent = title.textContent;
+  popupCardImage.src = source;
+  popupCardImage.alt = title;
+  popupCardText.textContent = title;
   openPopup(popupCard);
 }
 
@@ -150,7 +148,6 @@ function editAccountInfo() {
 }
 
 // Функция для деактивации кнопки
-
 const buttonSubmitNewCard = document.querySelector('.form-add__submit-button');
 
 function deactivateButton(button) {

@@ -1,8 +1,6 @@
 import {
-  openPopupCard,
-  openPopup
-}
-from "./index.js";
+  openPopupCard
+} from './index.js';
 
 export class Card {
   constructor(name, link, cardSelector) {
@@ -10,7 +8,6 @@ export class Card {
     this.link = link;
     this.cardSelector = cardSelector;
   }
-
   _getTemplate() { // Получаем шаблон
     const cardElement = document
       .querySelector(this.cardSelector)
@@ -26,8 +23,6 @@ export class Card {
     this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
   }
   _openNewPopup() { // Открываем попап
-    const test1 = 12;
-    const test2 = 15;
     openPopupCard(this.name, this.link);
   }
   _addEventListeners() { // Навешиваем события
@@ -41,7 +36,6 @@ export class Card {
       this._openNewPopup();
     });
   }
-
   generateCard() { // Создаем карточку
     this._element = this._getTemplate();
     this._element.querySelector('.elements__image').src = this.link;
