@@ -25,10 +25,10 @@ export class Card {
   _toggleLikeOnCard() { // Функция Лайк
     this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
   }
-  _openPopup() { // Открываем попап
+  _openNewPopup() { // Открываем попап
     const test1 = 12;
     const test2 = 15;
-    openPopupCard(test1, test2);
+    openPopupCard(this.name, this.link);
   }
   _addEventListeners() { // Навешиваем события
     this._element.querySelector('.elements__like').addEventListener('click', () => {
@@ -38,7 +38,7 @@ export class Card {
       this._removeCardFromPage();
     });
     this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._openPopup();
+      this._openNewPopup();
     });
   }
 

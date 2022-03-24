@@ -43,7 +43,7 @@ export class FormValidator {
     });
   }
   _toggleButtonState(inputList, submitButton) { // Переключаем состояние кнопки сабмита
-    if (hasInvalidInput(inputList)) {
+    if (this._hasInvalidInput(inputList)) {
       submitButton.classList.add(this.inactiveButtonClass);
       submitButton.setAttribute('disabled', true);
     } else {
