@@ -108,21 +108,24 @@ buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 // Событие для поп-апа по клику на карточке
 buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard));
 
+// Функция для создания карточки
+function createCard(name, link, selector) {
+  const card = new Card(name, link, selector);
+  const newCardFromTemplate = card.generateCard();
+  return newCardFromTemplate
+}
+
 //Функция для вставки карточек созданных из массива
 function firstAddCards() {
   initialCards.forEach((item) => {
-    const card = new Card(item.name, item.link, '#card-template');
-    const newCardFromTemplate = card.generateCard();
-    elements.append(newCardFromTemplate);
+    elements.append(createCard(item.name, item.link, '#card-template'));
   });
 }
 firstAddCards();
 
 // Функция для вставки карточки из формы
 function addCardFromForm() {
-  const card = new Card(placeInput.value, linkInput.value, '#card-template');
-  const newCardFromTemplate = card.generateCard();
-  elements.prepend(newCardFromTemplate);
+  elements.prepend(createCard(placeInput.value, linkInput.value, '#card-template'));
 }
 
 // Объявляем функцию для подстановки изначальных значений в поля формы
