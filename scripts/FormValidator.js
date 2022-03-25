@@ -9,12 +9,12 @@ export class FormValidator {
     this._errorClass = obj.errorClass;
   }
   _setEventListeners() { // Устанавливаем обработчики событий
-    const inputList = Array.from(this.formName.querySelectorAll(this._inputSelector));
-    const submitButton = this.formName.querySelector(this._submitButtonSelector);
-    inputList.forEach(inputElement => {
+    this._inputList = Array.from(this.formName.querySelectorAll(this._inputSelector));
+    this._submitButton = this.formName.querySelector(this._submitButtonSelector);
+    this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement); // проверяем инпут
-        this._toggleButtonState(inputList, submitButton); // переключаем кнопку
+        this.toggleButtonState(); // переключаем кнопку
       });
     });
   }
@@ -37,18 +37,18 @@ export class FormValidator {
     errorName.classList.remove(this._errorClass);
     errorName.textContent = '';
   }
-  _hasInvalidInput(inputList) { // Проверяем валмидность у всех инпутов
-    return inputList.some((inputElement) => {
+  _hasInvalidInput() { // Проверяем валмидность у всех инпутов
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid
     });
   }
-  _toggleButtonState(inputList, submitButton) { // Переключаем состояние кнопки сабмита
-    if (this._hasInvalidInput(inputList)) {
-      submitButton.classList.add(this._inactiveButtonClass);
-      submitButton.setAttribute('disabled', true);
+  toggleButtonState() { // Переключаем состояние кнопки сабмита
+    if (this._hasInvalidInput()) {
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.setAttribute('disabled', true);
     } else {
-      submitButton.classList.remove(this._inactiveButtonClass);
-      submitButton.removeAttribute('disabled');
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.removeAttribute('disabled');
     }
   }
   enableValidation() { //  Функция для валидации
