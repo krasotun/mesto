@@ -9,8 +9,6 @@ import {
   validationObject
 } from './data.js';
 
-// Выбираем страницу
-const page = document.querySelector('.page');
 
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
@@ -69,7 +67,7 @@ function closePopupByEsc(evt) {
 }
 
 // Закрытие попапа по клику по оверлею
-page.addEventListener('click', (evt => {
+document.addEventListener('click', (evt => {
   if (evt.target.classList.contains('popup_opened')) {
     closePopup(evt.target);
   }
@@ -77,12 +75,12 @@ page.addEventListener('click', (evt => {
 
 // Установка слушателя на popup (для закрытия по esc)
 function addPopupEventListener() {
-  page.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 // Удаление слушателя с popup (для закрытия по esc)
 function removePopupEventListener() {
-  page.removeEventListener('keydown', closePopupByEsc);
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 // Функция для открытия попапа редактирования информации
