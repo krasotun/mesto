@@ -9,7 +9,6 @@ import {
   validationObject
 } from './data.js';
 
-
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const buttonClosePopupEDit = document.querySelector('.popup-edit__close');
@@ -56,6 +55,7 @@ function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   removePopupEventListener();
 }
+
 // Функция закрытия попопа по ESC
 const escCode = 'Escape';
 
@@ -134,12 +134,6 @@ function setDefaultVariables() {
   jobInput.value = profileSubTitleText.textContent;
 }
 
-// Объявляем функцию для очистки значений после отправки формы
-function clearFormAddDefaultValues() {
-  placeInput.value = '';
-  linkInput.value = '';
-}
-
 // Работа с формами
 // Обработчик «отправки» формы редактирования
 function editAccountInfo() {
@@ -148,19 +142,11 @@ function editAccountInfo() {
   closePopup(popupEdit);
 }
 
-// Функция для деактивации кнопки
-const buttonSubmitNewCard = document.querySelector('.form-add__submit-button');
-
-function deactivateButton(button) {
-  button.classList.add('form__submit-button_inactive');
-  button.setAttribute('disabled', true);
-}
-
 // Обработчик «отправки» формы добавления карточки
 function appendNewCard() {
   addCardFromForm();
-  clearFormAddDefaultValues();
-  deactivateButton(buttonSubmitNewCard);
+  formAddElement.reset();
+  validateFormAdd.toggleButtonState();
   closePopup(popupAdd);
 }
 
