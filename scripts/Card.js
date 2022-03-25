@@ -21,27 +21,33 @@ export class Card {
     this._element = null;
   }
   _toggleLikeOnCard() { // Функция Лайк
-    this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
+    this._likeButton.classList.toggle('elements__like_active');
   }
   _openNewPopup() { // Открываем попап
     openPopupCard(this.name, this.link);
   }
   _addEventListeners() { // Навешиваем события
-    this._element.querySelector('.elements__like').addEventListener('click', () => {
-      this._toggleLikeOnCard();
+    this._likeButton.addEventListener('click', (evt) => {
+      this._toggleLikeOnCard(evt);
     });
-    this._element.querySelector('.elements__delete').addEventListener('click', () => {
-      this._removeCardFromPage();
+    this._removeButton.addEventListener('click', (evt) => {
+      this._removeCardFromPage(evt);
     });
-    this._element.querySelector('.elements__image').addEventListener('click', () => {
-      this._openNewPopup();
+    this._cardImage.addEventListener('click', (evt) => {
+      this._openNewPopup(evt);
     });
   }
   generateCard() { // Создаем карточку
     this._element = this._getTemplate();
-    this._element.querySelector('.elements__image').src = this.link;
-    this._element.querySelector('.elements__image').alt = this.name;
-    this._element.querySelector('.elements__text').textContent = this.name;
+    this._likeButton = this._element.querySelector('.elements__like');
+    this._removeButton = this._element.querySelector('.elements__delete');
+    this._cardImage = this._element.querySelector('.elements__image');
+    this._cardText = this._element.querySelector('.elements__text');
+
+    this._cardImage.src = this.link;
+    this._cardImage.alt = this.name;
+    this._cardText.textContent = this.name;
+
     this._addEventListeners();
     return this._element
   }
