@@ -17,7 +17,8 @@ export class Card {
     return cardElement
   }
   _removeCardFromPage() { // Функция "Урна"
-    this._element.querySelector('.elements__delete').closest('article').remove();
+    this._element.remove();
+    this._element = null;
   }
   _toggleLikeOnCard() { // Функция Лайк
     this._element.querySelector('.elements__like').classList.toggle('elements__like_active');
