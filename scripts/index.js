@@ -8,6 +8,7 @@ import {
   initialCards,
   validationObject
 } from './data.js';
+import { Section } from './Section.js';
 
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
@@ -108,20 +109,35 @@ buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 // Событие для поп-апа по клику на карточке
 buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard));
 
-// Функция для создания карточки
-function createCard(name, link, selector) {
-  const card = new Card(name, link, selector);
-  const newCardFromTemplate = card.generateCard();
-  return newCardFromTemplate
-}
 
-//Функция для вставки карточек созданных из массива
+/* //Функция для вставки карточек созданных из массива
 function firstAddCards() {
   initialCards.forEach((item) => {
     elements.append(createCard(item.name, item.link, '#card-template'));
   });
 }
-firstAddCards();
+firstAddCards(); */
+
+/* // Функция для создания карточки
+function createCard(name, link, selector) {
+  const card = new Card(name, link, selector);
+  const newCardFromTemplate = card.generateCard();
+  return newCardFromTemplate
+} */
+
+const cardListSelector = '.elements';
+console.log(cardListSelector);
+const firstAddCards = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const card = new Card(item, '#card-template');
+    newCardFromTemplate = card.generateCard();
+    firstAddCards.addItem(newCardFromTemplate);
+  }
+}, cardListSelector);
+
+firstAddCards.renderItems();
+
 
 // Функция для вставки карточки из формы
 function addCardFromForm() {
