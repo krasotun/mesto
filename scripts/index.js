@@ -126,12 +126,12 @@ function createCard(name, link, selector) {
 } */
 
 const cardListSelector = '.elements';
-console.log(cardListSelector);
+
 const firstAddCards = new Section({
   items: initialCards,
-  renderer: (item) => {
-    const card = new Card(item, '#card-template');
-    newCardFromTemplate = card.generateCard();
+  renderer: (items) => {
+    const card = new Card(items.name, items.link, '#card-template');
+    const newCardFromTemplate = card.generateCard();
     firstAddCards.addItem(newCardFromTemplate);
   }
 }, cardListSelector);
