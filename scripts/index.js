@@ -110,7 +110,7 @@ buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard));
 
 
-/* //Функция для вставки карточек созданных из массива
+/*
 function firstAddCards() {
   initialCards.forEach((item) => {
     elements.append(createCard(item.name, item.link, '#card-template'));
@@ -125,8 +125,8 @@ function createCard(name, link, selector) {
   return newCardFromTemplate
 } */
 
+//Функция для вставки карточек созданных из массива
 const cardListSelector = '.elements';
-
 const firstAddCards = new Section({
   items: initialCards,
   renderer: (items) => {
@@ -177,3 +177,6 @@ const validateFormEdit = new FormValidator(validationObject, formEditElement);
 validateFormEdit.enableValidation();
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
 validateFormAdd.enableValidation();
+
+
+
