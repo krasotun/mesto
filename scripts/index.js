@@ -129,8 +129,25 @@ function createCard(name, link, selector) {
   return newCardFromTemplate
 } */
 
+
 //Функция для вставки карточек созданных из массива
+
 const cardListSelector = '.elements';
+const firstAddCards = new Section({
+  items: initialCards,
+  renderer: (items) => {
+    const card = new Card({
+      items, handleCardClick: () => {
+        const newPopupWithImage = new PopupWithImage(popupCard);
+        newPopupWithImage.open(items);
+      }
+    }, '#card-template');
+    const newCardFromTemplate = card.generateCard();
+    firstAddCards.addItem(newCardFromTemplate);
+  }
+}, cardListSelector);
+
+/*
 const firstAddCards = new Section({
   items: initialCards,
   renderer: (items) => {
@@ -138,7 +155,8 @@ const firstAddCards = new Section({
     const newCardFromTemplate = card.generateCard();
     firstAddCards.addItem(newCardFromTemplate);
   }
-}, cardListSelector);
+}, cardListSelector); */
+
 
 firstAddCards.renderItems();
 
