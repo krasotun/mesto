@@ -41,12 +41,6 @@ const elements = document.querySelector('.elements');
 const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
 
-// Функция открытия попапа
-export function openPopup(popupName) {
-  popupName.classList.add('popup_opened');
-  addPopupEventListener();
-}
-
 // Функция для открытия попапа редактирования информации
 function openPopupEdit() {
   openPopup(popupEdit);
@@ -54,24 +48,27 @@ function openPopupEdit() {
 }
 
 // Попап для редактирования информации
-
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
-    submit: () => console.log('Submited')
-  })
-
-
-// События для поп-апа редактирования информации
+    submit: () => console.log('Edit form submitted')
+  }
+)
 buttonEditInfo.addEventListener('click', () => {
   newPopupEdit.open();
 });
 
 
-/* buttonClosePopupEDit.addEventListener('click', () => closePopup(popupEdit)); */
+// Попап для добавления карточки
+const newPopupAddNewCard = new PopupWithForm(popupAdd,
+  {
+    submit: () => console.log('Add form submitted')
+  }
+)
+buttonAddNewCard.addEventListener('click', () => {
+  newPopupAddNewCard.open();
+});
 
-// События для поп-апа добавления карточки
-buttonAddNewCard.addEventListener('click', () => openPopup(popupAdd));
-buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
+/* buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd)); */
 
 //Функция для вставки карточек созданных из массива
 const cardListSelector = '.elements';
@@ -200,3 +197,11 @@ function addPopupEventListener() {
 function removePopupEventListener() {
   document.removeEventListener('keydown', closePopupByEsc);
 } */
+
+/* // Функция открытия попапа
+export function openPopup(popupName) {
+  popupName.classList.add('popup_opened');
+  addPopupEventListener();
+} */
+/* buttonClosePopupEDit.addEventListener('click', () => closePopup(popupEdit)); */
+
