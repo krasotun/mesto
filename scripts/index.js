@@ -55,13 +55,13 @@ export function openPopup(popupName) {
   addPopupEventListener();
 }
 
-// Функция закрытия попапа
+/* // Функция закрытия попапа
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   removePopupEventListener();
-}
+} */
 
-// Функция закрытия попопа по ESC
+/* // Функция закрытия попопа по ESC
 const escCode = 'Escape';
 
 function closePopupByEsc(evt) {
@@ -76,7 +76,7 @@ document.addEventListener('click', (evt => {
   if (evt.target.classList.contains('popup_opened')) {
     closePopup(evt.target);
   }
-}));
+})); */
 
 // Установка слушателя на popup (для закрытия по esc)
 function addPopupEventListener() {
@@ -103,8 +103,8 @@ buttonClosePopupEDit.addEventListener('click', () => closePopup(popupEdit));
 buttonAddNewCard.addEventListener('click', () => openPopup(popupAdd));
 buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd));
 
-// Событие для поп-апа по клику на карточке
-buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard));
+/* // Событие для поп-апа по клику на карточке
+buttonClosePopupCard.addEventListener('click', () => closePopup(popupCard)); */
 
 
 /*

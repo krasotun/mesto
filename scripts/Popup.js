@@ -4,9 +4,9 @@ export class Popup {
     this.popupCloseButton = this._popupSelector.querySelector('.popup__close');
   }
   setEventListeners() {
-    this.popupCloseButton.addEventListener('click', this.close);
-    document.addEventListener('keydown', this._handleEscClose);
-    document.addEventListener('click', (evt => {
+    this.popupCloseButton.addEventListener('click', this.close.bind(this)); // Закрытие по клику
+    document.addEventListener('keydown', this._handleEscClose.bind(this)); // Закрытие по ESC
+    document.addEventListener('click', (evt => { // Закрытие по оверлею
       if (evt.target.classList.contains('popup_opened')) {
         this.close();
       }
@@ -23,11 +23,12 @@ export class Popup {
   close() {
     this._popupSelector.classList.remove('popup_opened');
     this.removeEventListeners();
+
   }
   _handleEscClose(evt) {
     const escCode = 'Escape';
     if (evt.key === escCode) {
-      this.close;
+      this.close();
     }
   }
 }
