@@ -137,9 +137,10 @@ const firstAddCards = new Section({
   items: initialCards,
   renderer: (items) => {
     const card = new Card({
-      items, handleCardClick: () => {
-        const newPopupWithImage = new PopupWithImage(popupCard);
-        newPopupWithImage.open(items);
+      data: items, handleCardClick: () => {
+        /*  const newPopupWithImage = new PopupWithImage(popupCard);
+         newPopupWithImage.open(items); */
+        console.log('Pressed');
       }
     }, '#card-template');
     const newCardFromTemplate = card.generateCard();
