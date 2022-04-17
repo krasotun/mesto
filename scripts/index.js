@@ -94,13 +94,6 @@ function openPopupEdit() {
   setDefaultVariables();
 }
 
-// Открытие попапа по клику на карточку
-export function openPopupCard(title, source) {
-  popupCardImage.src = source;
-  popupCardImage.alt = title;
-  popupCardText.textContent = title;
-  openPopup(popupCard);
-}
 
 // События для поп-апа редактирования информации
 buttonEditInfo.addEventListener('click', openPopupEdit);
@@ -131,23 +124,29 @@ function createCard(name, link, selector) {
 
 
 //Функция для вставки карточек созданных из массива
-
 const cardListSelector = '.elements';
 const firstAddCards = new Section({
   items: initialCards,
   renderer: (items) => {
     const card = new Card({
       data: items, handleCardClick: () => {
-        /*  const newPopupWithImage = new PopupWithImage(popupCard);
-         newPopupWithImage.open(items); */
-        console.log('Pressed');
+        const newPopupWithImage = new PopupWithImage(popupCard);
+        newPopupWithImage.open(items.name, items.link);
       }
     }, '#card-template');
     const newCardFromTemplate = card.generateCard();
     firstAddCards.addItem(newCardFromTemplate);
   }
 }, cardListSelector);
+firstAddCards.renderItems();
 
+/* // Открытие попапа по клику на карточку
+export function openPopupCard(title, source) {
+  popupCardImage.src = source;
+  popupCardImage.alt = title;
+  popupCardText.textContent = title;
+  openPopup(popupCard);
+} */
 /*
 const firstAddCards = new Section({
   items: initialCards,
@@ -157,10 +156,6 @@ const firstAddCards = new Section({
     firstAddCards.addItem(newCardFromTemplate);
   }
 }, cardListSelector); */
-
-
-firstAddCards.renderItems();
-
 
 // Функция для вставки карточки из формы
 function addCardFromForm() {

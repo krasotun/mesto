@@ -1,7 +1,3 @@
-import {
-  openPopupCard
-} from './index.js';
-
 export class Card {
   constructor({ data, handleCardClick }, cardSelector) {
     this.data = data;
@@ -36,7 +32,7 @@ export class Card {
       this._removeCardFromPage(evt);
     });
     this._cardImage.addEventListener('click', () => {
-      this.handleCardClick(this.data);
+      this.handleCardClick();
     });
   }
   generateCard() { // Создаем карточку
