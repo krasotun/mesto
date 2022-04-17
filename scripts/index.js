@@ -12,6 +12,9 @@ import { Section } from './Section.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { Popup } from './Popup.js';
 import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo.js';
+
+
 
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');

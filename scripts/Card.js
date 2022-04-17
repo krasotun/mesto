@@ -1,8 +1,6 @@
 export class Card {
   constructor({ data, handleCardClick }, cardSelector) {
     this.data = data;
-    /* this.name = data.name;
-    this.link = data.link; */
     this.cardSelector = cardSelector;
     this.handleCardClick = handleCardClick;
   }
@@ -21,9 +19,6 @@ export class Card {
   _toggleLikeOnCard() { // Функция Лайк
     this._likeButton.classList.toggle('elements__like_active');
   }
-  /* _openNewPopup() { // Открываем попап
-    openPopupCard(this.name, this.link);
-  } */
   _addEventListeners() { // Навешиваем события
     this._likeButton.addEventListener('click', (evt) => {
       this._toggleLikeOnCard(evt);
@@ -44,7 +39,6 @@ export class Card {
     this._cardImage.src = this.data.link;
     this._cardImage.alt = this.data.name;
     this._cardText.textContent = this.data.name;
-
     this._addEventListeners();
     return this._element
   }
