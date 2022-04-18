@@ -16,17 +16,12 @@ import { UserInfo } from './UserInfo.js';
 
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
-const buttonClosePopupEDit = document.querySelector('.popup-edit__close');
 const popupEdit = document.querySelector('.popup-edit');
 // Переменные для работы с поп-апом добавления карточки
 const buttonAddNewCard = document.querySelector('.profile__post-button');
-const buttonClosePopupAdd = document.querySelector('.popup-add__close');
 const popupAdd = document.querySelector('.popup-add');
 // Переменные для работы с попапом из карточки
-const buttonClosePopupCard = document.querySelector('.popup-card__close');
 const popupCard = document.querySelector('.popup-card');
-const popupCardImage = popupCard.querySelector('.popup-card__image');
-const popupCardText = popupCard.querySelector('.popup-card__text');
 // Переменные для работы с формой отправки информации
 const profileTitleText = document.querySelector('.profile__title');
 const profileSubTitleText = document.querySelector('.profile__subtitle');
@@ -42,29 +37,25 @@ const elements = document.querySelector('.elements');
 const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
 
-// Функция для открытия попапа редактирования информации
-function openPopupEdit() {
-  openPopup(popupEdit);
-  setDefaultVariables();
-}
-
 // Попап для редактирования информации
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
   jobSelector: '.profile__subtitle'
 })
-
+const userData = userInfo.getUserInfo();
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
-    submit: () => console.log('Edit form submitted')
+    handleSubmit: (formData) => {
+      console.log(formData);
+      userInfo.setUserInfo({ formData });
+      newPopupEdit.close();
+    }
   }
 )
 buttonEditInfo.addEventListener('click', () => {
-  const userData = userInfo.getUserInfo();
   nameInput.value = userData.userName;
   jobInput.value = userData.userJob;
   newPopupEdit.open();
-
 });
 
 
@@ -77,8 +68,6 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
 buttonAddNewCard.addEventListener('click', () => {
   newPopupAddNewCard.open();
 });
-
-/* buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd)); */
 
 //Функция для вставки карточек созданных из массива
 const cardListSelector = '.elements';
@@ -96,27 +85,18 @@ const firstAddCards = new Section({
   }
 }, cardListSelector);
 firstAddCards.renderItems();
-
-
-
 // Функция для вставки карточки из формы
 function addCardFromForm() {
   elements.prepend(createCard(placeInput.value, linkInput.value, '#card-template'));
 }
 
-// Объявляем функцию для подстановки изначальных значений в поля формы
-/* function setDefaultVariables() {
-  nameInput.value = profileTitleText.textContent;
-  jobInput.value = profileSubTitleText.textContent;
-} */
-
 // Работа с формами
 // Обработчик «отправки» формы редактирования
-function editAccountInfo() {
+/* function editAccountInfo() {
   profileTitleText.textContent = nameInput.value;
   profileSubTitleText.textContent = jobInput.value;
   closePopup(popupEdit);
-}
+} */
 
 // Обработчик «отправки» формы добавления карточки
 function appendNewCard() {
@@ -126,9 +106,6 @@ function appendNewCard() {
   closePopup(popupAdd);
 }
 
-// Прикрепляем обработчик к форме редактирования:
-formEditElement.addEventListener('submit', editAccountInfo);
-
 // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard);
 
@@ -137,6 +114,24 @@ const validateFormEdit = new FormValidator(validationObject, formEditElement);
 validateFormEdit.enableValidation();
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
 validateFormAdd.enableValidation();
+
+/* // Прикрепляем обработчик к форме редактирования:
+formEditElement.addEventListener('submit', editAccountInfo); */
+// Объявляем функцию для подстановки изначальных значений в поля формы
+/* function setDefaultVariables() {
+  nameInput.value = profileTitleText.textContent;
+  jobInput.value = profileSubTitleText.textContent;
+} */
+
+/* buttonClosePopupAdd.addEventListener('click', () => closePopup(popupAdd)); */
+
+
+/* // Функция для открытия попапа редактирования информации
+function openPopupEdit() {
+  openPopup(popupEdit);
+  setDefaultVariables();
+} */
+
 
 
 /* // Открытие попапа по клику на карточку

@@ -4,7 +4,6 @@ export class UserInfo {
     this._jobSelector = jobSelector;
     this._userName = document.querySelector(this._nameSelector);
     this._userJob = document.querySelector(this._jobSelector);
-
   }
   getUserInfo() {
     const userData = {
@@ -13,8 +12,8 @@ export class UserInfo {
     }
     return userData
   }
-  setUserInfo(userData) {
-    this._userName.textContent = userData.userName;
-    this._userJob.textContent = userData.userJob;
+  setUserInfo({ formData }) {
+    this._userName.textContent = formData.name;
+    this._userJob.textContent = formData.job;
   }
 }
