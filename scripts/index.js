@@ -22,9 +22,6 @@ const buttonAddNewCard = document.querySelector('.profile__post-button');
 const popupAdd = document.querySelector('.popup-add');
 // Переменные для работы с попапом из карточки
 const popupCard = document.querySelector('.popup-card');
-// Переменные для работы с формой отправки информации
-const profileTitleText = document.querySelector('.profile__title');
-const profileSubTitleText = document.querySelector('.profile__subtitle');
 // Находим формы
 const formEditElement = document.querySelector('.form-edit'); // редактирования инфо
 const formAddElement = document.querySelector('.form-add'); // добавление карточки
@@ -46,7 +43,6 @@ const userData = userInfo.getUserInfo();
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
-      console.log(formData);
       userInfo.setUserInfo({ formData });
       newPopupEdit.close();
     }
@@ -58,17 +54,22 @@ buttonEditInfo.addEventListener('click', () => {
   newPopupEdit.open();
 });
 
-
 // Попап для добавления карточки
 const newPopupAddNewCard = new PopupWithForm(popupAdd,
   {
-    submit: () => console.log('Add form submitted')
+    handleSubmit: (formData) => {
+
+    }
   }
 )
+
+
+
+
+
 buttonAddNewCard.addEventListener('click', () => {
   newPopupAddNewCard.open();
 });
-
 //Функция для вставки карточек созданных из массива
 const cardListSelector = '.elements';
 const firstAddCards = new Section({
@@ -85,10 +86,29 @@ const firstAddCards = new Section({
   }
 }, cardListSelector);
 firstAddCards.renderItems();
+
 // Функция для вставки карточки из формы
 function addCardFromForm() {
   elements.prepend(createCard(placeInput.value, linkInput.value, '#card-template'));
 }
+// Обработчик «отправки» формы добавления карточки
+function appendNewCard() {
+  addCardFromForm();
+  formAddElement.reset();
+  validateFormAdd.toggleButtonState();
+  closePopup(popupAdd);
+}
+// Вызов валидации форм из конструктора
+const validateFormEdit = new FormValidator(validationObject, formEditElement);
+validateFormEdit.enableValidation();
+const validateFormAdd = new FormValidator(validationObject, formAddElement);
+validateFormAdd.enableValidation();
+
+
+
+/* // Прикрепляем обработчик к форме создания карточки:
+formAddElement.addEventListener('submit', appendNewCard); */
+
 
 // Работа с формами
 // Обработчик «отправки» формы редактирования
@@ -97,23 +117,6 @@ function addCardFromForm() {
   profileSubTitleText.textContent = jobInput.value;
   closePopup(popupEdit);
 } */
-
-// Обработчик «отправки» формы добавления карточки
-function appendNewCard() {
-  addCardFromForm();
-  formAddElement.reset();
-  validateFormAdd.toggleButtonState();
-  closePopup(popupAdd);
-}
-
-// Прикрепляем обработчик к форме создания карточки:
-formAddElement.addEventListener('submit', appendNewCard);
-
-// Вызов валидации форм из конструктора
-const validateFormEdit = new FormValidator(validationObject, formEditElement);
-validateFormEdit.enableValidation();
-const validateFormAdd = new FormValidator(validationObject, formAddElement);
-validateFormAdd.enableValidation();
 
 /* // Прикрепляем обработчик к форме редактирования:
 formEditElement.addEventListener('submit', editAccountInfo); */
