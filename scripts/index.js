@@ -14,8 +14,6 @@ import { Popup } from './Popup.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
 
-
-
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const buttonClosePopupEDit = document.querySelector('.popup-edit__close');
@@ -51,13 +49,22 @@ function openPopupEdit() {
 }
 
 // Попап для редактирования информации
+const userInfo = new UserInfo({
+  nameSelector: '.profile__title',
+  jobSelector: '.profile__subtitle'
+})
+
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     submit: () => console.log('Edit form submitted')
   }
 )
 buttonEditInfo.addEventListener('click', () => {
+  const userData = userInfo.getUserInfo();
+  nameInput.value = userData.userName;
+  jobInput.value = userData.userJob;
   newPopupEdit.open();
+
 });
 
 
@@ -98,10 +105,10 @@ function addCardFromForm() {
 }
 
 // Объявляем функцию для подстановки изначальных значений в поля формы
-function setDefaultVariables() {
+/* function setDefaultVariables() {
   nameInput.value = profileTitleText.textContent;
   jobInput.value = profileSubTitleText.textContent;
-}
+} */
 
 // Работа с формами
 // Обработчик «отправки» формы редактирования
