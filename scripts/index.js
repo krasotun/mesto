@@ -13,7 +13,6 @@ import { PopupWithImage } from './PopupWithImage.js';
 import { Popup } from './Popup.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
-
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup-edit');
@@ -33,6 +32,8 @@ const elements = document.querySelector('.elements');
 // Находим поля формы для добавления карточки   в DOM
 const placeInput = formAddElement.querySelector('#place');
 const linkInput = formAddElement.querySelector('#link');
+
+const cardListSelector = '.elements';
 
 // Попап для редактирования информации
 const userInfo = new UserInfo({
@@ -58,34 +59,30 @@ buttonEditInfo.addEventListener('click', () => {
 const newPopupAddNewCard = new PopupWithForm(popupAdd,
   {
     handleSubmit: (formData) => {
-
+      cards.addItem(formData);
+      newPopupAddNewCard.close();
     }
   }
 )
-
-
-
-
-
 buttonAddNewCard.addEventListener('click', () => {
   newPopupAddNewCard.open();
 });
-//Функция для вставки карточек созданных из массива
-const cardListSelector = '.elements';
-const firstAddCards = new Section({
+
+//Функция для вставки карточек
+const cards = new Section({
   items: initialCards,
-  renderer: (items) => {
+  renderer: (item) => {
     const card = new Card({
-      data: items, handleCardClick: () => {
+      data: item, handleCardClick: () => {
         const newPopupWithImage = new PopupWithImage(popupCard);
-        newPopupWithImage.open(items.name, items.link);
+        newPopupWithImage.open(item.name, item.link);
       }
     }, '#card-template');
     const newCardFromTemplate = card.generateCard();
-    firstAddCards.addItem(newCardFromTemplate);
+    return newCardFromTemplate;
   }
 }, cardListSelector);
-firstAddCards.renderItems();
+cards.renderItems();
 
 // Функция для вставки карточки из формы
 function addCardFromForm() {
@@ -188,12 +185,12 @@ function firstAddCards() {
 }
 firstAddCards(); */
 
-/* // Функция для создания карточки
+// Функция для создания карточки
 function createCard(name, link, selector) {
   const card = new Card(name, link, selector);
   const newCardFromTemplate = card.generateCard();
   return newCardFromTemplate
-} */
+}
 
 
 /* // Установка слушателя на popup (для закрытия по esc)

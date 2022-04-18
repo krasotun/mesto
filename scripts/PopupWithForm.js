@@ -21,5 +21,9 @@ export class PopupWithForm extends Popup {
     });
     return this._formValues;
   }
+  close() {
+    this._form.reset();
+    super.close();
+  }
 };
 
