@@ -40,16 +40,18 @@ const userInfo = new UserInfo({
   nameSelector: '.profile__title',
   jobSelector: '.profile__subtitle'
 })
-const userData = userInfo.getUserInfo();
+
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
+      console.log(formData);
       userInfo.setUserInfo({ formData });
       newPopupEdit.close();
     }
   }
 )
 buttonEditInfo.addEventListener('click', () => {
+  const userData = userInfo.getUserInfo();
   nameInput.value = userData.userName;
   jobInput.value = userData.userJob;
   newPopupEdit.open();
@@ -119,7 +121,8 @@ formAddElement.addEventListener('submit', appendNewCard); */
 formEditElement.addEventListener('submit', editAccountInfo); */
 // Объявляем функцию для подстановки изначальных значений в поля формы
 /* function setDefaultVariables() {
-  nameInput.value = profileTitleText.textContent;
+  nameInput.value = profileTitleText.
+;
   jobInput.value = profileSubTitleText.textContent;
 } */
 
