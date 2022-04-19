@@ -13,6 +13,8 @@ import { PopupWithImage } from './PopupWithImage.js';
 import { Popup } from './Popup.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
+
+
 // Переменные для работы с поп-апом редактирования информации
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup-edit');
@@ -40,7 +42,6 @@ const userInfo = new UserInfo({
   nameSelector: '.profile__title',
   jobSelector: '.profile__subtitle'
 })
-
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
@@ -85,18 +86,6 @@ const cards = new Section({
   }
 }, cardListSelector);
 cards.renderItems();
-
-// Функция для вставки карточки из формы
-function addCardFromForm() {
-  elements.prepend(createCard(placeInput.value, linkInput.value, '#card-template'));
-}
-// Обработчик «отправки» формы добавления карточки
-function appendNewCard() {
-  addCardFromForm();
-  formAddElement.reset();
-  validateFormAdd.toggleButtonState();
-  closePopup(popupAdd);
-}
 // Вызов валидации форм из конструктора
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 validateFormEdit.enableValidation();
@@ -107,6 +96,19 @@ validateFormAdd.enableValidation();
 
 /* // Прикрепляем обработчик к форме создания карточки:
 formAddElement.addEventListener('submit', appendNewCard); */
+
+/* // Функция для вставки карточки из формы
+function addCardFromForm() {
+  elements.prepend(createCard(placeInput.value, linkInput.value, '#card-template'));
+}
+// Обработчик «отправки» формы добавления карточки
+function appendNewCard() {
+  addCardFromForm();
+  formAddElement.reset();
+  validateFormAdd.toggleButtonState();
+  closePopup(popupAdd);
+} */
+
 
 
 // Работа с формами
@@ -153,6 +155,8 @@ const firstAddCards = new Section({
     firstAddCards.addItem(newCardFromTemplate);
   }
 }, cardListSelector); */
+
+
 /* // Функция закрытия попапа
 function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
@@ -188,12 +192,12 @@ function firstAddCards() {
 }
 firstAddCards(); */
 
-// Функция для создания карточки
+/* // Функция для создания карточки
 function createCard(name, link, selector) {
   const card = new Card(name, link, selector);
   const newCardFromTemplate = card.generateCard();
   return newCardFromTemplate
-}
+} */
 
 
 /* // Установка слушателя на popup (для закрытия по esc)
