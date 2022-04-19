@@ -1,53 +1,44 @@
-import {
-  openPopupCard
-} from './index.js';
-
 export class Card {
-  constructor(name, link, cardSelector) {
-    this.name = name;
-    this.link = link;
-    this.cardSelector = cardSelector;
+  constructor({ data, handleCardClick }, selector) {
+    this.data = data;
+    this.selector = selector;
+    this.handleCardClick = handleCardClick;
   }
-  _getTemplate() { // Получаем шаблон
+  _getTemplate() {
     const cardElement = document
-      .querySelector(this.cardSelector)
+      .querySelector(this.selector)
       .content
       .querySelector('.elements__card-container')
       .cloneNode(true);
     return cardElement
   }
-  _removeCardFromPage() { // Функция "Урна"
+  _removeCardFromPage() {
     this._element.remove();
     this._element = null;
   }
-  _toggleLikeOnCard() { // Функция Лайк
+  _toggleLikeOnCard() {
     this._likeButton.classList.toggle('elements__like_active');
   }
-  _openNewPopup() { // Открываем попап
-    openPopupCard(this.name, this.link);
-  }
-  _addEventListeners() { // Навешиваем события
+  _addEventListeners() {
     this._likeButton.addEventListener('click', (evt) => {
       this._toggleLikeOnCard(evt);
     });
     this._removeButton.addEventListener('click', (evt) => {
       this._removeCardFromPage(evt);
     });
-    this._cardImage.addEventListener('click', (evt) => {
-      this._openNewPopup(evt);
+    this._cardImage.addEventListener('click', () => {
+      this.handleCardClick();
     });
   }
-  generateCard() { // Создаем карточку
+  generateCard() {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector('.elements__like');
     this._removeButton = this._element.querySelector('.elements__delete');
     this._cardImage = this._element.querySelector('.elements__image');
     this._cardText = this._element.querySelector('.elements__text');
-
-    this._cardImage.src = this.link;
-    this._cardImage.alt = this.name;
-    this._cardText.textContent = this.name;
-
+    this._cardImage.src = this.data.link;
+    this._cardImage.alt = this.data.name;
+    this._cardText.textContent = this.data.name;
     this._addEventListeners();
     return this._element
   }

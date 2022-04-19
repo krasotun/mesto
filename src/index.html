@@ -5,19 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css" />
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <div class="page__content">
     <header class="header">
-      <img class="header__logo" src="images/logo.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип">
     </header>
     <main>
       <section class="profile">
         <div class="profile__content-container">
-          <img src="images/avatar.jpg" alt="Аватар" class="profile__avatar">
+          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
           <div class="profile__text-container">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button button"></button>
@@ -34,7 +33,7 @@
     </footer>
     <section class="popup-edit popup">
       <div class="popup-edit__container">
-        <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-edit__close popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна" class="popup-edit__close popup__close">
         <form class="popup-edit__form form-edit form" method="POST" novalidate>
           <h2 class="form-edit__title">Редактировать профиль</h2>
           <fieldset class="form-edit__input-container">
@@ -53,12 +52,12 @@
     </section>
     <section class="popup-add popup">
       <div class="popup-add__container">
-        <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-add__close popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна" class="popup-add__close popup__close">
         <form class="popup-add__form form-add form" method="POST" novalidate>
           <h2 class="form-add__title">Новое место</h2>
           <fieldset class="form-add__input-container">
             <input required minlength="2" maxlength="40" class="form-add__item form__item" id="place" type="text"
-              name="place" placeholder="Название">
+              name="name" placeholder="Название">
             <span class="form__error" id="place-error"></span>
             <input required class="form-add__item form__item" id="link" type="url" name="link"
               placeholder="Ссылка на картинку">
@@ -73,7 +72,7 @@
     </section>
     <section class="popup-card popup">
       <div class="popup-card__container">
-        <img src="images/close-icon.svg" alt="Закрытие окна" class="popup-card__close popup__close">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна" class="popup-card__close popup__close">
         <img src='https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
           class="popup-card__image">
         <p class="popup-card__text">Камчатка</p>
@@ -93,7 +92,6 @@
         </div>
       </article>
     </template>
-    <script type="module" src="scripts/index.js"></script>
   </div>
 </body>
 
