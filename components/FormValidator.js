@@ -8,41 +8,41 @@ export class FormValidator {
     this._input_errorClass = obj.input_errorClass;
     this._errorClass = obj.errorClass;
   }
-  _setEventListeners() { // Устанавливаем обработчики событий
+  _setEventListeners() {
     this._inputList = Array.from(this.formName.querySelectorAll(this._inputSelector));
     this._submitButton = this.formName.querySelector(this._submitButtonSelector);
     this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity(inputElement); // проверяем инпут
-        this.toggleButtonState(); // переключаем кнопку
+        this._checkInputValidity(inputElement);
+        this.toggleButtonState();
       });
     });
   }
-  _checkInputValidity(inputElement) { // Проверяем инпут
+  _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
     }
   }
-  _showInputError(inputElement) { // Показываем ошибку для невалидного инпута
+  _showInputError(inputElement) {
     const formInputElementName = inputElement.getAttribute('name');
     const errorName = document.getElementById(`${formInputElementName}-error`);
     errorName.classList.add(this._errorClass);
     errorName.textContent = inputElement.validationMessage;
   }
-  _hideInputError(inputElement) { // Скрываем ошибку у валидного инпута
+  _hideInputError(inputElement) {
     const formInputElementName = inputElement.getAttribute('name');
     const errorName = document.getElementById(`${formInputElementName}-error`);
     errorName.classList.remove(this._errorClass);
     errorName.textContent = '';
   }
-  _hasInvalidInput() { // Проверяем валмидность у всех инпутов
+  _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid
     });
   }
-  toggleButtonState() { // Переключаем состояние кнопки сабмита
+  toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._submitButton.classList.add(this._inactiveButtonClass);
       this._submitButton.setAttribute('disabled', true);
@@ -51,7 +51,7 @@ export class FormValidator {
       this._submitButton.removeAttribute('disabled');
     }
   }
-  enableValidation() { //  Функция для валидации
+  enableValidation() {
     this.formName.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });

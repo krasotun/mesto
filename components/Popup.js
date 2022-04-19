@@ -7,9 +7,9 @@ export class Popup {
     this._overlayBinded = this._handleOverlayClose.bind(this);
   }
   setEventListeners() {
-    this.popupCloseButton.addEventListener('click', this._closeBinded); // Закрытие по клику
-    document.addEventListener('keydown', this._escBinded); // Закрытие по ESC
-    document.addEventListener('click', this._overlayBinded); // Закрытие по оверлею
+    this.popupCloseButton.addEventListener('click', this._closeBinded);
+    document.addEventListener('keydown', this._escBinded);
+    document.addEventListener('click', this._overlayBinded);
   }
   removeEventListeners() {
     this.popupCloseButton.removeEventListener('click', this._closeBinded);

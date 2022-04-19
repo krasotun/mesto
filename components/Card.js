@@ -4,7 +4,7 @@ export class Card {
     this.cardSelector = cardSelector;
     this.handleCardClick = handleCardClick;
   }
-  _getTemplate() { // Получаем шаблон
+  _getTemplate() {
     const cardElement = document
       .querySelector(this.cardSelector)
       .content
@@ -12,14 +12,14 @@ export class Card {
       .cloneNode(true);
     return cardElement
   }
-  _removeCardFromPage() { // Функция "Урна"
+  _removeCardFromPage() {
     this._element.remove();
     this._element = null;
   }
-  _toggleLikeOnCard() { // Функция Лайк
+  _toggleLikeOnCard() {
     this._likeButton.classList.toggle('elements__like_active');
   }
-  _addEventListeners() { // Навешиваем события
+  _addEventListeners() {
     this._likeButton.addEventListener('click', (evt) => {
       this._toggleLikeOnCard(evt);
     });
@@ -30,7 +30,7 @@ export class Card {
       this.handleCardClick();
     });
   }
-  generateCard() { // Создаем карточку
+  generateCard() {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector('.elements__like');
     this._removeButton = this._element.querySelector('.elements__delete');
