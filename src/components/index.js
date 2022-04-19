@@ -71,3 +71,4 @@ cards.renderItems();
 
 validateFormEdit.enableValidation();
 validateFormAdd.enableValidation();
+
