@@ -27,7 +27,8 @@ const userInfo = new UserInfo({
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
-      userInfo.setUserInfo({ formData });
+      userInfo.setUserInfo(formData);
+      console.log(formData);
       newPopupEdit.close();
     }
   }

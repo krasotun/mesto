@@ -1,12 +1,12 @@
 export class Card {
-  constructor({ data, handleCardClick }, cardSelector) {
+  constructor({ data, handleCardClick }, selector) {
     this.data = data;
-    this.cardSelector = cardSelector;
+    this.selector = selector;
     this.handleCardClick = handleCardClick;
   }
   _getTemplate() {
     const cardElement = document
-      .querySelector(this.cardSelector)
+      .querySelector(this.selector)
       .content
       .querySelector('.elements__card-container')
       .cloneNode(true);

@@ -12,8 +12,8 @@ export class UserInfo {
     }
     return userData
   }
-  setUserInfo({ formData }) {
-    this._userName.textContent = formData.name;
-    this._userJob.textContent = formData.job;
+  setUserInfo({ name, job }) {
+    this._userName.textContent = name;
+    this._userJob.textContent = job;
   }
 }
