@@ -37,8 +37,8 @@ export class Card {
     this._cardImage = this._element.querySelector('.elements__image');
     this._cardText = this._element.querySelector('.elements__text');
     this._cardImage.src = this.data.link;
-    this._cardImage.alt = this.data.name;
-    this._cardText.textContent = this.data.name;
+    this._cardImage.alt = this.data.place;
+    this._cardText.textContent = this.data.place;
     this._addEventListeners();
     return this._element
   }

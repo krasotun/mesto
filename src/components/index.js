@@ -50,7 +50,6 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
   {
     handleSubmit: (formData) => {
       cards.addItem(formData);
-      newPopupAddNewCard.close();
     }
   }
 )
@@ -67,7 +66,7 @@ const cards = new Section({
   renderer: (item) => {
     const card = new Card({
       data: item, handleCardClick: () => {
-        newPopupWithImage.open(item.name, item.link);
+        newPopupWithImage.open(item.place, item.link);
       }
     }, '#card-template');
     const newCardFromTemplate = card.generateCard();
