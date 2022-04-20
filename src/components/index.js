@@ -42,6 +42,7 @@ buttonEditInfo.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.userName;
   jobInput.value = userData.userJob;
+  validateFormEdit.toggleButtonState();
   newPopupEdit.open();
 });
 
@@ -55,6 +56,7 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
 )
 
 buttonAddNewCard.addEventListener('click', () => {
+  validateFormAdd.toggleButtonState();
   newPopupAddNewCard.open();
 });
 
