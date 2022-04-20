@@ -20,6 +20,8 @@ const jobInput = formEditElement.querySelector('#job');
 const cardListSelector = '.elements';
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
+validateFormEdit.enableValidation();
+validateFormAdd.enableValidation();
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
@@ -56,12 +58,13 @@ buttonAddNewCard.addEventListener('click', () => {
   newPopupAddNewCard.open();
 });
 
+const newPopupWithImage = new PopupWithImage(popupCard);
+
 const cards = new Section({
   items: initialCards,
   renderer: (item) => {
     const card = new Card({
       data: item, handleCardClick: () => {
-        const newPopupWithImage = new PopupWithImage(popupCard);
         newPopupWithImage.open(item.name, item.link);
       }
     }, '#card-template');
@@ -72,6 +75,5 @@ const cards = new Section({
 
 cards.renderItems();
 
-validateFormEdit.enableValidation();
-validateFormAdd.enableValidation();
+
 
