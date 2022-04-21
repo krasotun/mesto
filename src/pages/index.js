@@ -7,7 +7,6 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import './../pages/index.css';
 
-
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const popupEdit = document.querySelector('.popup-edit');
 const buttonAddNewCard = document.querySelector('.profile__post-button');
@@ -32,7 +31,6 @@ const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
       userInfo.setUserInfo(formData);
-      console.log(formData);
       newPopupEdit.close();
     }
   }
@@ -53,7 +51,6 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
     }
   }
 )
-
 buttonAddNewCard.addEventListener('click', () => {
   validateFormAdd.toggleButtonState();
   newPopupAddNewCard.open();
@@ -61,20 +58,27 @@ buttonAddNewCard.addEventListener('click', () => {
 
 const newPopupWithImage = new PopupWithImage(popupCard);
 
+const createCard = (data) => {
+  const card = new Card({
+    data, handleCardClick: () => {
+      newPopupWithImage.open(data.place, data.link);
+    }
+  }, '#card-template'
+  );
+  return card
+}
+
 const cards = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    const card = new Card({
-      data: item, handleCardClick: () => {
-        newPopupWithImage.open(item.place, item.link);
-      }
-    }, '#card-template');
+  items: initialCards, renderer: (initialCards) => {
+    const card = createCard(initialCards);
     const newCardFromTemplate = card.generateCard();
     return newCardFromTemplate;
   }
-}, cardListSelector);
-
+}, cardListSelector)
 cards.renderItems();
+
+
+
 
 
 
