@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+
+<body class="page">
+  <div class="page__content">
+    <header class="header">
+      <img class="header__logo" src="bbe2a6eafac19c3d031c.svg" alt="Логотип">
+    </header>
+    <main>
+      <section class="profile">
+        <div class="profile__content-container">
+          <img src="74c3c0fb802dcfa83abb.jpg" alt="Аватар" class="profile__avatar">
+          <div class="profile__text-container">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button button"></button>
+            <h2 class="profile__subtitle">Исследователь океана</h2>
+          </div>
+        </div>
+        <button class="profile__post-button button"></button>
+      </section>
+      <section class="elements">
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">© 2020 Mesto Russia</p>
+    </footer>
+    <section class="popup-edit popup">
+      <div class="popup-edit__container">
+        <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна" class="popup-edit__close popup__close">
+        <form class="popup-edit__form form-edit form" method="POST" novalidate>
+          <h2 class="form-edit__title">Редактировать профиль</h2>
+          <fieldset class="form-edit__input-container">
+            <input minlength="2" maxlength="40" required class="form-edit__item form__item" id="name" type="text"
+              name="name" placeholder="Введите имя">
+            <span class="form__error" id="name-error"></span>
+            <input minlength="2" maxlength="200" required class="form-edit__item form__item" id="job" type="text"
+              name="job" placeholder="Укажите профессию">
+            <span class="form__error" id="job-error"></span>
+          </fieldset>
+          <button type="submit" class="form-edit__submit-button form__submit-button button">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="popup-add popup">
+      <div class="popup-add__container">
+        <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна" class="popup-add__close popup__close">
+        <form class="popup-add__form form-add form" method="POST" novalidate>
+          <h2 class="form-add__title">Новое место</h2>
+          <fieldset class="form-add__input-container">
+            <input required minlength="2" maxlength="40" class="form-add__item form__item" id="place" type="text"
+              name="place" placeholder="Название">
+            <span class="form__error" id="place-error"></span>
+            <input required class="form-add__item form__item" id="link" type="url" name="link"
+              placeholder="Ссылка на картинку">
+            <span class="form__error" id="link-error"></span>
+          </fieldset>
+          <button type="submit" class="form-add__submit-button form__submit-button_inactive form__submit-button button">
+            Создать
+          </button>
+        </form>
+      </div>
+    </section>
+    <section class="popup-card popup">
+      <div class="popup-card__container">
+        <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна" class="popup-card__close popup__close">
+        <img src='https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+          class="popup-card__image">
+        <p class="popup-card__text">Камчатка</p>
+      </div>
+    </section>
+    <template id="card-template">
+      <article class="elements__card-container">
+        <div class="elements__delete">
+        </div>
+        <div class="elements__image-container">
+          <img class="elements__image">
+        </div>
+        <div class="elements__text-container">
+          <p class="elements__text"></p>
+          <div class="elements__like">
+          </div>
+        </div>
+      </article>
+    </template>
+  </div>
+</body>
+
+</html>
