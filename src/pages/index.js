@@ -54,7 +54,7 @@ api.getInitialInfo()
   .then((data) => {
     const [initialInfo, initialCards] = data;
     userInfo.setUserInfo(initialInfo);
-    console.log(initialInfo);
+    userInfo.setUserAvatar(initialInfo);
     cards.renderItems(initialCards);
   });
 
@@ -66,21 +66,12 @@ const userInfo = new UserInfo({
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
-      console.log(formData);
       api.setUserInfo(formData);
       userInfo.setUserInfo(formData);
       newPopupEdit.close();
     }
   }
 )
-/* const newPopupEdit = new PopupWithForm(popupEdit,
-  {
-    handleSubmit: (formData) => {
-      userInfo.setUserInfo(formData);
-      newPopupEdit.close();
-    }
-  }
-) */
 
 buttonEditInfo.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
