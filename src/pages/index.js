@@ -32,11 +32,25 @@ const api = new Api({
 validateFormEdit.enableValidation();
 validateFormAdd.enableValidation();
 
-api.getUserInfo()
+/* api.getUserInfo()
   .then((data) => {
     console.log(data);
     console.log(data.name);
-  })
+  });
+
+api.getInitialCards()
+  .then((data) => {
+    console.log(data);
+  }); */
+
+api.getInitialInfo()
+  .then((data) => {
+    const [initialInfo, initialCards] = data;
+    userInfo.setUserInfo(initialInfo);
+    console.log(initialCards);
+  });
+
+
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',

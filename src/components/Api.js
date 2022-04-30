@@ -17,10 +17,13 @@ export class Api {
     }).then(this._checkServerStatus)
   }
   getInitialCards() {
-
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'GET',
+      headers: this._headers,
+    }).then(this._checkServerStatus)
   }
 
   getInitialInfo() {
-
+    return Promise.all([this.getUserInfo(), this.getInitialCards()])
   }
 }
