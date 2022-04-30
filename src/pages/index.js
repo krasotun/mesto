@@ -1,6 +1,6 @@
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { validationObject } from '../utils/data.js';
+import { validationObject } from '../utils/validationObject.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
@@ -42,18 +42,19 @@ const createCard = (data) => {
   return card
 }
 
+const cards = new Section({
+  renderer: (initialCards) => {
+    const card = createCard(initialCards);
+    const newCardFromTemplate = card.generateCard();
+    return newCardFromTemplate;
+  }
+}, cardListSelector)
+
 api.getInitialInfo()
   .then((data) => {
     const [initialInfo, initialCards] = data;
     userInfo.setUserInfo(initialInfo);
-    const cards = new Section({
-      items: initialCards, renderer: (initialCards) => {
-        const card = createCard(initialCards);
-        const newCardFromTemplate = card.generateCard();
-        return newCardFromTemplate;
-      }
-    }, cardListSelector)
-    cards.renderItems();
+    cards.renderItems(initialCards);
   });
 
 const userInfo = new UserInfo({
