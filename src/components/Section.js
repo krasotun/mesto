@@ -5,7 +5,7 @@ export class Section {
   }
   addItem(element) {
     const renderedItem = this._renderer(element);
-    this._container.prepend(renderedItem);
+    this._container.append(renderedItem);
   }
   renderItems(data) {
     data.forEach((item) => {
@@ -13,3 +13,4 @@ export class Section {
     });
   }
 }
+

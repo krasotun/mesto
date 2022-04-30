@@ -26,7 +26,6 @@ export class Api {
   getInitialInfo() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()])
   }
-
   setUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
@@ -37,7 +36,15 @@ export class Api {
       })
     })
   }
+  postNewCard(data) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.place,
+        link: data.link
+      })
+    })
+  }
 }
-
-
 

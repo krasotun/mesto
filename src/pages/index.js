@@ -84,7 +84,16 @@ buttonEditInfo.addEventListener('click', () => {
 const newPopupAddNewCard = new PopupWithForm(popupAdd,
   {
     handleSubmit: (formData) => {
-      cards.addItem(formData);
+      api.postNewCard(formData)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          const card = createCard(data);
+          const newCardFromTemplate = card.generateCard();
+          console.log(newCardFromTemplate);
+          cards.addItem(data);
+        })
     }
   }
 )
