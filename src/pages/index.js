@@ -17,7 +17,7 @@ const popupCard = document.querySelector('.popup-card');
 const formEditElement = document.querySelector('.form-edit');
 const formAddElement = document.querySelector('.form-add');
 const nameInput = formEditElement.querySelector('#name');
-const jobInput = formEditElement.querySelector('#job');
+const jobInput = formEditElement.querySelector('#about');
 const cardListSelector = '.elements';
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
@@ -54,22 +54,33 @@ api.getInitialInfo()
   .then((data) => {
     const [initialInfo, initialCards] = data;
     userInfo.setUserInfo(initialInfo);
+    console.log(initialInfo);
     cards.renderItems(initialCards);
   });
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
-  jobSelector: '.profile__subtitle'
+  jobSelector: '.profile__subtitle',
+  avatarSelector: '.profile__avatar',
 })
-
 const newPopupEdit = new PopupWithForm(popupEdit,
+  {
+    handleSubmit: (formData) => {
+      console.log(formData);
+      api.setUserInfo(formData);
+      userInfo.setUserInfo(formData);
+      newPopupEdit.close();
+    }
+  }
+)
+/* const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
       userInfo.setUserInfo(formData);
       newPopupEdit.close();
     }
   }
-)
+) */
 
 buttonEditInfo.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();

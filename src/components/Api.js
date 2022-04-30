@@ -26,4 +26,18 @@ export class Api {
   getInitialInfo() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()])
   }
+
+  setUserInfo(data) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        about: data.about
+      })
+    })
+  }
 }
+
+
+
