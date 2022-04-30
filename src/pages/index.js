@@ -1,6 +1,6 @@
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
-import { initialCards, validationObject } from '../utils/data.js';
+import { validationObject } from '../utils/data.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
@@ -32,25 +32,29 @@ const api = new Api({
 validateFormEdit.enableValidation();
 validateFormAdd.enableValidation();
 
-/* api.getUserInfo()
-  .then((data) => {
-    console.log(data);
-    console.log(data.name);
-  });
-
-api.getInitialCards()
-  .then((data) => {
-    console.log(data);
-  }); */
+const createCard = (data) => {
+  const card = new Card({
+    data, handleCardClick: () => {
+      newPopupWithImage.open(data.name, data.link);
+    }
+  }, '#card-template'
+  );
+  return card
+}
 
 api.getInitialInfo()
   .then((data) => {
     const [initialInfo, initialCards] = data;
     userInfo.setUserInfo(initialInfo);
-    console.log(initialCards);
+    const cards = new Section({
+      items: initialCards, renderer: (initialCards) => {
+        const card = createCard(initialCards);
+        const newCardFromTemplate = card.generateCard();
+        return newCardFromTemplate;
+      }
+    }, cardListSelector)
+    cards.renderItems();
   });
-
-
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
@@ -88,24 +92,6 @@ buttonAddNewCard.addEventListener('click', () => {
 
 const newPopupWithImage = new PopupWithImage(popupCard);
 
-const createCard = (data) => {
-  const card = new Card({
-    data, handleCardClick: () => {
-      newPopupWithImage.open(data.place, data.link);
-    }
-  }, '#card-template'
-  );
-  return card
-}
-
-const cards = new Section({
-  items: initialCards, renderer: (initialCards) => {
-    const card = createCard(initialCards);
-    const newCardFromTemplate = card.generateCard();
-    return newCardFromTemplate;
-  }
-}, cardListSelector)
-cards.renderItems();
 
 
 
