@@ -1,8 +1,9 @@
 export class Card {
-  constructor({ data, handleCardClick }, selector) {
+  constructor({ data, handleCardClick, handleDeleteCard }, selector) {
     this.data = data;
     this.selector = selector;
     this.handleCardClick = handleCardClick;
+    this.handleDeleteCard = handleDeleteCard;
   }
   _getTemplate() {
     const cardElement = document
@@ -23,9 +24,7 @@ export class Card {
     this._likeButton.addEventListener('click', (evt) => {
       this._toggleLikeOnCard(evt);
     });
-    this._removeButton.addEventListener('click', (evt) => {
-      this._removeCardFromPage(evt);
-    });
+    this._removeButton.addEventListener('click', this.handleDeleteCard);
     this._cardImage.addEventListener('click', () => {
       this.handleCardClick();
     });

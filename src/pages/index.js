@@ -4,15 +4,18 @@ import { validationObject } from '../utils/validationObject.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithConfirm } from '../components/PopupWithConfirm.js';
+
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
 
 import './../pages/index.css';
 
 const buttonEditInfo = document.querySelector('.profile__edit-button');
-const popupEdit = document.querySelector('.popup-edit');
 const buttonAddNewCard = document.querySelector('.profile__post-button');
+const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
+const popupConfirm = document.querySelector('.popup-confirm');
 const popupCard = document.querySelector('.popup-card');
 const formEditElement = document.querySelector('.form-edit');
 const formAddElement = document.querySelector('.form-add');
@@ -36,6 +39,10 @@ const createCard = (data) => {
   const card = new Card({
     data, handleCardClick: () => {
       newPopupWithImage.open(data.name, data.link);
+    }
+    , handleDeleteCard: () => {
+      console.log(data.owner._id);
+      newPopupConfirm.open();
     }
   }, '#card-template'
   );
@@ -72,6 +79,12 @@ const newPopupEdit = new PopupWithForm(popupEdit,
     }
   }
 )
+
+const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
+  handleSubmit: () => {
+    console.log(confirmed);
+  }
+})
 
 buttonEditInfo.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
