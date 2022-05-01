@@ -37,11 +37,10 @@ validateFormAdd.enableValidation();
 
 const createCard = (data) => {
   const card = new Card({
-    data, handleCardClick: () => {
+    data, ownerId: data.owner._id, handleCardClick: () => {
       newPopupWithImage.open(data.name, data.link);
-    }
-    , handleDeleteCard: () => {
-      console.log(data.owner._id);
+    },
+    handleDeleteCard: () => {
       newPopupConfirm.open();
     }
   }, '#card-template'

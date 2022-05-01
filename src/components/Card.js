@@ -1,9 +1,10 @@
 export class Card {
-  constructor({ data, handleCardClick, handleDeleteCard }, selector) {
+  constructor({ data, ownerId, handleCardClick, handleDeleteCard }, selector) {
     this.data = data;
     this.selector = selector;
     this.handleCardClick = handleCardClick;
     this.handleDeleteCard = handleDeleteCard;
+    this._ownerId = ownerId;
   }
   _getTemplate() {
     const cardElement = document
@@ -29,6 +30,14 @@ export class Card {
       this.handleCardClick();
     });
   }
+  _checkOwner() {
+    return (this._ownerId === 'a79fb8507009fd535bb760e3')
+  }
+  _changeDeleteButtonVisibility() {
+    if (!this._checkOwner()) {
+      this._removeButton.classList.add('elements__delete_hidden')
+    }
+  }
   generateCard() {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector('.elements__like');
@@ -40,6 +49,7 @@ export class Card {
     this._cardImage.alt = this.data.name;
     this._cardText.textContent = this.data.name;
     this._likeCount.textContent = this.data.likes.length;
+    this._changeDeleteButtonVisibility();
     this._addEventListeners();
     return this._element
   }
