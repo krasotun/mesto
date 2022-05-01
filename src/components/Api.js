@@ -34,7 +34,7 @@ export class Api {
         name: data.name,
         about: data.about
       })
-    })
+    }).then(this._checkServerStatus)
   }
   postNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
@@ -45,6 +45,12 @@ export class Api {
         link: data.link
       })
     })
+  }
+  deleteCard(data) {
+    return fetch(`${this._baseUrl}/cards/${data._id}`, {
+      method: "DELETE",
+      headers: this._headers
+    }).then(this._checkServerStatus)
   }
 }
 
