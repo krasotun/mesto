@@ -32,6 +32,7 @@
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
+
     <section class="popup-edit popup">
       <div class="popup-edit__container">
         <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна" class="popup-edit__close popup__close">
@@ -51,6 +52,20 @@
         </form>
       </div>
     </section>
+
+    <section class="popup-confirm popup popup_opened">
+      <div class="popup-confirm__container">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна"
+          class="popup-confirm__close popup__close">
+        <form class="popup-confirm__form form-confirm form" novalidate>
+          <h2 class="form-confirm__title">Вы уверены?</h2>
+          <button type="submit" class="form-confirm__submit-button form__submit-button button">
+            Да
+          </button>
+        </form>
+      </div>
+    </section>
+
     <section class="popup-add popup">
       <div class="popup-add__container">
         <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна" class="popup-add__close popup__close">

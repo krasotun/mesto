@@ -53,11 +53,18 @@
 @import "../blocks/popup-card/__image/popup-card__image.css";
 @import "../blocks/popup-card/__text/popup-card__text.css";
 
+@import "../blocks/popup-confirm/popup-confirm.css";
+@import "../blocks/popup-confirm/__container/popup-confirm__container.css";
+
 @import "../blocks/form-edit/form-edit.css";
 @import "../blocks/form-edit/__title/form-edit__title.css";
 @import "../blocks/form-edit/__input-container/form-edit__input-container.css";
 @import "../blocks/form-edit/__item/form-edit__item.css";
 @import "../blocks/form-edit/__submit-button/form-edit__submit-button.css";
+
+@import "../blocks/form-confirm/form-confirm.css";
+@import "../blocks/form-confirm/__title/form-confirm__title.css";
+@import "../blocks/form-confirm/__submit-button/form-confirm__submit-button.css";
 
 @import "../blocks/form-add/form-add.css";
 @import "../blocks/form-add/__title/form-add__title.css";
