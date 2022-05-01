@@ -8,18 +8,15 @@
 @import "../blocks/header/header.css";
 @import "../blocks/header/__logo/header__logo.css";
 
-
 @import "../blocks/profile/profile.css";
 @import "../blocks/profile/__title/profile__title.css";
 @import "../blocks/profile/__edit-button/profile__edit-button.css";
 @import "../blocks/profile/__post-button/profile__post-button.css";
 
-
 @import "../blocks/profile/__subtitle/profile__subtitle.css";
 @import "../blocks/profile/__avatar/profile__avatar.css";
 @import "../blocks/profile/__content-container/profile__content-container.css";
 @import "../blocks/profile/__text-container/profile__text-container.css";
-
 
 @import "../blocks/elements/elements.css";
 @import "../blocks/elements/__card-container/elements__card-container.css";
@@ -28,13 +25,14 @@
 @import "../blocks/elements/__image-container/elements__image-container.css";
 @import "../blocks/elements/__text-container/elements__text-container.css";
 @import "../blocks/elements/__text/elements__text.css";
+@import "../blocks/elements/__like-container/elements__like-container.css";
 @import "../blocks/elements/__like/elements__like.css";
+@import "../blocks/elements/__like-count/elements__like-count.css";
 @import "../blocks/elements/__like/elements__like_active.css";
 @import "../blocks/elements/__delete/elements__delete.css";
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__text/footer__text.css";
-
 
 @import "../blocks/popup/popup.css";
 @import "../blocks/popup/popup_opened.css";
@@ -44,7 +42,6 @@
 @import "../blocks/popup-edit/popup-edit.css";
 @import "../blocks/popup-edit/__close/popup-edit__close.css";
 @import "../blocks/popup-edit/__container/popup-edit__container.css";
-
 
 @import "../blocks/popup-add/popup-add.css";
 @import "../blocks/popup-add/__close/popup-add__close.css";
@@ -56,16 +53,11 @@
 @import "../blocks/popup-card/__image/popup-card__image.css";
 @import "../blocks/popup-card/__text/popup-card__text.css";
 
-
-
-
 @import "../blocks/form-edit/form-edit.css";
 @import "../blocks/form-edit/__title/form-edit__title.css";
 @import "../blocks/form-edit/__input-container/form-edit__input-container.css";
 @import "../blocks/form-edit/__item/form-edit__item.css";
 @import "../blocks/form-edit/__submit-button/form-edit__submit-button.css";
-
-
 
 @import "../blocks/form-add/form-add.css";
 @import "../blocks/form-add/__title/form-add__title.css";

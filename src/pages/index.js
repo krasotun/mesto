@@ -46,7 +46,6 @@ const cards = new Section({
   renderer: (initialCards) => {
     const card = createCard(initialCards);
     const newCardFromTemplate = card.generateCard();
-    /* return newCardFromTemplate; */
     cards.addItem(newCardFromTemplate, 'append')
   }
 }, cardListSelector)

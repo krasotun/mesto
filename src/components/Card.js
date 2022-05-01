@@ -36,9 +36,11 @@ export class Card {
     this._removeButton = this._element.querySelector('.elements__delete');
     this._cardImage = this._element.querySelector('.elements__image');
     this._cardText = this._element.querySelector('.elements__text');
+    this._likeCount = this._element.querySelector('.elements__like-count');
     this._cardImage.src = this.data.link;
     this._cardImage.alt = this.data.name;
     this._cardText.textContent = this.data.name;
+    this._likeCount.textContent = this.data.likes.length;
     this._addEventListeners();
     return this._element
   }
