@@ -3,13 +3,16 @@ export class Section {
     this._renderer = renderer;
     this._container = document.querySelector(selector);
   }
-  addItem(element) {
-    const renderedItem = this._renderer(element);
-    this._container.append(renderedItem);
+  addItem(element, place) {
+    if (place === 'append') {
+      this._container.append(element);
+    } else {
+      this._container.prepend(element);
+    }
   }
   renderItems(data) {
     data.forEach((item) => {
-      this.addItem(item);
+      this._renderer(item);
     });
   }
 }

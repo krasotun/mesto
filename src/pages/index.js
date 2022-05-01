@@ -46,7 +46,8 @@ const cards = new Section({
   renderer: (initialCards) => {
     const card = createCard(initialCards);
     const newCardFromTemplate = card.generateCard();
-    return newCardFromTemplate;
+    /* return newCardFromTemplate; */
+    cards.addItem(newCardFromTemplate, 'append')
   }
 }, cardListSelector)
 
@@ -91,8 +92,7 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
         .then((data) => {
           const card = createCard(data);
           const newCardFromTemplate = card.generateCard();
-          console.log(newCardFromTemplate);
-          cards.addItem(data);
+          cards.addItem(newCardFromTemplate, 'prepend');
         })
     }
   }
