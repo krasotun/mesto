@@ -46,9 +46,15 @@ const createCard = (data) => {
       cardForDelete = card;
       newPopupConfirm.open(data);
     }, addLikeToServer: () => {
-      console.log('Like to server added');
+      api.addLike(data)
+        .then((data) => {
+          card.setLikesCount(data);
+        });
     }, removeLikeFromServer: () => {
-      console.log('Like from server removed');
+      api.removeLike(data)
+        .then((data) => {
+          card.setLikesCount(data);
+        })
     }
   },
     '#card-template'

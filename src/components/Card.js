@@ -65,9 +65,7 @@ export class Card {
 
   _checkOwnLike() {
     this.data.likes.forEach((likeOwner) => {
-      console.log(likeOwner._id);
-      /* if (likeOwner._id === 'a79fb8507009fd535bb760e3' || 'd47e9416b7cfbf6083c8baaf') { */
-      if (likeOwner._id === this._ownerId) {
+      if (likeOwner._id === 'a79fb8507009fd535bb760e3') {
         this._addLikeClass();
       }
     })
