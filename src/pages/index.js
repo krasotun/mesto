@@ -80,8 +80,9 @@ const newPopupEdit = new PopupWithForm(popupEdit,
 )
 
 const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
-  handleSubmit: () => {
-    console.log(confirmed);
+  handleSubmit: (event) => {
+    event.preventDefault();
+
   }
 })
 
