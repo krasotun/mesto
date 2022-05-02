@@ -14,9 +14,12 @@ export class Card {
       .cloneNode(true);
     return cardElement
   }
-  _removeCardFromPage() {
-    this._element.remove();
-    this._element = null;
+  _removeCardFromPage(card) {
+    card.remove();
+    card = null;
+  }
+  deleteCard() {
+    this._removeCardFromPage(this._element);
   }
   _toggleLikeOnCard() {
     this._likeButton.classList.toggle('elements__like_active');
