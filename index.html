@@ -17,11 +17,11 @@
     <main>
       <section class="profile">
         <div class="profile__content-container">
-          <img src="74c3c0fb802dcfa83abb.jpg" alt="Аватар" class="profile__avatar">
+          <img src="" alt="Аватар" class="profile__avatar">
           <div class="profile__text-container">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
             <button class="profile__edit-button button"></button>
-            <h2 class="profile__subtitle">Исследователь океана</h2>
+            <h2 class="profile__subtitle"></h2>
           </div>
         </div>
         <button class="profile__post-button button"></button>
@@ -32,6 +32,7 @@
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
+
     <section class="popup-edit popup">
       <div class="popup-edit__container">
         <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна" class="popup-edit__close popup__close">
@@ -41,9 +42,9 @@
             <input minlength="2" maxlength="40" required class="form-edit__item form__item" id="name" type="text"
               name="name" placeholder="Введите имя">
             <span class="form__error" id="name-error"></span>
-            <input minlength="2" maxlength="200" required class="form-edit__item form__item" id="job" type="text"
-              name="job" placeholder="Укажите профессию">
-            <span class="form__error" id="job-error"></span>
+            <input minlength="2" maxlength="200" required class="form-edit__item form__item" id="about" type="text"
+              name="about" placeholder="Укажите профессию">
+            <span class="form__error" id="about-error"></span>
           </fieldset>
           <button type="submit" class="form-edit__submit-button form__submit-button button">
             Сохранить
@@ -51,6 +52,20 @@
         </form>
       </div>
     </section>
+
+    <section class="popup-confirm popup">
+      <div class="popup-confirm__container">
+        <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна"
+          class="popup-confirm__close popup__close">
+        <form class="popup-confirm__form form-confirm form" novalidate>
+          <h2 class="form-confirm__title">Вы уверены?</h2>
+          <button type="submit" class="form-confirm__submit-button form__submit-button button">
+            Да
+          </button>
+        </form>
+      </div>
+    </section>
+
     <section class="popup-add popup">
       <div class="popup-add__container">
         <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна" class="popup-add__close popup__close">
@@ -87,8 +102,11 @@
         </div>
         <div class="elements__text-container">
           <p class="elements__text"></p>
-          <div class="elements__like">
+          <div class="elements__like-container">
+            <div class="elements__like"></div>
+            <span class="elements__like-count"></span>
           </div>
+
         </div>
       </article>
     </template>

@@ -81,15 +81,23 @@
 /*!*******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__text-container/elements__text-container.css ***!
   \*******************************************************************************************************************************************************************************************/
-.elements__text-container{align-items:center;display:flex;justify-content:space-between;margin-top:25px;padding:0 20px}
+.elements__text-container{display:flex;justify-content:space-between;margin-top:25px;padding:0 20px}
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__text/elements__text.css ***!
   \***********************************************************************************************************************************************************************/
 .elements__text{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:1.2;margin:0;max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like-container/elements__like-container.css ***!
+  \*******************************************************************************************************************************************************************************************/
+.elements__like-container{align-items:center;display:flex;flex-direction:column}
 /*!***********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like/elements__like.css ***!
   \***********************************************************************************************************************************************************************/
 .elements__like{background-image:url(1ad06e85f169668a1f36.svg);background-repeat:no-repeat;height:19px;width:22px}.elements__like:hover{cursor:pointer;opacity:.5}
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like-count/elements__like-count.css ***!
+  \***********************************************************************************************************************************************************************************/
+.elements__like-count{color:#000;margin-top:3px}
 /*!******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__like/elements__like_active.css ***!
   \******************************************************************************************************************************************************************************/
@@ -98,6 +106,10 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__delete/elements__delete.css ***!
   \***************************************************************************************************************************************************************************/
 .elements__delete{background-image:url(ce3b64935accf9b8212e.svg);background-repeat:no-repeat;height:18px;position:absolute;right:20px;top:20px;width:18px}.elements__delete:hover{cursor:pointer;opacity:.6}
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/elements/__delete/elements__delete_hidden.css ***!
+  \**********************************************************************************************************************************************************************************/
+.elements__delete_hidden{display:none}
 /*!******************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/footer/footer.css ***!
   \******************************************************************************************************************************************************/
@@ -166,6 +178,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-card/__text/popup-card__text.css ***!
   \***************************************************************************************************************************************************************************/
 .popup-card__text{color:#fff;font-size:12px;font-style:normal;font-weight:400;line-height:15px;margin-top:10px}
+/*!********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-confirm/popup-confirm.css ***!
+  \********************************************************************************************************************************************************************/
+
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-confirm/__container/popup-confirm__container.css ***!
+  \*******************************************************************************************************************************************************************************************/
+.popup-confirm__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);height:161px;left:50%;position:absolute;top:50%;transform:translate(-50%,-50%);width:430px}@media screen and (max-width:528px){.popup-add__container{min-height:322px;width:282px}}
 /*!************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-edit/form-edit.css ***!
   \************************************************************************************************************************************************************/
@@ -186,6 +206,18 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-edit/__submit-button/form-edit__submit-button.css ***!
   \*******************************************************************************************************************************************************************************************/
 .form-edit__submit-button{background:#000;border:none;border-radius:2px;color:#fff;font-size:18px;font-style:normal;font-weight:400;height:50px;line-height:1.22;margin-top:48px;text-align:center;width:358px}.form-edit__submit-button:hover{opacity:.8}@media screen and (max-width:528px){.form-edit__submit-button{margin-top:45px;width:238px}}
+/*!******************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-confirm/form-confirm.css ***!
+  \******************************************************************************************************************************************************************/
+
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-confirm/__title/form-confirm__title.css ***!
+  \*********************************************************************************************************************************************************************************/
+.form-confirm__title{color:#000;font-family:Inter;font-size:24px;font-style:normal;font-weight:900;line-height:1.2px;margin:0}
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-confirm/__submit-button/form-confirm__submit-button.css ***!
+  \*************************************************************************************************************************************************************************************************/
+.form-confirm__submit-button{margin-top:38px}
 /*!**********************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-add/form-add.css ***!
   \**********************************************************************************************************************************************************/
