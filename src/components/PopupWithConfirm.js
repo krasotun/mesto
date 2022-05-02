@@ -5,7 +5,6 @@ export class PopupWithConfirm extends Popup {
     this._handleSubmit = handleSubmit;
     this._form = selector.querySelector('.form');
     this._submitBinded = this._submitEvent.bind(this);
-    console.log(this._form);
   }
 
   _submitEvent(event) {

@@ -84,8 +84,14 @@ const newPopupEdit = new PopupWithForm(popupEdit,
 
 const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
   handleSubmit: (data) => {
-    console.log(data);
-
+    api.deleteCard(data)
+      .then(() => {
+        cardForDelete.deleteCard();
+      })
+      .then(() => {
+        cardForDelete = null;
+        newPopupConfirm.close();
+      })
   }
 })
 
