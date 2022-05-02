@@ -25,6 +25,8 @@ const cardListSelector = '.elements';
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
 
+let cardForDelete = null;
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
   headers: {
@@ -41,7 +43,8 @@ const createCard = (data) => {
       newPopupWithImage.open(data.name, data.link);
     },
     handleDeleteCard: () => {
-      newPopupConfirm.open();
+      cardForDelete = card;
+      newPopupConfirm.open(data);
     }
   }, '#card-template'
   );
@@ -80,8 +83,8 @@ const newPopupEdit = new PopupWithForm(popupEdit,
 )
 
 const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
-  handleSubmit: (event) => {
-    event.preventDefault();
+  handleSubmit: (data) => {
+    console.log(data);
 
   }
 })
