@@ -41,6 +41,10 @@ export class Card {
       this._removeButton.classList.add('elements__delete_hidden')
     }
   }
+  setLikesCount(data) {
+    this._likeCount.textContent = data.likes.length;
+  }
+
   generateCard() {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector('.elements__like');
@@ -51,7 +55,7 @@ export class Card {
     this._cardImage.src = this.data.link;
     this._cardImage.alt = this.data.name;
     this._cardText.textContent = this.data.name;
-    this._likeCount.textContent = this.data.likes.length;
+    this.setLikesCount(this.data);
     this._changeDeleteButtonVisibility();
     this._addEventListeners();
     return this._element
