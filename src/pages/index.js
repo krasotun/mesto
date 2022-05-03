@@ -19,7 +19,6 @@ const popupAdd = document.querySelector('.popup-add');
 const popupConfirm = document.querySelector('.popup-confirm');
 const popupCard = document.querySelector('.popup-card');
 const popupEditAvatar = document.querySelector('.popup-edit-avatar');
-
 const formEditElement = document.querySelector('.form-edit');
 const nameInput = formEditElement.querySelector('#name');
 const jobInput = formEditElement.querySelector('#about');
@@ -57,12 +56,18 @@ const createCard = (data) => {
       api.addLike(data)
         .then((data) => {
           card.setLikesCount(data);
-        });
+        })
+        .catch((error => {
+          console.log(error);
+        }))
     }, removeLikeFromServer: () => {
       api.removeLike(data)
         .then((data) => {
           card.setLikesCount(data);
         })
+        .catch((error => {
+          console.log(error);
+        }))
     }
   },
     '#card-template'
@@ -84,7 +89,10 @@ api.getInitialInfo()
     userInfo.setUserInfo(initialInfo);
     userInfo.setUserAvatar(initialInfo);
     cards.renderItems(initialCards);
-  });
+  })
+  .catch((error => {
+    console.log(error);
+  }))
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__title',
@@ -95,9 +103,18 @@ const userInfo = new UserInfo({
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
-      api.setUserInfo(formData);
-      userInfo.setUserInfo(formData);
-      newPopupEdit.close();
+      newPopupEdit.toggleSubmitButtonText(true);
+      api.setUserInfo(formData)
+        .then((res) => {
+          userInfo.setUserInfo(res);
+        })
+        .catch((error => {
+          console.log(error);
+        }))
+        .finally(() => {
+          newPopupEdit.toggleSubmitButtonText(false)
+          newPopupEdit.close();
+        })
     }
   }
 )
@@ -105,13 +122,22 @@ const newPopupEdit = new PopupWithForm(popupEdit,
 const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   {
     handleSubmit: (formData) => {
-      api.updateAvatar(formData);
-      userInfo.setUserAvatar(formData);
-      newPopupEditAvatar.close();
+      newPopupEditAvatar.toggleSubmitButtonText(true);
+      api.updateAvatar(formData)
+        .then((res => {
+          userInfo.setUserAvatar(res);
+        }))
+        .catch((error => {
+          console.log(error);
+        }))
+        .finally(() => {
+          newPopupEditAvatar.toggleSubmitButtonText(false)
+          newPopupEditAvatar.close();
+        })
+
     }
   }
 )
-
 const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
   handleSubmit: (data) => {
     api.deleteCard(data)
@@ -122,6 +148,9 @@ const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
         cardForDelete = null;
         newPopupConfirm.close();
       })
+      .catch((error => {
+        console.log(error);
+      }))
   }
 })
 
@@ -143,6 +172,7 @@ buttonEditAvatar.addEventListener('click', () => {
 const newPopupAddNewCard = new PopupWithForm(popupAdd,
   {
     handleSubmit: (formData) => {
+      newPopupAddNewCard.toggleSubmitButtonText(true);
       api.postNewCard(formData)
         .then((res) => {
           return res.json();
@@ -151,6 +181,12 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
           const card = createCard(data);
           const newCardFromTemplate = card.generateCard();
           cards.addItem(newCardFromTemplate, 'prepend');
+        })
+        .catch((error => {
+          console.log(error);
+        }))
+        .finally(() => {
+          newPopupAddNewCard.toggleSubmitButtonText(false);
         })
     }
   }
