@@ -54,6 +54,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__content-container/profile__content-container.css ***!
   \***********************************************************************************************************************************************************************************************/
 .profile__content-container{align-items:center;display:flex}@media screen and (max-width:1050px){.profile__content-container{flex-direction:column}}
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__edit-avatar-button/profile__edit-avatar-button.css ***!
+  \*************************************************************************************************************************************************************************************************/
+.profile__edit-avatar-button{background:none;border:0;cursor:pointer;height:100%;left:0;padding:0;position:absolute;top:0;transition:background-color .2s ease;width:100%}.profile__edit-avatar-button:hover{background-color:rgba(0,0,0,.8);background-image:url(ae1a976ddb506239e9f0.svg);background-position:50%;background-repeat:no-repeat}
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-container/profile__avatar-container.css ***!
+  \*********************************************************************************************************************************************************************************************/
+.profile__avatar-container{border-radius:50%;margin:auto;position:relative}
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__text-container/profile__text-container.css ***!
   \*****************************************************************************************************************************************************************************************/
@@ -146,6 +154,14 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-edit/__container/popup-edit__container.css ***!
   \*************************************************************************************************************************************************************************************/
 .popup-edit__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);left:50%;min-height:330px;position:absolute;top:50%;transform:translate(-50%,-50%);width:430px}@media screen and (max-width:528px){.popup-edit__container{min-height:322px;width:282px}}
+/*!****************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-edit-avatar/popup-edit-avatar.css ***!
+  \****************************************************************************************************************************************************************************/
+
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-edit-avatar/__container/popup-edit-avatar__container.css ***!
+  \***************************************************************************************************************************************************************************************************/
+.popup-edit-avatar__container{background:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);left:50%;min-height:272px;padding-top:34px;position:absolute;top:50%;transform:translate(-50%,-50%);width:430px}@media screen and (max-width:528px){.popup-edit-avatar__container{min-height:322px;width:282px}}
 /*!************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup-add/popup-add.css ***!
   \************************************************************************************************************************************************************/
@@ -262,6 +278,22 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form/__submit-button/form__submit-button_inactive.css ***!
   \******************************************************************************************************************************************************************************************/
 .form__submit-button_inactive{background:transparent;border:1px solid #000;color:#000;cursor:auto;opacity:.2}.form__submit-button_inactive:hover{opacity:.2}
+/*!**************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-edit-avatar/form-edit-avatar.css ***!
+  \**************************************************************************************************************************************************************************/
+
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-edit-avatar/__title/form-edit-avatar__title.css ***!
+  \*****************************************************************************************************************************************************************************************/
+.form-edit-avatar__title{color:#000;font-family:Inter;font-size:24px;font-style:normal;font-weight:900;line-height:1.2px;margin:0}
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-edit-avatar/__input-container/form-edit-avatar__input-container.css ***!
+  \*************************************************************************************************************************************************************************************************************/
+.form-edit-avatar__input-container{border:none;display:flex;flex-direction:column;margin-top:54px;padding:0}
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/form-edit-avatar/__submit-button/form-edit-avatar__submit-button.css ***!
+  \*********************************************************************************************************************************************************************************************************/
+.form-edit-avatar__submit-button{margin-top:15px}
 /*!*********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/pages/index.css ***!
   \*********************************************************************************************************************************************/

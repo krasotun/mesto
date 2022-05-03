@@ -17,7 +17,10 @@
     <main>
       <section class="profile">
         <div class="profile__content-container">
-          <img src="" alt="Аватар" class="profile__avatar">
+          <div class="profile__avatar-container">
+            <img src="" alt="Аватар" class="profile__avatar">
+            <button class="profile__edit-avatar-button"></button>
+          </div>
           <div class="profile__text-container">
             <h1 class="profile__title"></h1>
             <button class="profile__edit-button button"></button>
@@ -85,6 +88,27 @@
         </form>
       </div>
     </section>
+
+    <section class="popup-edit-avatar popup">
+      <div class="popup-edit-avatar__container">
+        <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна"
+          class="popup-edit-avatar__close popup__close">
+        <form class="popup-edit-avatar__form form-edit-avatar form" method="POST" novalidate>
+          <h2 class="form-edit-avatar__title">Обновить аватар</h2>
+          <fieldset class="form-edit-avatar__input-container">
+            <input required class="form-edit-avatar form__item" id="avatar" type="url" name="avatar"
+              placeholder="Ссылка на новый аватар">
+            <span class="form__error" id="avatar-error"></span>
+          </fieldset>
+          <button type="submit" class="form-edit-avatar__submit-button  form__submit-button button">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+
+
+
     <section class="popup-card popup">
       <div class="popup-card__container">
         <img src="039f1f5203f653b4bacd.svg" alt="Закрытие окна" class="popup-card__close popup__close">
