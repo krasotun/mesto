@@ -22,7 +22,6 @@ export class Api {
       headers: this._headers,
     }).then(this._checkServerStatus)
   }
-
   getInitialInfo() {
     return Promise.all([this.getUserInfo(), this.getInitialCards()])
   }
@@ -33,6 +32,15 @@ export class Api {
       body: JSON.stringify({
         name: data.name,
         about: data.about
+      })
+    }).then(this._checkServerStatus)
+  }
+  updateAvatar(data) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.avatar
       })
     }).then(this._checkServerStatus)
   }
@@ -52,7 +60,6 @@ export class Api {
       headers: this._headers
     }).then(this._checkServerStatus)
   }
-
   addLike(data) {
     console.log(data);
     return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
@@ -60,7 +67,6 @@ export class Api {
       headers: this._headers
     }).then(this._checkServerStatus)
   }
-
   removeLike(data) {
     return fetch(`${this._baseUrl}/cards/${data._id}/likes`, {
       method: "DELETE",

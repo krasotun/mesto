@@ -40,7 +40,6 @@ export class Card {
     return (this._ownerId === 'a79fb8507009fd535bb760e3')
   }
   _changeDeleteButtonVisibility() {
-    console.log(this._checkOwner());
     if (!this._checkOwner()) {
       this._removeButton.classList.add('elements__delete_hidden')
     }
@@ -59,11 +58,9 @@ export class Card {
   _removeLikeClass() {
     this._likeButton.classList.remove('elements__like_active')
   }
-
   setLikesCount(data) {
     this._likeCount.textContent = data.likes.length;
   }
-
   _checkOwnLike() {
     this.data.likes.forEach((likeOwner) => {
       if (likeOwner._id === 'a79fb8507009fd535bb760e3') {
