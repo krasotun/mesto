@@ -18,15 +18,22 @@ const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
 const popupConfirm = document.querySelector('.popup-confirm');
 const popupCard = document.querySelector('.popup-card');
+const popupEditAvatar = document.querySelector('.popup-edit-avatar');
+
 const formEditElement = document.querySelector('.form-edit');
-const formAddElement = document.querySelector('.form-add');
 const nameInput = formEditElement.querySelector('#name');
 const jobInput = formEditElement.querySelector('#about');
+const formAddElement = document.querySelector('.form-add');
+const formEditAvatar = document.querySelector('.form-edit-avatar');
 const cardListSelector = '.elements';
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
-
+const validateFormEditAvatar = new FormValidator(validationObject, formEditAvatar);
 let cardForDelete = null;
+
+validateFormEdit.enableValidation();
+validateFormAdd.enableValidation();
+validateFormEditAvatar.enableValidation();
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
@@ -35,8 +42,7 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
-validateFormEdit.enableValidation();
-validateFormAdd.enableValidation();
+
 
 const createCard = (data) => {
   const card = new Card({
@@ -84,12 +90,21 @@ const userInfo = new UserInfo({
   jobSelector: '.profile__subtitle',
   avatarSelector: '.profile__avatar',
 })
+
 const newPopupEdit = new PopupWithForm(popupEdit,
   {
     handleSubmit: (formData) => {
       api.setUserInfo(formData);
       userInfo.setUserInfo(formData);
       newPopupEdit.close();
+    }
+  }
+)
+
+const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
+  {
+    handleSubmit: (formData) => {
+      console.log('Avatar form submitted');
     }
   }
 )
@@ -116,7 +131,8 @@ buttonEditInfo.addEventListener('click', () => {
 });
 
 buttonEditAvatar.addEventListener('click', () => {
-  console.log('Edit avatar clicked');
+  validateFormEditAvatar.toggleButtonState();
+  newPopupEditAvatar.open();
 })
 
 const newPopupAddNewCard = new PopupWithForm(popupAdd,
