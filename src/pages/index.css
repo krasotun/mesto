@@ -47,6 +47,9 @@
 @import "../blocks/popup-edit/__close/popup-edit__close.css";
 @import "../blocks/popup-edit/__container/popup-edit__container.css";
 
+@import "../blocks/popup-edit-avatar/popup-edit-avatar.css";
+@import "../blocks/popup-edit-avatar/__container/popup-edit-avatar__container.css";
+
 @import "../blocks/popup-add/popup-add.css";
 @import "../blocks/popup-add/__close/popup-add__close.css";
 @import "../blocks/popup-add/__container/popup-add__container.css";
@@ -82,3 +85,8 @@
 @import "../blocks/form/__error/form__error_visible.css";
 @import "../blocks/form/__submit-button/form__submit-button.css";
 @import "../blocks/form/__submit-button/form__submit-button_inactive.css";
+
+@import "../blocks/form-edit-avatar/form-edit-avatar.css";
+@import "../blocks/form-edit-avatar/__title/form-edit-avatar__title.css";
+@import "../blocks/form-edit-avatar/__input-container/form-edit-avatar__input-container.css";
+@import "../blocks/form-edit-avatar/__submit-button/form-edit-avatar__submit-button.css";

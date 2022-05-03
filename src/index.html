@@ -88,6 +88,27 @@
         </form>
       </div>
     </section>
+
+    <section class="popup-edit-avatar popup popup_opened">
+      <div class="popup-edit-avatar__container">
+        <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна"
+          class="popup-edit-avatar__close popup__close">
+        <form class="popup-edit-avatar__form form-edit-avatar form" method="POST" novalidate>
+          <h2 class="form-edit-avatar__title">Обновить аватар</h2>
+          <fieldset class="form-edit-avatar__input-container">
+            <input required class="form-edit-avatar form__item" id="avatar-link" type="url" name="avatar-link"
+              placeholder="Ссылка на новый аватар">
+            <span class="form__error" id="avatar-link-error"></span>
+          </fieldset>
+          <button type="submit" class="form-edit-avatar__submit-button  form__submit-button button">
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+
+
+
     <section class="popup-card popup">
       <div class="popup-card__container">
         <img src="<%=require('./images/close-icon.svg')%>" alt="Закрытие окна" class="popup-card__close popup__close">
