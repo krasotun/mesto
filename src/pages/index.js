@@ -23,8 +23,9 @@ const popupEditAvatar = document.querySelector('.popup-edit-avatar');
 const formEditElement = document.querySelector('.form-edit');
 const nameInput = formEditElement.querySelector('#name');
 const jobInput = formEditElement.querySelector('#about');
-const formAddElement = document.querySelector('.form-add');
 const formEditAvatar = document.querySelector('.form-edit-avatar');
+const avatarInput = formEditAvatar.querySelector('#avatar-link');
+const formAddElement = document.querySelector('.form-add');
 const cardListSelector = '.elements';
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
@@ -104,6 +105,7 @@ const newPopupEdit = new PopupWithForm(popupEdit,
 const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   {
     handleSubmit: (formData) => {
+
       console.log('Avatar form submitted');
     }
   }
@@ -131,6 +133,8 @@ buttonEditInfo.addEventListener('click', () => {
 });
 
 buttonEditAvatar.addEventListener('click', () => {
+  const userAvatar = userInfo.getUserAvatar();
+  avatarInput.value = userAvatar;
   validateFormEditAvatar.toggleButtonState();
   newPopupEditAvatar.open();
 })
