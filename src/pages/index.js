@@ -13,6 +13,7 @@ import './../pages/index.css';
 
 const buttonEditInfo = document.querySelector('.profile__edit-button');
 const buttonAddNewCard = document.querySelector('.profile__post-button');
+const buttonEditAvatar = document.querySelector('.profile__edit-avatar-button')
 const popupEdit = document.querySelector('.popup-edit');
 const popupAdd = document.querySelector('.popup-add');
 const popupConfirm = document.querySelector('.popup-confirm');
@@ -113,6 +114,10 @@ buttonEditInfo.addEventListener('click', () => {
   validateFormEdit.toggleButtonState();
   newPopupEdit.open();
 });
+
+buttonEditAvatar.addEventListener('click', () => {
+  console.log('Edit avatar clicked');
+})
 
 const newPopupAddNewCard = new PopupWithForm(popupAdd,
   {

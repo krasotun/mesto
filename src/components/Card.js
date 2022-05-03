@@ -40,6 +40,7 @@ export class Card {
     return (this._ownerId === 'a79fb8507009fd535bb760e3')
   }
   _changeDeleteButtonVisibility() {
+    console.log(this._checkOwner());
     if (!this._checkOwner()) {
       this._removeButton.classList.add('elements__delete_hidden')
     }
