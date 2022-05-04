@@ -5,31 +5,33 @@ import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithConfirm } from '../components/PopupWithConfirm.js';
-
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
-
+import {
+  buttonEditInfo,
+  buttonAddNewCard,
+  buttonEditAvatar,
+  popupEdit,
+  popupAdd,
+  popupConfirm,
+  popupCard,
+  popupEditAvatar,
+  formEditElement,
+  nameInput,
+  jobInput,
+  formEditAvatar,
+  avatarInput,
+  formAddElement,
+  cardListSelector,
+} from '../utils/constants.js'
 import './../pages/index.css';
 
-const buttonEditInfo = document.querySelector('.profile__edit-button');
-const buttonAddNewCard = document.querySelector('.profile__post-button');
-const buttonEditAvatar = document.querySelector('.profile__edit-avatar-button')
-const popupEdit = document.querySelector('.popup-edit');
-const popupAdd = document.querySelector('.popup-add');
-const popupConfirm = document.querySelector('.popup-confirm');
-const popupCard = document.querySelector('.popup-card');
-const popupEditAvatar = document.querySelector('.popup-edit-avatar');
-const formEditElement = document.querySelector('.form-edit');
-const nameInput = formEditElement.querySelector('#name');
-const jobInput = formEditElement.querySelector('#about');
-const formEditAvatar = document.querySelector('.form-edit-avatar');
-const avatarInput = formEditAvatar.querySelector('#avatar');
-const formAddElement = document.querySelector('.form-add');
-const cardListSelector = '.elements';
+let cardForDelete = null;
+
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
 const validateFormEditAvatar = new FormValidator(validationObject, formEditAvatar);
-let cardForDelete = null;
+
 
 validateFormEdit.enableValidation();
 validateFormAdd.enableValidation();
