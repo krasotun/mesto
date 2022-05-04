@@ -109,14 +109,12 @@ const newPopupEdit = new PopupWithForm(popupEdit,
       api.setUserInfo(formData)
         .then((res) => {
           userInfo.setUserInfo(res);
+          newPopupEdit.toggleSubmitButtonText(false)
+          newPopupEdit.close();
         })
         .catch((error => {
           console.log(error);
         }))
-        .finally(() => {
-          newPopupEdit.toggleSubmitButtonText(false)
-          newPopupEdit.close();
-        })
     }
   }
 )
@@ -128,15 +126,12 @@ const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
       api.updateAvatar(formData)
         .then((res => {
           userInfo.setUserAvatar(res);
+          newPopupEditAvatar.toggleSubmitButtonText(false)
+          newPopupEditAvatar.close();
         }))
         .catch((error => {
           console.log(error);
         }))
-        .finally(() => {
-          newPopupEditAvatar.toggleSubmitButtonText(false)
-          newPopupEditAvatar.close();
-        })
-
     }
   }
 )
@@ -176,20 +171,17 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
     handleSubmit: (formData) => {
       newPopupAddNewCard.toggleSubmitButtonText(true);
       api.postNewCard(formData)
-        .then((res) => {
-          return res.json();
-        })
         .then((data) => {
           const card = createCard(data);
           const newCardFromTemplate = card.generateCard();
           cards.addItem(newCardFromTemplate, 'prepend');
+          newPopupAddNewCard.toggleSubmitButtonText(false);
+          newPopupAddNewCard.close();
         })
         .catch((error => {
           console.log(error);
         }))
-        .finally(() => {
-          newPopupAddNewCard.toggleSubmitButtonText(false);
-        })
+
     }
   }
 )

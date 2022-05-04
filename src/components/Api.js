@@ -53,6 +53,9 @@ export class Api {
         link: data.link
       })
     })
+      .then((res) => {
+        return res.json();
+      })
   }
   deleteCard(data) {
     return fetch(`${this._baseUrl}/cards/${data._id}`, {
