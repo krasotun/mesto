@@ -52,10 +52,7 @@ export class Api {
         name: data.place,
         link: data.link
       })
-    })
-      .then((res) => {
-        return res.json();
-      })
+    }).then(this._checkServerStatus)
   }
   deleteCard(data) {
     return fetch(`${this._baseUrl}/cards/${data._id}`, {
