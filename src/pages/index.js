@@ -27,6 +27,7 @@ import {
 import './../pages/index.css';
 
 let cardForDelete = null;
+let userId = null;
 
 const validateFormEdit = new FormValidator(validationObject, formEditElement);
 const validateFormAdd = new FormValidator(validationObject, formAddElement);
@@ -45,10 +46,28 @@ const api = new Api({
   }
 });
 
+api.getInitialInfo()
+  .then((data) => {
+    const [initialInfo, initialCards] = data;
+    userInfo.setUserInfo(initialInfo);
+    userInfo.setUserAvatar(initialInfo);
+    userId = initialInfo._id;
+    console.log(`Мой userId: ${userId}`);
+    cards.renderItems(initialCards);
+  })
+  .catch((error => {
+    console.log(error);
+  }))
+
+const userInfo = new UserInfo({
+  nameSelector: '.profile__title',
+  jobSelector: '.profile__subtitle',
+  avatarSelector: '.profile__avatar',
+})
 
 const createCard = (data) => {
   const card = new Card({
-    data, ownerId: data.owner._id, handleCardClick: () => {
+    data, ownerId: userId, handleCardClick: () => {
       newPopupWithImage.open(data.name, data.link);
     },
     handleDeleteCard: () => {
@@ -85,22 +104,7 @@ const cards = new Section({
   }
 }, cardListSelector)
 
-api.getInitialInfo()
-  .then((data) => {
-    const [initialInfo, initialCards] = data;
-    userInfo.setUserInfo(initialInfo);
-    userInfo.setUserAvatar(initialInfo);
-    cards.renderItems(initialCards);
-  })
-  .catch((error => {
-    console.log(error);
-  }))
 
-const userInfo = new UserInfo({
-  nameSelector: '.profile__title',
-  jobSelector: '.profile__subtitle',
-  avatarSelector: '.profile__avatar',
-})
 
 const newPopupEdit = new PopupWithForm(popupEdit,
   {

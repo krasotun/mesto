@@ -37,7 +37,7 @@ export class Card {
     });
   }
   _checkOwner() {
-    return (this._ownerId === 'a79fb8507009fd535bb760e3')
+    return (this.data.owner._id === this._ownerId)
   }
   _changeDeleteButtonVisibility() {
     if (!this._checkOwner()) {
@@ -63,7 +63,7 @@ export class Card {
   }
   _checkOwnLike() {
     this.data.likes.forEach((likeOwner) => {
-      if (likeOwner._id === 'a79fb8507009fd535bb760e3') {
+      if (likeOwner._id === this._ownerId) {
         this._addLikeClass();
       }
     })
