@@ -11,18 +11,17 @@ export class Popup {
     document.addEventListener('keydown', this._escBinded);
     document.addEventListener('click', this._overlayBinded);
   }
-  removeEventListeners() {
-    this.popupCloseButton.removeEventListener('click', this._closeBinded);
+  _removeEventListeners() {
     document.removeEventListener('keydown', this._escBinded);
-    document.removeEventListener('click', this._overlayBinded);
   }
   open() {
     this._popupSelector.classList.add('popup_opened');
-    this.setEventListeners();
   }
   close() {
+    document.removeEventListener('keydown', this._escBinded);
     this._popupSelector.classList.remove('popup_opened');
-    this.removeEventListeners();
+
+    /* this._removeEventListeners(); */
   }
   _handleEscClose(evt) {
     const escCode = 'Escape';

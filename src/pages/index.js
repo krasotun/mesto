@@ -118,6 +118,7 @@ const newPopupEdit = new PopupWithForm(popupEdit,
     }
   }
 )
+newPopupEdit.setEventListeners();
 
 const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
   {
@@ -133,8 +134,10 @@ const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
           console.log(error);
         }))
     }
-  }
-)
+
+  })
+newPopupEditAvatar.setEventListeners();
+
 const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
   handleSubmit: (data) => {
     api.deleteCard(data)
@@ -150,6 +153,7 @@ const newPopupConfirm = new PopupWithConfirm(popupConfirm, {
       }))
   }
 })
+newPopupConfirm.setEventListeners();
 
 buttonEditInfo.addEventListener('click', () => {
   const userData = userInfo.getUserInfo();
@@ -185,9 +189,12 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
     }
   }
 )
+newPopupAddNewCard.setEventListeners();
+
 buttonAddNewCard.addEventListener('click', () => {
   validateFormAdd.toggleButtonState();
   newPopupAddNewCard.open();
 });
 
 const newPopupWithImage = new PopupWithImage(popupCard);
+newPopupWithImage.setEventListeners();
