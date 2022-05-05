@@ -35,3 +35,8 @@
 [Деплой](https://krasotun.github.io/mesto/)
 
 ![krasotun github io_mesto_](https://user-images.githubusercontent.com/88790010/157275533-52472c5d-38dd-4483-8ac4-54012a5b4660.png)
+
+Ревью
+-- Api +
+-- Card (-) Сложно (убрать хардкод и переделать лайк)
+-- Popup (--) навешивать и удалять события

@@ -1,15 +1,12 @@
 import { Popup } from "./Popup.js";
 export class PopupWithForm extends Popup {
-  constructor(selector, { handleSubmit }) {
-    super(selector);
+  constructor(popupSelector, { handleSubmit }) {
+    super(popupSelector);
     this._handleSubmit = handleSubmit;
-    this._form = selector.querySelector('.form');
+    this._form = popupSelector.querySelector('.form');
     this._formSubmitButton = this._form.querySelector('.form__submit-button');
     this._formSubmitButtonText = this._formSubmitButton.textContent;
     this._inputList = this._form.querySelectorAll('.form__item');
-    this._form.addEventListener('submit', (evt) => {
-      this._handleSubmit(this._getInputValues());
-    });
   }
   _getInputValues() {
     this._formValues = {};
@@ -17,6 +14,12 @@ export class PopupWithForm extends Popup {
       this._formValues[input.name] = input.value;
     });
     return this._formValues;
+  }
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener('submit', (evt) => {
+      this._handleSubmit(this._getInputValues());
+    });
   }
   toggleSubmitButtonText(status) {
     if (status) {
