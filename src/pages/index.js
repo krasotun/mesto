@@ -115,12 +115,14 @@ const newPopupEdit = new PopupWithForm(popupEdit,
       api.setUserInfo(formData)
         .then((res) => {
           userInfo.setUserInfo(res);
-          newPopupEdit.toggleSubmitButtonText(false)
           newPopupEdit.close();
         })
         .catch((error => {
           console.log(error);
         }))
+        .finally(() => {
+          newPopupEdit.toggleSubmitButtonText(false)
+        })
     }
   }
 )
@@ -139,6 +141,9 @@ const newPopupEditAvatar = new PopupWithForm(popupEditAvatar,
         .catch((error => {
           console.log(error);
         }))
+        .finally(() => {
+          newPopupEditAvatar.toggleSubmitButtonText(false)
+        })
     }
 
   })
@@ -191,6 +196,10 @@ const newPopupAddNewCard = new PopupWithForm(popupAdd,
         .catch((error => {
           console.log(error);
         }))
+        .finally(() => {
+          newPopupAddNewCard.toggleSubmitButtonText(false)
+        })
+
 
     }
   }
