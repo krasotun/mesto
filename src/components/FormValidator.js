@@ -7,17 +7,27 @@ export class FormValidator {
     this._inactiveButtonClass = obj.inactiveButtonClass;
     this._input_errorClass = obj.input_errorClass;
     this._errorClass = obj.errorClass;
-  }
-  _setEventListeners() {
     this._inputList = Array.from(this.formName.querySelectorAll(this._inputSelector));
     this._submitButton = this.formName.querySelector(this._submitButtonSelector);
+  }
+  _setEventListeners() {
     this._inputList.forEach(inputElement => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         this.toggleButtonState();
       });
     });
+    this.formName.addEventListener('reset', () => {
+      this._hideAllErrors();
+      console.log('FormResetted');
+    })
   }
+  _hideAllErrors() {
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    })
+  }
+
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
