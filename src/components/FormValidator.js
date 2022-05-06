@@ -5,7 +5,7 @@ export class FormValidator {
     this._inputSelector = obj.inputSelector;
     this._submitButtonSelector = obj.submitButtonSelector;
     this._inactiveButtonClass = obj.inactiveButtonClass;
-    this._input_errorClass = obj.input_errorClass;
+    this._inputErrorClass = obj.inputErrorClass;
     this._errorClass = obj.errorClass;
     this._inputList = Array.from(this.formName.querySelectorAll(this._inputSelector));
     this._submitButton = this.formName.querySelector(this._submitButtonSelector);
@@ -27,7 +27,6 @@ export class FormValidator {
       this._hideInputError(inputElement);
     })
   }
-
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
@@ -36,12 +35,14 @@ export class FormValidator {
     }
   }
   _showInputError(inputElement) {
+    inputElement.classList.add(this._inputErrorClass);
     const formInputElementName = inputElement.getAttribute('name');
     const errorName = document.getElementById(`${formInputElementName}-error`);
     errorName.classList.add(this._errorClass);
     errorName.textContent = inputElement.validationMessage;
   }
   _hideInputError(inputElement) {
+    inputElement.classList.remove(this._inputErrorClass);
     const formInputElementName = inputElement.getAttribute('name');
     const errorName = document.getElementById(`${formInputElementName}-error`);
     errorName.classList.remove(this._errorClass);
