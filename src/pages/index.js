@@ -76,6 +76,7 @@ const createCard = (data) => {
     }, addLikeToServer: () => {
       api.addLike(data)
         .then((data) => {
+          card.addLikeClass();
           card.setLikesCount(data);
         })
         .catch((error => {
@@ -84,6 +85,7 @@ const createCard = (data) => {
     }, removeLikeFromServer: () => {
       api.removeLike(data)
         .then((data) => {
+          card.removeLikeClass();
           card.setLikesCount(data);
         })
         .catch((error => {

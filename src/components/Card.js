@@ -45,17 +45,15 @@ export class Card {
     }
   }
   _addLike(data) {
-    this._addLikeClass()
     this._addLiketoServer(data);
   }
   _removeLike(data) {
-    this._removeLikeClass()
     this._removeLikefromServer(data);
   }
-  _addLikeClass() {
+  addLikeClass() {
     this._likeButton.classList.add('elements__like_active')
   }
-  _removeLikeClass() {
+  removeLikeClass() {
     this._likeButton.classList.remove('elements__like_active')
   }
   setLikesCount(data) {
@@ -64,7 +62,7 @@ export class Card {
   _checkOwnLike() {
     this.data.likes.forEach((likeOwner) => {
       if (likeOwner._id === this._ownerId) {
-        this._addLikeClass();
+        this.addLikeClass();
       }
     })
   }
